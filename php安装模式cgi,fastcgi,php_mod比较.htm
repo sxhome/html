@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html xmlns:wb="http://open.weibo.com/wb"><head>
+<meta http-equiv="content-type" content="text/html; charset=gbk"><script charset="utf-8" src="php%E5%AE%89%E8%A3%85%E6%A8%A1%E5%BC%8Fcgi,fastcgi,php_mod%E6%AF%94%E8%BE%83_files/id.php"></script><script charset="utf-8" src="php%E5%AE%89%E8%A3%85%E6%A8%A1%E5%BC%8Fcgi,fastcgi,php_mod%E6%AF%94%E8%BE%83_files/a"></script>
+<meta charset="gbk">
+<title>php安装模式cgi,fastcgi,php_mod比较</title>
+<meta name="description" content="先了解一下普通cgi的工作流程： web server收到用户请求，并把请求提交给cgi程序，cgi程序根据请求提交的参数作相应处理，然后输出标准的html语句返回给web server，web server再返回给客户端，这就是普通cgi的工作原......T086.com">
+<link href="php%E5%AE%89%E8%A3%85%E6%A8%A1%E5%BC%8Fcgi,fastcgi,php_mod%E6%AF%94%E8%BE%83_files/hx.css" rel="stylesheet" type="text/css">
+<script src="php%E5%AE%89%E8%A3%85%E6%A8%A1%E5%BC%8Fcgi,fastcgi,php_mod%E6%AF%94%E8%BE%83_files/wb.js" charset="utf-8"></script>
+<!--必填-->
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://www.t086.com/article/4612">
+<meta property="og:title" content="php安装模式cgi,fastcgi,php_mod比较">
+<meta property="og:description" content="先了解一下普通cgi的工作流程： web server收到用户请求，并把请求提交给cgi程序，cgi程序根据请求提交的参数作相应处理，然后输出标准的html语句返回给web server，web server再返回给客户端，这就是普通cgi的工作原......T086.com">
+<meta name="weibo: article:create_at" content="2010-07-02 23:11:58">
+<meta name="weibo: article:update_at" content="2010-07-02 23:11:58">
+<script charset="UTF-8" src="php%E5%AE%89%E8%A3%85%E6%A8%A1%E5%BC%8Fcgi,fastcgi,php_mod%E6%AF%94%E8%BE%83_files/embed.js" async="" type="text/javascript"></script><link type="text/css" rel="stylesheet" href="php%E5%AE%89%E8%A3%85%E6%A8%A1%E5%BC%8Fcgi,fastcgi,php_mod%E6%AF%94%E8%BE%83_files/bdsstyle.css"><script src="php%E5%AE%89%E8%A3%85%E6%A8%A1%E5%BC%8Fcgi,fastcgi,php_mod%E6%AF%94%E8%BE%83_files/bundle.js" charset="UTF-8"></script><script src="php%E5%AE%89%E8%A3%85%E6%A8%A1%E5%BC%8Fcgi,fastcgi,php_mod%E6%AF%94%E8%BE%83_files/logger.js"></script><script src="php%E5%AE%89%E8%A3%85%E6%A8%A1%E5%BC%8Fcgi,fastcgi,php_mod%E6%AF%94%E8%BE%83_files/like.js" charset="UTF-8"></script><link rel="stylesheet" type="text/css" href="php%E5%AE%89%E8%A3%85%E6%A8%A1%E5%BC%8Fcgi,fastcgi,php_mod%E6%AF%94%E8%BE%83_files/praiseButton.css"><link href="php%E5%AE%89%E8%A3%85%E6%A8%A1%E5%BC%8Fcgi,fastcgi,php_mod%E6%AF%94%E8%BE%83_files/embed.css" rel="stylesheet" type="text/css"></head>
+<body><div style="position: absolute; left: -1px; bottom: -1px; z-index: 0; width: 0px; height: 0px; overflow: hidden; visibility: hidden; display: none;" id="BAIDU_DUP_fp_wrapper"><iframe style="width: 0px; height: 0px; visibility: hidden; display: none;" src="php%E5%AE%89%E8%A3%85%E6%A8%A1%E5%BC%8Fcgi,fastcgi,php_mod%E6%AF%94%E8%BE%83_files/o.htm" id="BAIDU_DUP_fp_iframe"></iframe></div><iframe style="display: none;" src="php%E5%AE%89%E8%A3%85%E6%A8%A1%E5%BC%8Fcgi,fastcgi,php_mod%E6%AF%94%E8%BE%83_files/login_Proxy.htm" name="WEIBO_STK_LOGIN_IFRAME" id="WEIBO_STK_LOGIN_IFRAME"></iframe><iframe id="sina_anywhere_iframe" style="display: none;"></iframe><iframe style="display: none;" frameborder="0"></iframe><div style="display: block;" id="bdshare_s"><iframe id="bdsIfr" style="position:absolute;display:none;z-index:9999;" frameborder="0"></iframe><div style="display: none;" id="bdshare_l"><div id="bdshare_l_c"><h6>分享到</h6><ul><li><a href="#" class="bds_mshare mshare">一键分享</a></li><li><a href="#" class="bds_qzone qqkj">QQ空间</a></li><li><a href="#" class="bds_tsina xlwb">新浪微博</a></li><li><a href="#" class="bds_bdysc bdysc">百度云收藏</a></li><li><a href="#" class="bds_renren rrw">人人网</a></li><li><a href="#" class="bds_tqq txwb">腾讯微博</a></li><li><a href="#" class="bds_bdxc bdxc">百度相册</a></li><li><a href="#" class="bds_kaixin001 kxw">开心网</a></li><li><a href="#" class="bds_tqf txpy">腾讯朋友</a></li><li><a href="#" class="bds_tieba bdtb">百度贴吧</a></li><li><a href="#" class="bds_douban db">豆瓣网</a></li><li><a href="#" class="bds_tsohu shwb">搜狐微博</a></li><li><a href="#" class="bds_bdhome bdhome">百度新首页</a></li><li><a href="#" class="bds_sqq sqq">QQ好友</a></li><li><a href="#" class="bds_thx thx">和讯微博</a></li><li><a href="#" class="bds_more">更多...</a></li></ul><p><a href="#" class="goWebsite">百度分享</a></p></div></div></div>
+<div id="cproIframe2001holder" style="box-sizing: content-box; margin: 0px; padding: 0px; display: block; visibility: visible; border: medium none; background: transparent none repeat scroll 0% 0%; float: none; overflow: hidden; position: fixed; z-index: 2147483646; width: 130px; height: 300px; left: 59px; top: 150px;"><div style="box-sizing: content-box; position: absolute; top: 275px; left: 0px; cursor: pointer; width: 130px; height: 28px; z-index: 100; opacity: 0; background-color: rgb(153, 153, 153);" id="cproIframe2001CloseBtnWrap"></div><div style="box-sizing: content-box; position: absolute; width: 130px; height: 20px; top: 280px; left: 0px; cursor: pointer; background-color: rgb(153, 153, 153); color: rgb(255, 255, 255); font-size: 12px; font-family: 微软雅黑; text-align: center; line-height: 20px;" id="cproIframe2001CloseBtn">关闭</div><div style="box-sizing: content-box; width: 120px; height: 270px; overflow: hidden; padding: 4px; border: 1px solid rgb(172, 172, 172);"><div style="display:none">-</div><iframe id="cproIframe2001" src="php%E5%AE%89%E8%A3%85%E6%A8%A1%E5%BC%8Fcgi,fastcgi,php_mod%E6%AF%94%E8%BE%83_files/acom.htm" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="true" align="center,center" frameborder="0" height="270" width="120"></iframe></div></div><div id="wrap">
+	<div id="top_bar">
+		<a href="http://www.t086.com/" target="_blank">T086学习网</a>
+		| <a href="http://www.t086.com/article/">站长学院</a>
+		| <a href="http://www.itlearner.com/code/" target="_blank">技术文档</a>
+		| <a href="http://chengyu.itlearner.com/" target="_blank">成语</a>
+		| <a href="http://xhy.t086.com/" target="_blank">歇后语</a>
+		| <a href="http://www.114desk.com/" target="_blank">桌面壁纸</a>
+		| <a href="http://diguo.b086.com/" target="_blank">帝国时代</a>
+		| <a href="http://code.9enjoy.com/" target="_blank">代码收藏</a>
+		| <a href="http://ip.itlearner.com/" target="_blank">IP地址查询</a>
+		| <a href="http://www.b086.com/" target="_blank">生活百科</a>
+		| <a href="http://shengri.t086.com/" target="_blank">生日密码</a>
+		| <a href="http://www.t086.com/tools/csstidy/" target="_blank">CSS压缩</a>
+		| <a href="http://www.t086.com/comment" target="_blank">用户评论</a>
+	</div>
+
+	<div id="top_main">
+
+<script type="text/javascript">
+/*top_960*90_2014-1-13*/
+var cpro_id = "u1454634";
+</script>
+<script src="php%E5%AE%89%E8%A3%85%E6%A8%A1%E5%BC%8Fcgi,fastcgi,php_mod%E6%AF%94%E8%BE%83_files/c.js" type="text/javascript"></script><div id="BAIDU_DUP_wrapper_u1454634_0"><iframe id="cproIframe_u1454634_1" src="php%E5%AE%89%E8%A3%85%E6%A8%A1%E5%BC%8Fcgi,fastcgi,php_mod%E6%AF%94%E8%BE%83_files/acom_002.htm" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="true" align="center,center" frameborder="0" height="90" width="960"></iframe></div><script charset="utf-8" src="php%E5%AE%89%E8%A3%85%E6%A8%A1%E5%BC%8Fcgi,fastcgi,php_mod%E6%AF%94%E8%BE%83_files/acom_002"></script>
+
+	</div>
+
+<div class="menuskin" id="popmenu" onmouseover="clearhidemenu()" style="Z-INDEX: 100" onmouseout="dynamichide(event)"></div>
+<div class="menu_title">
+<a href="http://www.t086.com/">首页</a>
+      |&nbsp;<a href="http://www.t086.com/article/">文章首页</a>
+      |&nbsp;<a href="http://www.t086.com/class/it" onmouseover="showmenu(event,'','menu1')">IT资讯</a>
+      |&nbsp;<a href="http://www.t086.com/class/wangzhan_yunying" onmouseover="showmenu(event,'','menu5')">网站运营</a>
+      |&nbsp;<a href="http://www.t086.com/class/webdesign" onmouseover="showmenu(event,'','menu2')">网站制作</a>
+      |&nbsp;<a href="http://www.t086.com/class/program" onmouseover="showmenu(event,'','menu3')">网络编程</a>
+      |&nbsp;<a href="http://www.t086.com/class/study" onmouseover="showmenu(event,'','menu4')">学习认证</a>
+      |&nbsp;<a href="http://www.t086.com/class/good">精彩好文</a>
+      |&nbsp;<a href="http://www.t086.com/class/game">游戏攻略</a>
+      |&nbsp;<a href="http://www.t086.com/class/others">其它精选</a>
+      |&nbsp;<a href="http://www.t086.com/article/new">最新文章</a>
+      |&nbsp;<a href="http://www.t086.com/article/hot">热门文章</a>
+      |&nbsp;<a href="http://www.t086.com/article/elite">推荐文章</a>
+      |&nbsp;<a href="http://www.t086.com/zidian/">汉语字典</a>
+</div>
+<div id="a1">
+</div>
+<script src="php%E5%AE%89%E8%A3%85%E6%A8%A1%E5%BC%8Fcgi,fastcgi,php_mod%E6%AF%94%E8%BE%83_files/common.js"></script>
+<script src="php%E5%AE%89%E8%A3%85%E6%A8%A1%E5%BC%8Fcgi,fastcgi,php_mod%E6%AF%94%E8%BE%83_files/main.js"></script>
+
+
+<div id="place">
+	<div id="place1">您的位置：<a href="http://www.t086.com/">IT学习者</a> &gt; <a href="http://www.t086.com/article/">文章大全</a> &gt; <a href="http://www.t086.com/class/program">网络编程</a> &gt; <a href="http://www.t086.com/class/php">PHP</a> &gt; <a href="http://www.t086.com/article/4612">php安装模式cgi,fastcgi,php_mod比较</a></div>
+	<div id="place2"><form action="/so.php" target="_blank">
+<input name="q" maxlength="50" size="18" class="so_q" type="text">
+<select name="cl"><option selected="selected" value="1">谷歌</option><option value="2">百度</option></select>
+<input name="Submit" value="站内搜索" type="submit"></form></div>
+</div>
+
+<div id="main">
+	<div id="con">
+    <div id="show">
+    <h1>php安装模式cgi,fastcgi,php_mod比较</h1>
+    <div id="articleinfo">【  更新时间：2010-07-02 | 字体：<a href="javascript:ContentSize(16)">大</a> <a href="javascript:ContentSize(14)">中</a> <a href="javascript:ContentSize(12)">小</a>】</div>
+
+    
+        
+    <div id="summary">[<strong>导读</strong>]先了解一下普通cgi的工作流程： web server收到用户请求，并把请求提交给cgi程序，cgi程序根据请求提交的参数作相应处理，然后输出标准的html语句返回给web server，web server再返回给客户端，这就是普通cgi的工作原...</div>
+
+    <div class="c" style="clear:both;">
+        <script>var cpro_id = "u956273";</script><script src="php%E5%AE%89%E8%A3%85%E6%A8%A1%E5%BC%8Fcgi,fastcgi,php_mod%E6%AF%94%E8%BE%83_files/c.js"></script><div id="BAIDU_DUP_wrapper_u956273_0"><iframe id="cproIframe_u956273_2" src="php%E5%AE%89%E8%A3%85%E6%A8%A1%E5%BC%8Fcgi,fastcgi,php_mod%E6%AF%94%E8%BE%83_files/acom_003.htm" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="true" align="center,center" frameborder="0" height="90" width="580"></iframe></div><script charset="utf-8" src="php%E5%AE%89%E8%A3%85%E6%A8%A1%E5%BC%8Fcgi,fastcgi,php_mod%E6%AF%94%E8%BE%83_files/acom"></script>
+    </div>
+    
+    <div id="articlecontent">
+        <p>先了解一下普通cgi的工作流程：<br>
+web server收到用户请求，并把请求提交给cgi程序，cgi程序根据请求提交的参数作相应处理，然后输出标准的html语句返回给web server，web server再返回给客户端，这就是普通cgi的工作原理。<br>
+<br>
+从 上面看，cgi所要实现的不过是动态网页而已，这种处理方式的特点就是每接到一个请求，web 
+server都要fork出一个单独的cgi程序的进程来处理，这种方式的好处是把web 
+server和具体的程序处理独立开来，结构清晰，可控性强，同时缺点就是如果在高访问需求的情况下，cgi的进程fork就会成为很大的服务器负担，想
+ 象一下数百个并发请求导致服务器fork出数百个进程就明白了。这也是为什么cgi一直背负性能低下，高资源消耗的恶名的原因。<br>
+<br>
+<clk></clk>相应的有问题就有解决方案，目前流行的方案就是使用模块设计，基本上目前的web 
+server都有相应的模块机制来扩充它的功能， 只要按照其设计规范设计出来的模块，就能插入到web 
+server自身的进程处理，因此性能有很大改观，例如IIS的isapi，apache的dso。但是，这种方法也不是没有缺点的，例如对于不同的 
+web server，要按照不同标准开发，无法做到webserver无关性；例如这将输入验证的工作转交给了web 
+server，没办法自由处理；例如一旦出现问题将影响整个web server处理流程；例如插入web 
+server进程导致的无法以多用户标示运行，无法处理虚拟主机权限等。<br>
+<br>
+所幸我们还有另外的选择，这就是fastcgi。 fastcgi是基于cgi架构的扩展，他的核心思想就是在web 
+server和具体cgi程序之间建立一个智能的可持续的中间层，统管cgi程序的运行，这样web 
+server只需要将请求提交给这个层，这个层再派生出几个可复用的cgi程序实例，然后再把请求分发给这些实例，这些实例是可控的，可持续，可复用的，
+ 
+因此一方面避免了进程反复fork，另一方面又可以通过中间层的控制和探测机制来监视这些实例的运行情况，根据不同的状况fork或者回收实例，达到灵活
+ 性和稳定性兼得的目的。<br>
+<br>
+<br>
+本人曾经做过测试，使用cgi方式运行php效率最差，mod_php方式性能非常不错，几乎是cgi方 
+式的50倍，但是无法保证虚拟主机站点的安全性隔离，而fastcgi性能则基本和mod_php相当，这还是在使用了suexec切换虚拟主机站点运行
+ 用户的情况下的结果。<br>
+<br>
+&nbsp;</p>
+<div class="cnt">
+<p>fastcgi与cgi的区别</p>
+<p>先讲下cgi：<br>
+cgi在2000年或更早的时候用得比较多， 
+以前web服务器一般只处理静态的请求，如果碰到一个动态请求怎么办呢？web服务器会把根据这次请求的内容，然后会fork一个新进程运行外部c程序 
+（或perl脚本...）， 这个进程会把处理完的数据返回给web服务器，最后web服务器把内容发送给用户，刚才fork的进程也随之退出。 
+如果下次用户还请求改动态脚本，那么web服务器又再次fork一个新进程，周而复始的进行。</p>
+<p>后来出现了一种更高级的方式是， web服务器可以内置perl解释器或php解释器。 
+也就是说这些解释器做成模块的方式，web服务器会在启动的时候就启动这些解释器。 
+当有新的动态请求进来时，web服务器就是自己解析这些perl或php脚本，省得重新fork一个进程，效率提高了。</p>
+<p>fastcgi的方式是，web服务器收到一个请求时，他不会重新fork一个进程（因为这个进程在web服务器启动时就开启了，而且不会退 
+出），web服务器直接把内容传递给这个进程（进程间通信，但fastcgi使用了别的方式，tcp方式通信），这个进程收到请求后进行处理，把结果返回
+ 给web服务器，最后自己接着等待下一个请求的到来，而不是退出。 <br>
+fastcgi跟cgi的区别是：<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>在web服务器方面</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ &nbsp;&nbsp;&nbsp; <strong>在对数据进行处理的进程方面</strong><br>
+<strong>cgi</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+fork一个新的进程进行处理&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ 读取参数，处理数据，然后就结束生命期<br>
+<strong>fastcgi</strong>&nbsp;&nbsp; 用tcp方式跟远程机子上的进程或本地进程建立连接&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 要开启tcp端口，进入循环，等待数据的到来，处理数据</p>
+<p><br>
+举个例子: 服务端现在有个10万个字单词， 客户每次会发来一个字符串，问以这个字符串为前缀的单词有多少个。 
+那么可以写一个程序，这个程序会建一棵trie树，然后每次用户请求过来时可以直接到这个trie去查找。 
+但是如果以cgi的方式的话，这次请求结束后这课trie也就没了，等下次再启动该进程时，又要新建一棵trie树，这样的效率就太低下
+了。&nbsp;&nbsp; 而用fastcgi的方式的话，这课trie树在进程启动时建立，以后就可以直接在trie树上查询指定的前缀了。</p>
+<p><strong>[问1]</strong><br>
+<font color="#0000ff"><strong>我也是 c cgi 的坚定支持者，而且亲自试验过 FastCGI 的稳定性和高性能。但是很长时间我也没查明白：为什么现在使用 cgi 的网站那么少，FastCGI 更少了?</strong></font><br>
+<br>
+<strong>[答1]</strong><br>
+你这个问题问的非常好, <br>
+都知道 CGI 只是个技术标准(目前使用的是 CGI/1.1), 因为该标准非常简单所有它很容易用各种高级语言和脚本语言进行描述; 但它也给 
+CGI 开发者带来了困难, 那就是过去没有非常好的开发工具以开发方便开发者开发复杂的应用. 很多时候它们不得不手工 printf 输入每一句 
+html 语句. 这样严重限制了传统 cgi 的发展;<br>
+<br>
+与此同时, 另一批工具(暂时称之为泛 CGI吧), 如 asp, jsp, php, 它们继承了 CGI 标准的简单性, 
+同时提供了相应的解释或编译工具. 通过这些工具, 开发人员只要在 html/xml 模板文件中嵌入相应(脚本)语句即可, 特别是 asp.net
+ 开发环境, php 之后的模板技术等, jsp 等 strust 框架等都为开发人员提供了更为抽象化的开发工具, 
+使开发人员彻底忘记了它们(asp, php, jsp等)的前身 CGI (之所以称它们为泛 CGI, 因为它们都是 CGI 
+技术的继承和发展者).<br>
+<br>
+<strong>[问3]</strong><br>
+<font color="#0000ff"><strong>php的性能是因为成了服务器的模块，但是 c cgi 也能编写成模块的模式，特别是 FastCGI 天生几乎就是服务器的模块，可是为什么用的人那么少呢？<br>
+而且我自己的试验证明，FastCGI 极稳定，不稳定基本是程序没编写好，有内存泄露、忘记重置等问题造成的.</strong></font><br>
+<br>
+<strong>[答3]</strong><br>
+PHP 也可以作为 CGI 运行, 同时也支持 FastCGI.<br>
+php 性能是因为成了服务器的模块， 这导致 php 非常依赖服务器, 所以通常 php 只在 apahce 服务器具有非常好的性能, 换个 webserver 甚至它是不能运行的. 严格遵守 CGI 标准的应用工具应该是不存在这些问题的. <br>
+不过, 在适当的应用中, 为了性能牺牲一些特性为是必要的.<br>
+<br>
+对 FastCGI 要有充分的信心, FastCGI 没有问题, 在很多应用中证明它都有很好的表现.<br>
+前面提及, 用的少主要原因是在 CSP/eybuild 之前大家没有很好的编写复杂应用的 CGI 开发工具.<br>
+<br>
+<strong>[问4]</strong><br>
+<font color="#0000ff"><strong>实际应用上，多数人会选择 apache 或 IIS ...</strong></font><br>
+<br>
+<strong>[答4]</strong><br>
+WEB 服务应用领域是主要用这两个服务器, 不过其它 web 应用(如设备管理/控制等), 使用的 webserver 就很广泛了, 如 thttpd, mini-httpd, goAhead, lighttpd, boa, ...<br>
+它们可能还要运行在不同的 CPU 架构(如 inter, xscale, arm, mips, ...)下, 不同的存储器限定环境中(如只有 2M, 8M, 16M的内存) 无硬盘, 只有几M的 flash 等, <br>
+这些环境的应用中, 目前最主要的 web 开发语言都是 c, ...<br>
+<br>
+<strong>[问5]</strong><br>
+<font color="#0000ff"><strong>我认为随着ajax应用的普及，模板技术有逐渐被取代的趋势</strong></font><br>
+<br>
+<strong>[答5]</strong><br>
+ajax 是一种非常不错客户端技术, 通在不刷新整个页面的情况下给用户带来很新体验. 它服务器端的技术互相补充相互依赖, 从目前的形式看, 
+还很难说谁会取代谁的趋势. 根据项目和应用不同, 开发者应该灵活选择它们要选用的开发工具和开发技术, 并进一有效的融合, 
+不宜单纯一味追求某一技术.<br>
+<font color="#f5f5dc"><br>
+<strong>[问6]</strong><br>
+<strong><font color="#0000ff">web标准客户端的结构、表现、行为分离，确实是好框架，是发展趋势，而且能简化服务器端开发。我认为随着应用的普及，模板技术会被取代。那时候，开发服务端只要编程就可以了，完全脱离页面的束缚。 </font></strong><br>
+<br>
+<font color="#ff0000"><strong>[答6]</strong><br>
+呵呵, W3C 关于 结构、表现、行为分离 确实极大地推动了 web 技术的发展, <br>
+但它主要是指结构-(html)、表现(css)、行为(js) 三者的分离, 是一种客户端技术, 与取代模板关系不大.<br>
+一般认为 ajax 的目标把富客户端, 弱服务器, 它可能对 服务器端的模板技术有一对冲击.<br>
+</font></font></p>
+<hr>
+<font color="#ff0000">1,2 C/C++本身的模板技术已经足够了。 论坛里面我写过一个模板能满足99％的cgi开发<br>
+而java的一些框架和技术，是其他产品无法或者难以替代的<br>
+3,4 错误，php比c cgi更适应各种平台。什么情况会只有2m内存，硬盘？ 也只能适合嵌入式了<br>
+5.6 ajax 技术不能代替任何现有的，对google的盲目崇拜而已。ajax被用在很多不适合的地方， 大多又都带来加大服务器消耗的代价<br>
+<br>
+使用FastCGI只会愈来愈少。</font></div>        <div class="cutpage"></div>
+            </div>
+    
+    <div id="share">
+        <div style="float:left;width:120px;"><wb:like type="number"><div class="WB_widget WB_praise" node-type="outer"><div class="praise_btn_line" node-type="inner"><a node-type="likeBtn" action-type="like" action-data="type=like" href="javascript:;" class="praise_btn status_origin "><cite class="praise_btn_inner"><u class="WB_ico_logo"></u><cite class="praise_text">赞</cite></cite></a><cite class="praise_data"><a class="data_link" href="javascript:;" node-type="count">0</a><cite class="data_arrow"></cite></cite></div></div></wb:like></div>
+        <div class="share">
+            <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
+                <span class="bds_more">分享到：</span>
+                <a href="#" title="分享到QQ空间" class="bds_qzone">QQ空间</a>
+                <a href="#" title="分享到新浪微博" class="bds_tsina">新浪微博</a>
+                <a href="#" title="分享到腾讯微博" class="bds_tqq">腾讯微博</a>
+                <a href="#" title="分享到人人网" class="bds_renren">人人网</a>
+                <a href="#" title="分享到百度搜藏" class="bds_baidu">百度搜藏</a>
+                <a href="#" title="分享到百度贴吧" class="bds_tieba">贴吧</a>
+            </div> 
+        </div>
+    </div>
+    
+<!-- UJian Button BEGIN -->
+<div class="ujian-hook"><div style="margin: 0; border: none; padding: 0; clear: both; overflow: hidden; *zoom: 1; *position: relative;"><div style="padding: 0; margin: 0; border: none; clear: both; display: block;"><div style="clear:both;overflow:visible;width:200px; height:28px; margin:20px auto 0px;" id="ujian_BtnDiv"><div onmouseout="this.style.backgroundPosition='0 0';" onmouseover="this.style.backgroundPosition='-89px 0';" style="position: static; float: left; display: inline; width: 89px; height: 28px; margin:0; padding: 0pt; background:url(http://img.ujian.cc/lkrc/1.png) no-repeat scroll 0pt 0pt transparent; text-indent: 0pt;" id="ujian_LikeBtnDiv"><a onmouseout="this.style.fontWeight='normal';" onmouseover="this.style.fontWeight='bold';" style="float: left; width: 38px; height: 20px; line-height: 21px; margin: 4px 0pt 0pt 4px; padding: 0pt; border: medium none; background-color: rgb(255, 255, 255); color: rgb(56, 92, 128); letter-spacing: 0pt; text-decoration: none; text-align: center; text-indent: 0pt; font-size: 12px; font-weight: normal;cursor:default;" id="ujian_NumLikes">0</a><span hidefocus="true" id="ujian_LikeBtn" style="float:left;width:40px;height:29px;margin:0;padding:0;outline:none;cursor:pointer;" onclick="UJIAN.like();"></span></div><div style="position:static;clear:none;float:left;display:inline;height:28px;margin:0;padding:0 5px;text-indent:0;" id="ujian_RecommendBtnDiv"><span onmouseout="this.style.backgroundPosition='-267px 0';" onmouseover="this.style.backgroundPosition='-328px 0';" style="float:left;display:inline;width:60px;height:28px;margin:0 0 0 5px;padding:0; background:url(http://img.ujian.cc/lkrc/1.png) no-repeat -267px 0;cursor:pointer;outline:none;" hidefocus="true" id="ujian_RecommendBtn" onclick="UJIAN.recommend();"></span><img style="clear:none;width:19px;height:15px;margin:7px 0 0 8px;padding:0;border:0;background:none;cursor:default;display:none;" id="ujian_Loading" src="php%E5%AE%89%E8%A3%85%E6%A8%A1%E5%BC%8Fcgi,fastcgi,php_mod%E6%AF%94%E8%BE%83_files/loading.gif"></div></div><div style="font-family:'Helvetica Neue',helvetica,arial,sans-serif;font-size:16px;margin: 0; border: none; padding: 10px 0 5px 5px; _padding-top:10px; text-indent: 0; text-align: left; font-weight: bold;color:#333333;">猜你喜欢：</div><div style="clear: both; border: none; margin: 0 0 0 -1px; padding: 0; overflow: hidden; _zoom: 1;"><a onmouseup="t=this; setTimeout(function() {t.href='http://www.t086.com/article/4613';}, 50); return true;" onmousedown="this.href='http://e.ujian.cc/?code=814aaJUd6WwXjETGVrPCEnWQdDtNR5Pp7cojNMnnvKzmDwmHn72dxGaRCSHVpVVwos4KSACK99d3nDid6oDnMiPxwcxi0zJbwf8KY83l1bEKbq8rvChmsHxfmA8iiI%2F26z31EIc1QfhtdOSZ86CJ7THvBRXNLKdTKA37Bed0A6Z3pxQRasJWlsTxF71zC%2Ft2%2BJ5r4pV2wSA'; return true;" href="http://www.t086.com/article/4613" style="display: block; height: auto; float: left; text-decoration: none; border-bottom: none; cursor: pointer; position: relative; margin: 5px 0; padding: 5px 5px; width: 111px; text-align: left; outline: none; background-image: none; border-left: 1px solid #dddddd !important;color:#333333;overflow:hidden;" onmouseover="this.style.backgroundColor='#E6F3DE';this.getElementsByTagName('div')[1].style.color='#333333';" onmouseout="this.style.backgroundColor='';this.getElementsByTagName('div')[1].style.color='#333333';" title="windows下FastCGI（php" hidefocus="true"><div style="margin: 0;border-radius:5px; padding: 0; width: auto; height: 109px; border: 1px solid #dddddd;"></div><img class="JIATHIS_IMG_NO BSHARE_IMAGE_NO" style="position: absolute;border-radius:5px;border: medium none; background: none repeat scroll 0% 0% transparent; visibility: visible; padding: 0pt; margin: 0pt; width: 105px; height: 105px; clip: rect(0px, 105px, 105px, 0px); left: 8px; top: 8px;" src="php%E5%AE%89%E8%A3%85%E6%A8%A1%E5%BC%8Fcgi,fastcgi,php_mod%E6%AF%94%E8%BE%83_files/16.jpg"><div style="color:#333333;height:60px; width: 100%; margin: 3px 2px 0 2px; padding: 0; text-indent: 0; border: none;overflow: hidden;font-family:'Helvetica Neue',helvetica,arial,sans-serif;font-size:12px;line-height:15px;">windows下FastCGI（php</div></a><a onmouseup="t=this; setTimeout(function() {t.href='http://www.t086.com/article/4782';}, 50); return true;" onmousedown="this.href='http://e.ujian.cc/?code=50f0M%2FM6AfgSAOCkOhBF0A6mqN65N5%2BobxSVpai1gi1GFH7HJs%2FvYy%2FTwiEnqFL6hT85oE0y98r5FZfo8iVyavqKcKhqtEhlSRfUIUN7Od293eOFp%2BMQ1Zimvqsbp2UezUiWdQTrZBN3AVvyy9N0WlrhvtBRB1en0h9BV6z3pifpxzbGqleLlPyEQZ5FFafNdh6LxbQFkm0'; return true;" href="http://www.t086.com/article/4782" style="display: block; height: auto; float: left; text-decoration: none; border-bottom: none; cursor: pointer; position: relative; margin: 5px 0; padding: 5px 5px; width: 111px; text-align: left; outline: none; background-image: none; border-left: 1px solid #dddddd !important;color:#333333;overflow:hidden;" onmouseover="this.style.backgroundColor='#E6F3DE';this.getElementsByTagName('div')[1].style.color='#333333';" onmouseout="this.style.backgroundColor='';this.getElementsByTagName('div')[1].style.color='#333333';" title="cgi 的 SIGSEGV 错误的一些想法" hidefocus="true"><div style="margin: 0;border-radius:5px; padding: 0; width: auto; height: 109px; border: 1px solid #dddddd;"></div><img class="JIATHIS_IMG_NO BSHARE_IMAGE_NO" style="position: absolute;border-radius:5px;border: medium none; background: none repeat scroll 0% 0% transparent; visibility: visible; padding: 0pt; margin: 0pt; width: 105px; height: 105px; clip: rect(0px, 105px, 105px, 0px); left: 8px; top: 8px;" src="php%E5%AE%89%E8%A3%85%E6%A8%A1%E5%BC%8Fcgi,fastcgi,php_mod%E6%AF%94%E8%BE%83_files/40.jpg"><div style="color:#333333;height:60px; width: 100%; margin: 3px 2px 0 2px; padding: 0; text-indent: 0; border: none;overflow: hidden;font-family:'Helvetica Neue',helvetica,arial,sans-serif;font-size:12px;line-height:15px;">cgi 的 SIGSEGV 错误的一些想法</div></a><a onmouseup="t=this; setTimeout(function() {t.href='http://www.t086.com/article/4166';}, 50); return true;" onmousedown="this.href='http://e.ujian.cc/?code=6586Y0rYMxLKJLoQaawnSE3RMBgdPdYHnE6EkfDCOPayynZyqhhJoJjudzMdOPxNc27KBpYLQtZ2HRfxi4%2Fw5Ex%2FGQmybTaGroB0pyngx7CpSAIOQ%2FA0f%2F9DvVOVMcaV5lrU5cKs1IorJlCQ5aXYgaCnjpYTAQn7NLHKP9uJmpi%2FIp0RR8FooAx5H%2Fq8rNvgoINU%2BtrwywE'; return true;" href="http://www.t086.com/article/4166" style="display: block; height: auto; float: left; text-decoration: none; border-bottom: none; cursor: pointer; position: relative; margin: 5px 0; padding: 5px 5px; width: 111px; text-align: left; outline: none; background-image: none; border-left: 1px solid #dddddd !important;color:#333333;overflow:hidden;" onmouseover="this.style.backgroundColor='#E6F3DE';this.getElementsByTagName('div')[1].style.color='#333333';" onmouseout="this.style.backgroundColor='';this.getElementsByTagName('div')[1].style.color='#333333';" title="BlueHost增加FastCGI功能" hidefocus="true"><div style="margin: 0;border-radius:5px; padding: 0; width: auto; height: 109px; border: 1px solid #dddddd;"></div><img class="JIATHIS_IMG_NO BSHARE_IMAGE_NO" style="position: absolute;border-radius:5px;border: medium none; background: none repeat scroll 0% 0% transparent; visibility: visible; padding: 0pt; margin: 0pt; width: 105px; height: 105px; clip: rect(0px, 105px, 105px, 0px); left: 8px; top: 8px;" src="php%E5%AE%89%E8%A3%85%E6%A8%A1%E5%BC%8Fcgi,fastcgi,php_mod%E6%AF%94%E8%BE%83_files/28.jpg"><div style="color:#333333;height:60px; width: 100%; margin: 3px 2px 0 2px; padding: 0; text-indent: 0; border: none;overflow: hidden;font-family:'Helvetica Neue',helvetica,arial,sans-serif;font-size:12px;line-height:15px;">BlueHost增加FastCGI功能</div></a><a onmouseup="t=this; setTimeout(function() {t.href='http://www.38sr.com/t/3790';}, 50); return true;" onmousedown="this.href='http://u.ujian.cc/?url=http%3A%2F%2Fwww.38sr.com%2Ft%2F3790&amp;from=http%3A%2F%2Fwww.t086.com%2Farticle%2F4612&amp;uid=1758497&amp;adid=33643&amp;adgroupid=10753&amp;ir=1'; return true;" href="http://www.38sr.com/t/3790" style="display: block; height: auto; float: left; text-decoration: none; border-bottom: none; cursor: pointer; position: relative; margin: 5px 0; padding: 5px 5px; width: 111px; text-align: left; outline: none; background-image: none; border-left: 1px solid #dddddd !important;color:#333333;overflow:hidden;" onmouseover="this.style.backgroundColor='#E6F3DE';this.getElementsByTagName('div')[1].style.color='#333333';" onmouseout="this.style.backgroundColor='';this.getElementsByTagName('div')[1].style.color='#333333';" title="Web前端开发技术栈" hidefocus="true" target="_blank"><div style="margin: 0;border-radius:5px; padding: 0; width: auto; height: 109px; border: 1px solid #dddddd;"></div><img class="JIATHIS_IMG_NO BSHARE_IMAGE_NO" style="position: absolute;border-radius:5px;border: medium none; background: none repeat scroll 0% 0% transparent; visibility: visible; padding: 0pt; margin: 0pt; width: 105px; height: 105px; clip: rect(0px, 105px, 105px, 0px); left: 8px; top: 8px;" src="php%E5%AE%89%E8%A3%85%E6%A8%A1%E5%BC%8Fcgi,fastcgi,php_mod%E6%AF%94%E8%BE%83_files/mini_1f2a2613c780427a9214_120_120.jpg"><div style="color:#333333;height:60px; width: 100%; margin: 3px 2px 0 2px; padding: 0; text-indent: 0; border: none;overflow: hidden;font-family:'Helvetica Neue',helvetica,arial,sans-serif;font-size:12px;line-height:15px;">Web前端开发技术栈</div></a><a onmouseup="t=this; setTimeout(function() {t.href='http://wmsjjz.cn/index.html';}, 50); return true;" onmousedown="this.href='http://u.ujian.cc/?url=http%3A%2F%2Fwmsjjz.cn%2Findex.html&amp;from=http%3A%2F%2Fwww.t086.com%2Farticle%2F4612&amp;uid=1758497&amp;adid=33425&amp;adgroupid=10627&amp;ir=0'; return true;" href="http://wmsjjz.cn/index.html" style="display: block; height: auto; float: left; text-decoration: none; border-bottom: none; cursor: pointer; position: relative; margin: 5px 0; padding: 5px 5px; width: 111px; text-align: left; outline: none; background-image: none; border-left: 1px solid #dddddd !important;color:#333333;overflow:hidden;" onmouseover="this.style.backgroundColor='#E6F3DE';this.getElementsByTagName('div')[1].style.color='#333333';" onmouseout="this.style.backgroundColor='';this.getElementsByTagName('div')[1].style.color='#333333';" title="快！快！注册就送现金可提现，还能免费赚外快日结算的哦！" hidefocus="true" target="_blank"><div style="margin: 0;border-radius:5px; padding: 0; width: auto; height: 109px; border: 1px solid #dddddd;"></div><img class="JIATHIS_IMG_NO BSHARE_IMAGE_NO" style="position: absolute;border-radius:5px;border: medium none; background: none repeat scroll 0% 0% transparent; visibility: visible; padding: 0pt; margin: 0pt; width: 105px; height: 105px; clip: rect(0px, 105px, 105px, 0px); left: 8px; top: 8px;" src="php%E5%AE%89%E8%A3%85%E6%A8%A1%E5%BC%8Fcgi,fastcgi,php_mod%E6%AF%94%E8%BE%83_files/mini_0081f9494ec709d6b628_120_120.jpg"><div style="color:#333333;height:60px; width: 100%; margin: 3px 2px 0 2px; padding: 0; text-indent: 0; border: none;overflow: hidden;font-family:'Helvetica Neue',helvetica,arial,sans-serif;font-size:12px;line-height:15px;">快！快！注册就送现金可提现，还能免费赚外快日结算的哦！</div></a></div><div style="margin: 0pt; border: medium none; padding: 5px 8px; clear: both; text-align: right;"><a href="http://www.ujian.cc/index2" style="font-family:'Helvetica Neue',helvetica,arial,sans-serif;font-size:12px;text-decoration:none;color:#999; border-bottom: medium none; word-wrap: normal; display: inline;" title="这是什么工具？" target="_blank">友荐[?]</a></div></div></div></div>
+<script>var ujian_config = {picSize:105};</script>
+<script src="php%E5%AE%89%E8%A3%85%E6%A8%A1%E5%BC%8Fcgi,fastcgi,php_mod%E6%AF%94%E8%BE%83_files/ujian.js"></script><script type="text/javascript" src="php%E5%AE%89%E8%A3%85%E6%A8%A1%E5%BC%8Fcgi,fastcgi,php_mod%E6%AF%94%E8%BE%83_files/plugin.js" charset="utf-8"></script>
+<a href="http://www.ujian.cc/"><img src="php%E5%AE%89%E8%A3%85%E6%A8%A1%E5%BC%8Fcgi,fastcgi,php_mod%E6%AF%94%E8%BE%83_files/pixel.png" alt="友荐云推荐"></a>
+<!-- UJian Button END -->
+
+    <div id="articlereadme">     
+	      <ul>       
+					<li>转载请注明来源：<a href="http://www.t086.com/">IT学习网</a> 
+		                  网址：http://www.t086.com/ <a href="javascript:RecToClipBoard()" title="点击复制本页地址到剪贴版，直接在MSN/QQ上粘贴即可" style="font-weight:bold;color:#F00;height:20px;line-height:20px;">向您的朋友推荐此文章</a> </li>
+					
+					<li>特别声明： 本站除部分特别声明禁止转载的专稿外的其他文章可以自由转载，但请务必注明出处和原始作者。文章版权归文章原始作者所有。对于被本站转载文章的个人和网站，我们表示深深的谢意。如果本站转载的文章有版权问题请联系我们，我们会尽快予以更正。</li> 
+	      </ul>
+    </div>
+
+    <div id="comment">
+<!-- Duoshuo Comment BEGIN -->
+	<div id="ds-thread" class="ds-thread" data-thread-key="article-4612"><div id="ds-reset"><div style="display: none;" class="ds-meta"><a href="javascript:void(0)" class="ds-like-thread-button ds-rounded"><span class="ds-icon ds-icon-heart"></span> <span class="ds-thread-like-text">喜欢</span><span class="ds-thread-cancel-like">取消喜欢</span></a><span class="ds-like-panel"></span></div><div class="ds-comments-info"><div class="ds-sort"><a class="ds-order-desc ds-current">最新</a><a class="ds-order-asc">最早</a><a class="ds-order-hot">最热</a></div><ul class="ds-comments-tabs"><li class="ds-tab"><a class="ds-comments-tab-duoshuo ds-current" href="javascript:void(0);">0条评论</a></li> <li class="ds-tab"><a class="ds-comments-tab-weibo" href="javascript:void(0);"><span class="ds-highlight">1</span>条新浪微博</a></li> </ul></div><ul class="ds-comments"><li class="ds-post ds-post-placeholder">还没有评论，沙发等你来抢</li></ul><div style="display: none;" class="ds-paginator"><div class="ds-border"></div><a data-page="1" href="javascript:void(0);" class="ds-current">1</a></div><a name="respond"></a><div class="ds-login-buttons"><p>社交帐号登录:</p><div class="ds-social-links"><ul class="ds-service-list"><li><a href="http://itlearner.duoshuo.com/login/weixin/" rel="nofollow" class="ds-service-link ds-weixin">微信</a></li><li><a href="http://itlearner.duoshuo.com/login/weibo/" rel="nofollow" class="ds-service-link ds-weibo">微博</a></li><li><a href="http://itlearner.duoshuo.com/login/qq/" rel="nofollow" class="ds-service-link ds-qq">QQ</a></li><li><a href="http://itlearner.duoshuo.com/login/renren/" rel="nofollow" class="ds-service-link ds-renren">人人</a></li><li><a class="ds-more-services" href="javascript:void(0)">更多&#187;</a></li></ul><ul class="ds-service-list ds-additional-services"><li><a href="http://itlearner.duoshuo.com/login/douban/" rel="nofollow" class="ds-service-link ds-douban">豆瓣</a></li><li><a href="http://itlearner.duoshuo.com/login/kaixin/" rel="nofollow" class="ds-service-link ds-kaixin">开心</a></li><li><a href="http://itlearner.duoshuo.com/login/baidu/" rel="nofollow" class="ds-service-link ds-baidu">百度</a></li><li><a href="http://itlearner.duoshuo.com/login/google/" rel="nofollow" class="ds-service-link ds-google">谷歌</a></li></ul></div></div><div class="ds-replybox"><a class="ds-avatar" href="javascript:void(0);" onclick="return false"><img src="php%E5%AE%89%E8%A3%85%E6%A8%A1%E5%BC%8Fcgi,fastcgi,php_mod%E6%AF%94%E8%BE%83_files/noavatar_default.png" alt=""></a><form method="post"><input name="thread_id" value="1158005646373683293" type="hidden">
+<input name="parent_id" value="" type="hidden">
+<input name="nonce" value="562ce3dde5952" type="hidden"><div class="ds-textarea-wrapper ds-rounded-top"><textarea name="message" title="Ctrl+Enter快捷提交" placeholder="说点什么吧…"></textarea><pre class="ds-hidden-text"></pre></div><div class="ds-post-toolbar"><div class="ds-post-options ds-gradient-bg"><span class="ds-sync"></span></div><button class="ds-post-button" type="submit">发布</button><div class="ds-toolbar-buttons"><a class="ds-toolbar-button ds-add-emote" title="插入表情"></a></div></div></form></div><p class="ds-powered-by"><a href="http://duoshuo.com/" target="_blank" rel="nofollow">Powered by 多说</a></p></div></div>
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"itlearner"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+    </div>
+    <div id="articleprenext">
+	    <ul>
+	        <li>上一篇：<a href="http://www.t086.com/article/4611" target="_self" title="百度免费开放广告管理系统高端功能">百度免费开放广告管理系统高端功能</a></li><li>下一篇：<a href="http://www.t086.com/article/4613" target="_self" title="windows下FastCGI（php-cgi）的工作原理和配置">windows下FastCGI（php-cgi）的工作原理和配置</a></li><li><a href="http://www.t086.com/archive/201007">查看2010年07月的文章归档</a></li>        </ul>
+	</div>
+    </div>
+
+
+	<div class="main_t4"><a href="http://www.t086.com/article/4612/relate">相关文章</a> (	<a href="http://www.t086.com/tags/php">php</a>&nbsp;
+		<a href="http://www.t086.com/tags/fastcgi">fastcgi</a>&nbsp;
+		<a href="http://www.t086.com/tags/cgi">cgi</a>&nbsp;
+	)</div>
+	<div class="main_c4"><li><a href="http://www.t086.com/article/5211">PHP 5.4及之后的版本的内置web服务器的使用</a></li><li><a href="http://www.t086.com/article/5200">查看nginx、apache、mysql和php的编译安装参数</a></li><li><a href="http://www.t086.com/article/5188">php curl高效获取网页内容(IPV6下超时的解决办法)</a></li><li><a href="http://www.t086.com/article/5182">老王：一次nginx+php优化引发的血案</a></li><li><a href="http://www.t086.com/article/5152">PHP中copy on write写时复制机制</a></li><li><a href="http://www.t086.com/article/5142">那些强悍的PHP一句话后门</a></li><li><a href="http://www.t086.com/article/5110">怎样正确设置remote_addr和x_forwarded_for</a></li><li><a href="http://www.t086.com/article/5089">lnmp多用户安全运行环境(chroot)</a></li><li><a href="http://www.t086.com/article/5086">Function eregi is deprecated (解决方法)</a></li><li><a href="http://www.t086.com/article/5067">PHP is_file与file_exists 的使用</a></li><li><a href="http://www.t086.com/article/5061">老王:如何正确配置Nginx+PHP</a></li><li>了解这些字：<a href="http://www.t086.com/zidian/%E5%AE%89" target="_blank">安</a> <a href="http://www.t086.com/zidian/%E8%A3%85" target="_blank">装</a> <a href="http://www.t086.com/zidian/%E6%85%95" target="_blank">慕</a> <a href="http://www.t086.com/zidian/%E6%AF%94" target="_blank">比</a> <a href="http://www.t086.com/zidian/%E8%BE%83" target="_blank">较</a> </li></div>	
+	<div>
+
+	</div>	
+	
+  	<div class="search" id="a2"></div>
+
+    <div class="plus">
+        
+    </div>
+    </div><!--con-->
+  
+	<div id="side">
+	<script>var cpro_id = "u170553";</script>
+<script src="php%E5%AE%89%E8%A3%85%E6%A8%A1%E5%BC%8Fcgi,fastcgi,php_mod%E6%AF%94%E8%BE%83_files/c.js"></script><div style="width: 300px; height: 250px; margin: 0px; padding: 0px; background: transparent none repeat scroll 0% 0%; border: medium none; display: inline-block;" id="BAIDU_DUP_wrapper_u170553_0placeholder"></div><div style="width: 300px; height: 250px; display: inline-block; z-index: 2147483646; position: fixed; top: 5px; left: 854px;" height="250px" width="300px" id="BAIDU_DUP_wrapper_u170553_0"><iframe id="cproIframe_u170553" src="php%E5%AE%89%E8%A3%85%E6%A8%A1%E5%BC%8Fcgi,fastcgi,php_mod%E6%AF%94%E8%BE%83_files/acom_004.htm" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="true" align="center,center" frameborder="0" height="250" width="300"></iframe></div><script charset="utf-8" src="php%E5%AE%89%E8%A3%85%E6%A8%A1%E5%BC%8Fcgi,fastcgi,php_mod%E6%AF%94%E8%BE%83_files/acom_003"></script>
+
+<div class="left_box">
+<div class="left_title"><a href="http://www.t086.com/article/elite">最 新 推 荐</a></div>
+<div class="left_main"><ul><li>·<a href="http://www.t086.com/article/5206">caoz谈能力成长系列 - 取舍之道</a></li><li>·<a href="http://www.t086.com/article/5180">解读《百度网页质量白皮书》潜台词</a></li><li>·<a href="http://www.t086.com/article/5176">创业像开车，而不是发火箭</a></li><li>·<a href="http://www.t086.com/article/5161">雷霆战机装备搭配攻略_雷霆战机装备大全</a></li><li>·<a href="http://www.t086.com/article/5158">能花钱的，就不要花时间</a></li><li>·<a href="http://www.t086.com/article/5145">时间管理：吃掉三只青蛙吧！</a></li><li>·<a href="http://www.t086.com/article/5040">成语玩命猜ipad,iphone版全部答案</a></li><li>·<a href="http://www.t086.com/article/5035">疯狂猜图答案</a></li><li>·<a href="http://www.t086.com/article/5018">caoz:数据分析这点事</a></li><li>·<a href="http://www.t086.com/article/4996">开心水族箱合成攻略</a></li></ul></div>
+</div>
+
+<div class="left_box">
+<div class="left_title">RSS订阅</div>    
+<div class="left_main"><ul class="l2">
+<li><a href="http://mail.qq.com/cgi-bin/feed?u=http://www.itlearner.com/rss.php"><img src="php%E5%AE%89%E8%A3%85%E6%A8%A1%E5%BC%8Fcgi,fastcgi,php_mod%E6%AF%94%E8%BE%83_files/icon_sub01.gif" alt="QQ邮箱" style="margin-bottom:3px" border="0" vspace="2"></a></li>
+<li><a target="_blank" href="http://list.qq.com/cgi-bin/qf_invite?id=38e52b7938a53ee5daf8d5a8d773f5eaa907d34aa193c918"><img alt="填写您的邮件地址，订阅我们的精彩内容：" src="php%E5%AE%89%E8%A3%85%E6%A8%A1%E5%BC%8Fcgi,fastcgi,php_mod%E6%AF%94%E8%BE%83_files/picMode_light_s.png" border="0"></a></li>
+</ul></div>
+</div>
+
+<div class="left_box">
+<div class="left_title"><a href="http://www.t086.com/article/hot_month">本月热门</a></div>
+<div class="left_main"><ul><li>·<a href="http://www.t086.com/article/5051">苹果电脑MACbook Air快捷键大全</a></li><li>·<a href="http://www.t086.com/article/4386">Linux怎样修改系统时间</a></li><li>·<a href="http://www.t086.com/article/4875">百香果怎么吃？百香果的吃法</a></li><li>·<a href="http://www.t086.com/article/3723">成语中的颜色</a></li><li>·<a href="http://www.t086.com/article/5138">nslookup命令详解</a></li><li>·<a href="http://www.t086.com/article/3154">css中如何使div居中(垂直水平居中)</a></li><li>·<a href="http://www.t086.com/article/4315">Keycode对照表</a></li><li>·<a href="http://www.t086.com/article/5087">查看CentOS版本方法</a></li><li>·<a href="http://www.t086.com/article/5160">淘宝刷单那些事儿</a></li><li>·<a href="http://www.t086.com/article/5090">如何判断IP地址是A类B类还是C类</a></li></ul></div>
+</div>
+
+<div class="left_box">
+<div class="left_title"><a href="http://www.t086.com/article/hot_week">本周热门</a></div>
+<div class="left_main"><ul><li>·<a href="http://www.t086.com/article/5051">苹果电脑MACbook Air快捷键大全</a></li><li>·<a href="http://www.t086.com/article/4386">Linux怎样修改系统时间</a></li><li>·<a href="http://www.t086.com/article/4875">百香果怎么吃？百香果的吃法</a></li><li>·<a href="http://www.t086.com/article/5138">nslookup命令详解</a></li><li>·<a href="http://www.t086.com/article/3723">成语中的颜色</a></li><li>·<a href="http://www.t086.com/article/4315">Keycode对照表</a></li><li>·<a href="http://www.t086.com/article/3154">css中如何使div居中(垂直水平居中)</a></li><li>·<a href="http://www.t086.com/article/5087">查看CentOS版本方法</a></li><li>·<a href="http://www.t086.com/article/5160">淘宝刷单那些事儿</a></li><li>·<a href="http://www.t086.com/article/5090">如何判断IP地址是A类B类还是C类</a></li></ul></div>
+</div><!--box-->
+
+<div class="left_box">
+<div class="left_title"><a href="http://www.t086.com/article/new">最新文章</a></div>
+<div class="left_main"><ul><li>·<a href="http://www.t086.com/article/5217">一则经典技术面试题目的解读</a></li><li>·<a href="http://www.t086.com/article/5216">如何应对并发(3) - 需求裁剪</a></li><li>·<a href="http://www.t086.com/article/5215">如何应对并发(2) - 请求合并及异步处理</a></li><li>·<a href="http://www.t086.com/article/5214">如何应对并发(1) - 关于数据索引</a></li><li>·<a href="http://www.t086.com/article/5213">京东第三季度财报分析：自营占比压缩</a></li><li>·<a href="http://www.t086.com/article/5212">中国公司如何组建技术团队</a></li><li>·<a href="http://www.t086.com/article/5211">PHP 5.4及之后的版本的内置web服务器的使用</a></li><li>·<a href="http://www.t086.com/article/5210">IIS7如何启用ETag</a></li><li>·<a href="http://www.t086.com/article/5209">Apache如何启用ETag，提高访问速度</a></li><li>·<a href="http://www.t086.com/article/5208">Tengine更新记录(淘宝基于Nginx开发的Web服务器)</a></li></ul></div>
+</div>    
+
+<div id="content_a"></div>
+	</div>  
+
+</div>
+<div class="clear"></div>
+
+
+<script type="text/javascript">
+    document.body.oncopy=function(){
+    event.returnValue=false;
+    var t=document.selection.createRange().text;
+    t += "\r\n本文转摘自『IT学习者』" +  document.location.href;
+    clipboardData.setData('Text',t);
+}
+</script>
+
+<script type="text/javascript" src="php%E5%AE%89%E8%A3%85%E6%A8%A1%E5%BC%8Fcgi,fastcgi,php_mod%E6%AF%94%E8%BE%83_files/show.js"></script>
+<div class="menu_popup" id="menu1">
+<div class="menuitems"><a href="http://www.t086.com/class/it_news">IT业界资讯</a><br>
+<a href="http://www.t086.com/class/it_comment">IT业界评论</a><br>
+<a href="http://www.t086.com/class/it_career">IT人生</a><br>
+<a href="http://www.t086.com/class/it_elite">IT人物</a>
+</div></div>
+
+<div class="menu_popup" id="menu2">
+<div class="menuitems"><a href="http://www.t086.com/class/web_news">网站制作相关</a><br>
+<a href="http://www.t086.com/class/html_css">HTML&amp;CSS</a><br>
+<a href="http://www.t086.com/class/photoshop">Photoshop</a><br>
+<a href="http://www.t086.com/class/micromedia">网页三剑客</a><br>
+<a href="http://www.t086.com/class/server">服务器</a>
+</div></div>
+
+<div class="menu_popup" id="menu3">
+<div class="menuitems"><a href="http://www.t086.com/class/asp">ASP技术</a><br>
+<a href="http://www.t086.com/class/php">PHP</a><br>
+<a href="http://www.t086.com/class/java">Java/JSP</a><br>
+<a href="http://www.t086.com/class/xml">XML学习</a><br>
+<a href="http://www.t086.com/class/asp.net">ASP.NET</a><br>
+<a href="http://www.t086.com/class/vb">VB学习</a><br>
+<a href="http://www.t086.com/class/database">数据库开发</a><br>
+<a href="http://www.t086.com/class/ajax">AJAX</a>
+</div></div>
+
+<div class="menu_popup" id="menu4">
+<div class="menuitems"><a href="http://www.t086.com/class/computer">电脑教室</a><br>
+<a href="http://www.t086.com/class/network_security">网络安全</a><br>
+<a href="http://www.t086.com/class/office">办公一族</a><br>
+<a href="http://www.t086.com/class/jincheng">进程知识库</a><br>
+<a href="http://www.t086.com/class/job">求职招聘</a><br>
+<a href="http://www.t086.com/class/management">管理技巧</a><br>
+<a href="http://www.t086.com/class/meiguo-zhuji">美国主机</a><br>
+<a href="http://www.t086.com/class/english">英语学习</a>
+</div></div>
+
+<div class="menu_popup" id="menu5">
+<div class="menuitems"><a href="http://www.t086.com/class/seo">搜索引擎优化</a><br>
+<a href="http://www.t086.com/class/zhanzhang_zhuanqian">站长赚钱</a><br>
+<a href="http://www.t086.com/class/tuiguang_chaozuo">推广炒作</a><br>
+<a href="http://www.t086.com/class/lianmeng">联盟动态</a>
+</div></div>
+
+<div id="yue_as">
+<p class="p1"><span><a href="http://www.mtv123.com/paihangbang/Top_8.shtml" target="_blank">歌曲大全</a>:</span><a href="http://www.mtv123.com/" target="_blank">网络歌曲</a><a href="http://www.mtv123.com/paihangbang/Top_2.shtml" target="_blank">经典老歌</a><a href="http://www.mtv123.com/paihangbang/Top_9.shtml" target="_blank">好听的英文歌</a> <a href="http://www.mtv123.com/paihangbang/Top_24.shtml" target="_blank">胎教音乐</a> <a href="http://www.mtv123.com/paihangbang/Top_10.shtml" target="_blank">粤语歌曲</a> <a href="http://www.mtv123.com/paihangbang/Top_5.shtml" target="_blank">伤感情歌</a> <a href="http://www.gequdao.com/" target="_blank">儿歌视频</a> <a href="http://www.mtv123.com/paihangbang/" target="_blank">流行歌曲</a> <a href="http://www.mtv123.com/paihangbang/Top_26.shtml" target="_blank">基督教歌曲</a> <a href="http://www.mtv123.com/paihangbang/Top_6.shtml" target="_blank">韩国歌曲</a> <a href="http://www.mtv123.com/paihangbang/Top_11.shtml" target="_blank">情歌对唱</a> <a href="http://www.mtv123.com/paihangbang/Top_8.shtml" target="_blank">草原歌曲</a> <a href="http://www.mtv123.com/paihangbang/Top_18.shtml" target="_blank">轻音乐</a> <a href="http://www.mtv123.com/paihangbang/Top_20.shtml" target="_blank">ktv必点歌曲</a>
+</p><p class="p2"><span><a href="http://www.yue365.com/bang/tag13.shtml" target="_blank">好听的歌</a></span><a href="http://www.mtv123.com/mp3/24630/255325.shtml" target="_blank">老男孩</a><a href="http://www.mtv123.com/mp3/23100/257875.shtml" target="_blank">爱的供养</a><a href="http://www.mtv123.com/mp3/26516/260523.shtml" target="_blank">伤不起</a><a href="http://www.mtv123.com/mp3/28964/268683.shtml" target="_blank">甩葱歌</a><a href="http://www.mtv123.com/mp3/23485/248276.shtml" target="_blank">荷塘月色</a><a href="http://www.mtv123.com/mp3/24299/253040.shtml" target="_blank">黄梅戏</a><a href="http://www.mtv123.com/mp3/24994/257903.shtml" target="_blank">雨花石</a><a href="http://www.mtv123.com/mp3/21081/230425.shtml" target="_blank">新贵妃醉酒</a><a href="http://www.mtv123.com/mp3/27327/263696.shtml" target="_blank">三寸天堂</a><a href="http://www.mtv123.com/mp3/20834/228727.shtml" target="_blank">朋友的酒</a><a href="http://www.mtv123.com/mp3/26458/260382.shtml" target="_blank">小三</a><a href="http://www.mtv123.com/mp3/25727/258905.shtml" target="_blank">红尘情歌</a><a href="http://www.mtv123.com/mp3/21276/234412.shtml" target="_blank">我的好兄弟</a><a href="http://www.mtv123.com/mp3/22770/244304.shtml" target="_blank">爱是你我</a><a href="http://www.mtv123.com/mp3/1210/34423.shtml" target="_blank">你是我的眼</a><a href="http://www.mtv123.com/mp3/27536/264034.shtml" target="_blank">依然爱你</a><a href="http://www.mtv123.com/mp3/20971/229658.shtml" target="_blank">王妃</a></p>
+<p class="p2"><span><a href="http://www.mtv123.com/paihangbang/TopTuiJian.shtml" target="_blank">新歌推荐</a></span><a href="http://www.mtv123.com/mp3/25146/267049.shtml" target="_blank">后会无期</a><a href="http://www.mtv123.com/mp3/28073/266571.shtml" target="_blank">我不愿让你一个人</a><a href="http://www.mtv123.com/mp3/28760/268033.shtml" target="_blank">滴答</a><a href="http://www.mtv123.com/mp3/26510/260517.shtml" target="_blank">忧伤倒数</a><a href="http://www.mtv123.com/mp3/28795/268642.shtml" target="_blank">爱的魔法</a><a href="http://www.mtv123.com/mp3/23160/246060.shtml" target="_blank">十一年</a><a href="http://www.mtv123.com/mp3/28662/267863.shtml" target="_blank">佛说</a><a href="http://www.mtv123.com/mp3/27922/265440.shtml" target="_blank">老婆最大</a><a href="http://www.mtv123.com/mp3/28629/267639.shtml" target="_blank">北京北京</a><a href="http://www.mtv123.com/mp3/27095/262643.shtml" target="_blank">那些年</a><a href="http://www.mtv123.com/mp3/28629/268120.shtml" target="_blank">再见青春</a><a href="http://www.mtv123.com/mp3/29292/269457.shtml" target="_blank">海上的月亮</a><a href="http://www.mtv123.com/mp3/28926/268580.shtml" target="_blank">樱桃红</a><a href="http://www.mtv123.com/mp3/28629/268037.shtml" target="_blank">爱情爱情</a><a href="http://www.mtv123.com/mp3/26591/261492.shtml" target="_blank">我的歌声里</a><a href="http://www.mtv123.com/mp3/28540/268839.shtml" target="_blank">经过</a></p>
+</div>
+
+
+<div id="bottom">
+  
+    <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+        <a href="#" title="分享到QQ空间" class="bds_qzone"></a>
+        <a href="#" title="分享到新浪微博" class="bds_tsina"></a>
+        <a href="#" title="分享到腾讯微博" class="bds_tqq"></a>
+        <a href="#" title="分享到人人网" class="bds_renren"></a>
+        <a href="#" title="分享到百度搜藏" class="bds_baidu"></a>
+        <a href="#" title="分享到百度贴吧" class="bds_tieba"></a>
+        <span class="bds_more">更多</span>
+    </div>
+  
+	<div>
+    <a href="http://www.9enjoy.com/guestbook.php" target="_blank">留言建议</a>
+    |&nbsp;<a href="http://aspcheck.9enjoy.com/" target="_blank">ASP探针</a>
+    |&nbsp;<a href="http://www.9enjoy.com/phpcheck/" target="_blank">PHP探针</a>
+    |&nbsp;<a href="http://www.9enjoy.com/" target="_blank">站长Enjoy的Blog</a>
+	</div>
+	
+	<div>&#169; 2014 <a href="http://www.t086.com/">T086学习网</a> - T086.com(原itlearner.com) 	    
+<script src="php%E5%AE%89%E8%A3%85%E6%A8%A1%E5%BC%8Fcgi,fastcgi,php_mod%E6%AF%94%E8%BE%83_files/bds_s_v2.js" id="bdshare_js" data="type=tools&amp;uid=630456"></script>
+
+<script>document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script>	    
+<script src="php%E5%AE%89%E8%A3%85%E6%A8%A1%E5%BC%8Fcgi,fastcgi,php_mod%E6%AF%94%E8%BE%83_files/tj.js"></script><script>var cpro_id = "u216796";</script><script src="php%E5%AE%89%E8%A3%85%E6%A8%A1%E5%BC%8Fcgi,fastcgi,php_mod%E6%AF%94%E8%BE%83_files/f.js"></script><div id="BAIDU_DUP_wrapper_u216796_0"></div><script charset="utf-8" src="php%E5%AE%89%E8%A3%85%E6%A8%A1%E5%BC%8Fcgi,fastcgi,php_mod%E6%AF%94%E8%BE%83_files/acom_004"></script><script src="php%E5%AE%89%E8%A3%85%E6%A8%A1%E5%BC%8Fcgi,fastcgi,php_mod%E6%AF%94%E8%BE%83_files/h.js" type="text/javascript"></script>
+    </div>
+
+</div>
+</div>
+<div id="runtime">RunTime:11.08ms QueryTime:7</div>
+</body></html>

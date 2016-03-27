@@ -1,0 +1,3 @@
+var OX_95707a59 = '';
+OX_95707a59 += "<"+"a href=\'//gg1.51cto.com/www/delivery/ck.php?oaparams=2__bannerid=2705__zoneid=256__cb=131e707cbd__oadest=http%3A%2F%2Fnetwork.51cto.com%2Fnetwork%2Fsundray20151102%2F\' target=\'_blank\'><"+"font color=\'red\'>信锐景区WIFI 开启旅游新生活<"+"/font><"+"/a><"+"div id=\'beacon_131e707cbd\' style=\'position: absolute; left: 0px; top: 0px; visibility: hidden;\'><"+"img src=\'//gg1.51cto.com/www/delivery/lg.php?bannerid=2705&amp;campaignid=609&amp;zoneid=256&amp;loc=1&amp;referer=http%3A%2F%2Fnetsecurity.51cto.com%2Fart%2F201103%2F248656.htm&amp;cb=131e707cbd\' width=\'0\' height=\'0\' alt=\'\' style=\'width: 0px; height: 0px;\' /><"+"/div>\n";
+document.write(OX_95707a59);

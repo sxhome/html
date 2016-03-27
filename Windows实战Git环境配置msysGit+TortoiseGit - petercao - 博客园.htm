@@ -1,0 +1,441 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-cn"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Windows实战Git环境配置msysGit+TortoiseGit - petercao - 博客园</title>
+<link type="text/css" rel="stylesheet" href="Windows%E5%AE%9E%E6%88%98Git%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AEmsysGit+TortoiseGit%20-%20petercao%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="Windows%E5%AE%9E%E6%88%98Git%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AEmsysGit+TortoiseGit%20-%20petercao%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/bundle-iMetro_HD.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/bluestorm/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/bluestorm/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/bluestorm/wlwmanifest.xml">
+<script src="Windows%E5%AE%9E%E6%88%98Git%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AEmsysGit+TortoiseGit%20-%20petercao%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'bluestorm', cb_enable_mathjax=false;</script>
+<script src="Windows%E5%AE%9E%E6%88%98Git%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AEmsysGit+TortoiseGit%20-%20petercao%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/blog-common.js" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+
+<!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+	<a id="lnkBlogLogo" href="http://www.cnblogs.com/bluestorm/"><img id="blogLogo" src="Windows%E5%AE%9E%E6%88%98Git%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AEmsysGit+TortoiseGit%20-%20petercao%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/logo.gif" alt="返回主页"></a>			
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/bluestorm/">Bluestorm's Space</a></h1>
+<h2>你的心有多开放多自由，你就会取得多大的成功！</h2>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="MyLinks1_HomeLink" class="menu" href="http://www.cnblogs.com/">博客园</a></li>
+<li><a id="MyLinks1_MyHomeLink" class="menu" href="http://www.cnblogs.com/bluestorm/">首页</a></li>
+<li><a id="MyLinks1_NewPostLink" class="menu" rel="nofollow" href="http://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+<li><a id="MyLinks1_ContactLink" class="menu" rel="nofollow" href="http://msg.cnblogs.com/send/petercao">联系</a></li>
+<li><a id="MyLinks1_Syndication" class="menu" href="http://www.cnblogs.com/bluestorm/rss">订阅</a>
+<!--<a id="MyLinks1_XMLLink" class="aHeaderXML" href="http://www.cnblogs.com/bluestorm/rss"><img src="http://www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--></li>
+<li><a id="MyLinks1_Admin" class="menu" rel="nofollow" href="http://i.cnblogs.com/">管理</a></li>
+</ul>
+		<div class="blogStats">
+			
+			
+<!--done-->
+随笔- 442&nbsp;
+文章- 3&nbsp;
+评论- 98&nbsp;
+
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+<div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class="post">
+		<h1 class="postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="http://www.cnblogs.com/bluestorm/archive/2011/07/20/2298156.html">Windows实战Git环境配置msysGit+TortoiseGit</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body"><p align="left"><span style="font-size:16px;">Git是一个分布式源代码版本管理控制程序.&nbsp;<strong>“Git</strong>&nbsp;是一个由林纳斯·托瓦兹为了更好地管理linux内核开发而创立的分布式版本控制／软件配置管理软件。”- 维基百科中文。<a href="http://zh.wikipedia.org/zh-cn/Git">http://zh.wikipedia.org/zh-cn/Git</a></span></p><p align="left"><span style="font-size:16px;">&nbsp;</span></p><p align="left"><span style="font-size:16px;">msysgit和TortoiseGit的开发进展很快，我们在windows平台上使用的git，越来越强大了。虽然相比Linux下面的GIT还有很大差距，但相比其它版本控制系统，git 还是可以 笑傲江湖。</span></p><p align="left"><span style="font-size:16px;">&nbsp;</span></p><p align="left"><strong><span style="font-size:16px;">它有如下优点：</span></strong></p><p align="left"><span style="font-size:16px;">1. 它足够稳定，linux的核心就是用它来托管的。数G大的源码仓库，依然稳定如山。</span></p><p align="left"><span style="font-size:16px;">2. 它足够快，是所有版本控制程序中最快的一个。</span></p><p align="left"><span style="font-size:16px;">3. 它被人们所高度关注，有很多人为它写书，出教程。<a href="http://progit.org/book/zh/">proGit就是其中很好的一本书</a>。</span></p><p align="left"><span style="font-size:16px;">4. 易学易用，几乎不存在门槛。</span></p><p align="left"><span style="font-size:16px;">5. 无需花费成本，它是开源免费软件。</span></p><p align="left"><span style="font-size:16px;">6. 跨平台，所有熟知的平台下面，都跑得很欢畅。</span></p><p align="left"><span style="font-size:16px;">在介绍了一堆优点之后，让我们来进入Git的世界吧。linuxers 们，你们就不用看这里了。因为你们git骄子。linux下面铁定好使。windows下面的用户就需要自己动手，打造可用的git环境了。</span></p><p align="left"><span style="font-size:16px;">感谢msysGit(<a href="http://code.google.com/p/msysgit/">http://code.google.com/p/msysgit/</a>)和tortoiseGit(<a href="http://code.google.com/p/tortoisegit/">http://code.google.com/p/tortoisegit/</a>)项目，让我们可以一次性装好所需的软件，而不用纯手动编译安装Git.</span></p><p align="left"><span style="font-size:16px;">&nbsp;</span></p><p align="left"><strong><span style="font-size:16px;">下载msysgit 和tortoiseGit</span></strong></p><p align="left"><span style="font-size:16px;">msysGit:<a href="http://code.google.com/p/msysgit/downloads/list">http://code.google.com/p/msysgit/downloads/list</a></span></p><p align="left"><span style="font-size:16px;">TortoiseGit:<a href="http://code.google.com/p/tortoisegit/downloads/list">&nbsp;http://code.google.com/p/tortoisegit/downloads/list</a></span></p><p align="left"><span style="font-size:16px;">下载后先安装TortoiseGit， 然后安装msysgit.</span></p><p align="left"><span style="font-size:16px;">装上它们之后。可能需要重启一下系统。等windows重启后，你的电脑就可以使用git了。</span></p><p align="left"><span style="font-size:16px;">在桌面或任意位置，点击鼠标右键，就应该可以看到TortoiseGit的菜单了。</span></p><p align="left"><span style="font-size:16px;">尽情享用Git吧！</span></p><p align="left"><span style="font-size:16px;">&nbsp;</span></p><p align="left"><strong><span style="font-size:16px;">附上eclipse的egit插件安装方法：</span></strong></p><p align="left"><span style="font-size:16px;">使用Market Place安装EGit</span></p><p align="left"><span style="font-size:16px;">Eclipse 3.6的用户透过Eclipse上的&nbsp;<a href="http://marketplace.eclipse.org/content/egit-git-team-provider">EclipseMarketplace</a>&nbsp;就可以安装EGit。 3.6以下版本的安装网址请参考<a href="http://www.eclipse.org/egit/download/%E3%80%82">http://www.eclipse.org/egit/download/。</a></span></p><p align="left"><span style="font-size:16px;">a. 开启Eclipse后请选择Help→Eclipse Marketplace；</span></p><p align="left"><span style="font-size:16px;">b. 请选择Eclipse Marketplace，按Next &gt;继续；</span></p><p align="left"><span style="font-size:16px;">c. 在Find字段键入egit再按下Go按钮开始搜寻；</span></p><p align="left"><span style="font-size:16px;">d.搜寻完后会显示如下结果，请按下Install按钮开始安装；</span></p><p align="left"><span style="font-size:16px;">e.此画面显示安装的明细，请按Next &gt;按钮继续；</span></p><p align="left"><span style="font-size:16px;">f.请选择I accept the terms of the license agreement，按下Finish按钮开始安装；</span></p><p align="left"><span style="font-size:16px;">g.开始进行安装；</span></p><p align="left"><span style="font-size:16px;">h.安装完成后请选择Restart Now，重新开启Eclipse安装的EGit才可使用。</span></p><p align="left"><span style="font-size:16px;">装上它们之后。可能需要重启一下系统。等windows重启后，你的电脑就可以使用git了。</span></p><p align="left"><span style="font-size:16px;">&nbsp;</span></p><p align="left"><span style="font-size:16px;"><strong><em>更多参考：</em></strong><a href="http://xiaogui.org/windows-git-with-msysgit-and-tortoisegit.html">http://xiaogui.org/windows-git-with-msysgit-and-tortoisegit.html</a></span></p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory">分类: <a href="http://www.cnblogs.com/bluestorm/category/344579.html">软件工程 / UML建模</a>, <a href="http://www.cnblogs.com/bluestorm/category/344580.html">版本控制</a></div>
+<div id="EntryTag"></div>
+<div id="blog_post_info"><div id="green_channel">
+<a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(2298156,cb_blogId,1);green_channel_success(this,'谢谢推荐！');">好文要顶</a>
+<a id="green_channel_follow" onclick="c_follow();" href="javascript:void(0);">关注我</a>
+<a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a><a id="green_channel_contact" href="http://msg.cnblogs.com/send/petercao" target="_blank">联系我</a>
+<a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="Windows%E5%AE%9E%E6%88%98Git%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AEmsysGit+TortoiseGit%20-%20petercao%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/icon_weibo_24.png" alt=""></a>
+<a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="Windows%E5%AE%9E%E6%88%98Git%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AEmsysGit+TortoiseGit%20-%20petercao%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+<div id="author_profile_info" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/bluestorm/" target="_blank"><img src="Windows%E5%AE%9E%E6%88%98Git%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AEmsysGit+TortoiseGit%20-%20petercao%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/u96158.jpg" class="author_avatar" alt=""></a>
+<div id="author_profile_detail" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/bluestorm/">petercao</a><br>
+<a href="http://home.cnblogs.com/u/bluestorm/followees">关注 - 134</a><br>
+<a href="http://home.cnblogs.com/u/bluestorm/followers">粉丝 - 216</a>
+</div>
+</div>
+<div class="clear"></div>
+<div id="author_profile_honor"></div>
+<div id="author_profile_follow">
+    <a href="javascript:void(0);" onclick="c_follow();return false;">+加关注</a>
+</div>
+</div>
+<div id="div_digg">										
+    <div class="diggit" onclick="votePost(2298156,'Digg')">
+        <span class="diggnum" id="digg_count">0</span>
+    </div>
+	<div class="buryit" onclick="votePost(2298156,'Bury')"> 
+		<span class="burynum" id="bury_count">0</span>
+	</div>
+	<div class="clear"></div>	
+	<div class="diggword" id="digg_tips">
+    (请您对文章做出评价)
+    </div>	
+</div>
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/bluestorm/archive/2011/07/20/2298157.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/bluestorm/archive/2011/07/20/2298157.html" title="发布于2011-07-20 13:36">Javascript类的定义和引用</a><br><a href="http://www.cnblogs.com/bluestorm/archive/2011/07/20/2298155.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/bluestorm/archive/2011/07/20/2298155.html" title="发布于2011-07-20 16:32">Windows环境下，Msysgit获取Android源码</a><br></div>
+</div>
+
+
+		</div>
+		<div class="postDesc">posted @ <span id="post-date">2011-07-20 16:23</span> <a href="http://www.cnblogs.com/bluestorm/">petercao</a> 阅读(<span id="post_view_count">1108</span>) 评论(<span id="post_comment_count">0</span>)  <a href="http://i.cnblogs.com/EditPosts.aspx?postid=2298156" rel="nofollow">编辑</a> <a href="#" onclick="AddToWz(2298156);return false;">收藏</a></div>
+	</div>
+	<script type="text/javascript">var allowComments=true,isLogined=false,cb_blogId=62438,cb_entryId=2298156,cb_blogApp=currentBlogApp,cb_blogUserGuid='fc666aa5-78c5-de11-ba8f-001cf0cd104b',cb_entryCreatedDate='2011/7/20 16:23:00';loadViewCount(cb_entryId);</script>
+<script src="Windows%E5%AE%9E%E6%88%98Git%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AEmsysGit+TortoiseGit%20-%20petercao%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/syntax_highlighter_csdn.js" type="text/javascript"></script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="#" onclick="return RefreshPage();">刷新页面</a><a href="#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login('commentform');">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】50万行VC++源码: 大型组态工控、电力仿真CAD与GIS源码库</a><br><a href="http://www.rongcloud.cn/" target="_blank">【推荐】融云即时通讯云－专注为 App 开发者提供IM云服务</a><br><a href="http://click.aliyun.com/m/3037/" target="_blank">【阿里云SSD云盘】速度行业领先</a><br></div>
+<div id="opt_under_post"></div>
+<div id="ad_c1" class="c_ad_block"><a href="http://job.cnblogs.com/offer/51018/" target="_blank"><img src="Windows%E5%AE%9E%E6%88%98Git%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AEmsysGit+TortoiseGit%20-%20petercao%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/35695-20160215151750532-1876432241.png" alt="招聘ASP.NET 5开发工程师" title="招聘ASP.NET 5开发工程师" height="250" width="300"></a></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/539315/" target="_blank">国家最高科技奖得主谢家麟逝世：享年96岁</a><br> ·  <a href="http://news.cnblogs.com/n/539314/" target="_blank">马云分享接班人经验：不能搞赛马制</a><br> ·  <a href="http://news.cnblogs.com/n/539310/" target="_blank">2016年，科技从业者演讲及项目推介中出现的10个新趋势</a><br> ·  <a href="http://news.cnblogs.com/n/539313/" target="_blank">如果你也在用Apple Pay，这几个问题你或许有兴趣知道</a><br> ·  <a href="http://news.cnblogs.com/n/539312/" target="_blank">马云辟谣互联网不纳税 阿里年纳178亿日均8千万</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/533808/" target="_blank">Medium开发团队谈架构设计</a><br> ·  <a href="http://kb.cnblogs.com/page/539274/" target="_blank">理解“渐进增强(Progressive Enhancement)”</a><br> ·  <a href="http://kb.cnblogs.com/page/534571/" target="_blank">为什么说DOM操作很慢</a><br> ·  <a href="http://kb.cnblogs.com/page/527518/" target="_blank">为什么你应该尝试全栈</a><br> ·  <a href="http://kb.cnblogs.com/page/536332/" target="_blank">学习新东西的唯一方法</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+$(function () {
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);    
+});
+</script>
+</div>
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news"><div id="profile_block">昵称：<a href="http://home.cnblogs.com/u/bluestorm/">petercao</a><br>园龄：<a href="http://home.cnblogs.com/u/bluestorm/" title="入园时间：2009-10-31">6年3个月</a><br>粉丝：<a href="http://home.cnblogs.com/u/bluestorm/followers/">216</a><br>关注：<a href="http://home.cnblogs.com/u/bluestorm/followees/">134</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="cnblogs.UserManager.FollowBlogger('fc666aa5-78c5-de11-ba8f-001cf0cd104b')">+加关注</a></div></div></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+			<div id="blog-calendar" style=""><table id="blogCalendar" class="Cal" title="Calendar" cellpadding="0" cellspacing="0">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a href="javascript:void(0);" onclick="loadBlogCalendar('2011/06/01');return false;">&lt;</a></td><td align="center">2011年7月</td><td class="CalNextPrev" align="right"><a href="javascript:void(0);" onclick="loadBlogCalendar('2011/08/01');return false;">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" abbr="日" scope="col" align="center">日</th><th class="CalDayHeader" abbr="一" scope="col" align="center">一</th><th class="CalDayHeader" abbr="二" scope="col" align="center">二</th><th class="CalDayHeader" abbr="三" scope="col" align="center">三</th><th class="CalDayHeader" abbr="四" scope="col" align="center">四</th><th class="CalDayHeader" abbr="五" scope="col" align="center">五</th><th class="CalDayHeader" abbr="六" scope="col" align="center">六</th></tr><tr><td class="CalOtherMonthDay" align="center">26</td><td class="CalOtherMonthDay" align="center">27</td><td class="CalOtherMonthDay" align="center">28</td><td class="CalOtherMonthDay" align="center">29</td><td class="CalOtherMonthDay" align="center">30</td><td align="center">1</td><td class="CalWeekendDay" align="center">2</td></tr><tr><td class="CalWeekendDay" align="center">3</td><td align="center">4</td><td align="center">5</td><td align="center">6</td><td align="center">7</td><td align="center">8</td><td class="CalWeekendDay" align="center">9</td></tr><tr><td class="CalWeekendDay" align="center">10</td><td align="center">11</td><td align="center">12</td><td align="center">13</td><td align="center">14</td><td align="center"><a href="http://www.cnblogs.com/bluestorm/archive/2011/07/15.html"><u>15</u></a></td><td class="CalWeekendDay" align="center"><a href="http://www.cnblogs.com/bluestorm/archive/2011/07/16.html"><u>16</u></a></td></tr><tr><td class="CalWeekendDay" align="center"><a href="http://www.cnblogs.com/bluestorm/archive/2011/07/17.html"><u>17</u></a></td><td align="center"><a href="http://www.cnblogs.com/bluestorm/archive/2011/07/18.html"><u>18</u></a></td><td align="center"><a href="http://www.cnblogs.com/bluestorm/archive/2011/07/19.html"><u>19</u></a></td><td align="center"><a href="http://www.cnblogs.com/bluestorm/archive/2011/07/20.html"><u>20</u></a></td><td align="center">21</td><td align="center">22</td><td class="CalWeekendDay" align="center">23</td></tr><tr><td class="CalWeekendDay" align="center">24</td><td align="center">25</td><td align="center">26</td><td align="center">27</td><td align="center">28</td><td align="center">29</td><td class="CalWeekendDay" align="center">30</td></tr><tr><td class="CalWeekendDay" align="center">31</td><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td><td class="CalOtherMonthDay" align="center">5</td><td class="CalOtherMonthDay" align="center">6</td></tr>
+</tbody></table></div><script type="text/javascript">loadBlogDefaultCalendar();</script>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+<div id="widget_my_zzk" class="div_my_zzk"><input id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk" type="text">&nbsp;<input onclick="zzk_go()" value="找找看" id="btnZzk" class="btn_my_zzk" type="button"></div>
+<div id="widget_my_google" class="div_my_zzk"><input name="google_q" id="google_q" onkeydown="return google_go_enter(event)" class="input_my_zzk" type="text">&nbsp;<input onclick="google_go()" value="谷歌搜索" class="btn_my_zzk" type="button"></div>
+</div>
+</div>
+
+</div><div id="sidebar_shortcut" class="sidebar-block">
+<div class="catListLink">
+<h3 class="catListTitle">常用链接</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/bluestorm/p/" title="我的博客的随笔列表">我的随笔</a></li><li><a href="http://www.cnblogs.com/bluestorm/MyComments.html" title="我发表过的评论列表">我的评论</a></li><li><a href="http://www.cnblogs.com/bluestorm/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li><li><a href="http://www.cnblogs.com/bluestorm/RecentComments.html" title="我的博客的评论列表">最新评论</a></li><li><a href="http://www.cnblogs.com/bluestorm/tag/" title="我的博客的标签列表">我的标签</a></li>
+<li><a id="itemListLink" onclick="this.blur();WarpClass('itemListLink', 'itemListLin_con');return false;" href="#">更多链接</a></li>
+</ul>
+<div id="itemListLin_con" style="display:none;">
+<ul>
+
+</ul>
+</div>
+</div></div><div id="sidebar_toptags" class="sidebar-block"></div><div id="sidebar_categories">
+<div id="sidebar_postcategory" class="catListPostCategory sidebar-block">
+<h3 class="catListTitle">随笔分类</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/bluestorm/category/344575.html">Adobe Flash / AIR(2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/bluestorm/category/729145.html">AI</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/bluestorm/category/344568.html">Android(172)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_3" href="http://www.cnblogs.com/bluestorm/category/504330.html">C# &amp; .NET(59)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_4" href="http://www.cnblogs.com/bluestorm/category/344569.html">C/C++(39)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_5" href="http://www.cnblogs.com/bluestorm/category/729143.html">Editor/IDE</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_6" href="http://www.cnblogs.com/bluestorm/category/344581.html">HTML5/WEB(16)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_7" href="http://www.cnblogs.com/bluestorm/category/359448.html">iOS(4)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_8" href="http://www.cnblogs.com/bluestorm/category/344571.html">Java / J2EE(92)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_9" href="http://www.cnblogs.com/bluestorm/category/344572.html">Linux(34)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_10" href="http://www.cnblogs.com/bluestorm/category/417651.html">Misc(19)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_11" href="http://www.cnblogs.com/bluestorm/category/514189.html">OS/操作系统(3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_12" href="http://www.cnblogs.com/bluestorm/category/344573.html">Python(5)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_13" href="http://www.cnblogs.com/bluestorm/category/344580.html">版本控制(11)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_14" href="http://www.cnblogs.com/bluestorm/category/408936.html">编译原理/编程语言(4)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_15" href="http://www.cnblogs.com/bluestorm/category/344567.html">成功人生(10)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_16" href="http://www.cnblogs.com/bluestorm/category/729144.html">量子/光子计算</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_17" href="http://www.cnblogs.com/bluestorm/category/344576.html">嵌入式(6)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_18" href="http://www.cnblogs.com/bluestorm/category/344577.html">驱动开发</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_19" href="http://www.cnblogs.com/bluestorm/category/344579.html">软件工程 / UML建模(9)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_20" href="http://www.cnblogs.com/bluestorm/category/729146.html">软件项目管理</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_21" href="http://www.cnblogs.com/bluestorm/category/344578.html">设计模式(2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_22" href="http://www.cnblogs.com/bluestorm/category/417652.html">生活感言</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_23" href="http://www.cnblogs.com/bluestorm/category/344582.html">数据库(12)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_24" href="http://www.cnblogs.com/bluestorm/category/344570.html">算法 / 数据结构(10)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_25" href="http://www.cnblogs.com/bluestorm/category/432344.html">网络协议(9)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_26" href="http://www.cnblogs.com/bluestorm/category/344574.html">云计算(2)</a> </li>
+
+</ul>
+
+</div>
+
+<div id="sidebar_postarchive" class="catListPostArchive sidebar-block">
+<h3 class="catListTitle">随笔档案</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_1_Link_0" href="http://www.cnblogs.com/bluestorm/archive/2015/11.html">2015年11月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_1" href="http://www.cnblogs.com/bluestorm/archive/2015/10.html">2015年10月 (10)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_2" href="http://www.cnblogs.com/bluestorm/archive/2015/09.html">2015年9月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_3" href="http://www.cnblogs.com/bluestorm/archive/2015/08.html">2015年8月 (5)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_4" href="http://www.cnblogs.com/bluestorm/archive/2015/06.html">2015年6月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_5" href="http://www.cnblogs.com/bluestorm/archive/2015/05.html">2015年5月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_6" href="http://www.cnblogs.com/bluestorm/archive/2015/04.html">2015年4月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_7" href="http://www.cnblogs.com/bluestorm/archive/2015/03.html">2015年3月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_8" href="http://www.cnblogs.com/bluestorm/archive/2015/02.html">2015年2月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_9" href="http://www.cnblogs.com/bluestorm/archive/2015/01.html">2015年1月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_10" href="http://www.cnblogs.com/bluestorm/archive/2014/12.html">2014年12月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_11" href="http://www.cnblogs.com/bluestorm/archive/2014/10.html">2014年10月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_12" href="http://www.cnblogs.com/bluestorm/archive/2014/09.html">2014年9月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_13" href="http://www.cnblogs.com/bluestorm/archive/2014/07.html">2014年7月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_14" href="http://www.cnblogs.com/bluestorm/archive/2014/06.html">2014年6月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_15" href="http://www.cnblogs.com/bluestorm/archive/2014/05.html">2014年5月 (30)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_16" href="http://www.cnblogs.com/bluestorm/archive/2014/04.html">2014年4月 (47)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_17" href="http://www.cnblogs.com/bluestorm/archive/2014/03.html">2014年3月 (10)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_18" href="http://www.cnblogs.com/bluestorm/archive/2014/02.html">2014年2月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_19" href="http://www.cnblogs.com/bluestorm/archive/2014/01.html">2014年1月 (11)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_20" href="http://www.cnblogs.com/bluestorm/archive/2013/12.html">2013年12月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_21" href="http://www.cnblogs.com/bluestorm/archive/2013/11.html">2013年11月 (5)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_22" href="http://www.cnblogs.com/bluestorm/archive/2013/10.html">2013年10月 (4)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_23" href="http://www.cnblogs.com/bluestorm/archive/2013/09.html">2013年9月 (33)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_24" href="http://www.cnblogs.com/bluestorm/archive/2013/08.html">2013年8月 (16)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_25" href="http://www.cnblogs.com/bluestorm/archive/2013/07.html">2013年7月 (17)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_26" href="http://www.cnblogs.com/bluestorm/archive/2013/06.html">2013年6月 (6)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_27" href="http://www.cnblogs.com/bluestorm/archive/2013/05.html">2013年5月 (21)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_28" href="http://www.cnblogs.com/bluestorm/archive/2013/04.html">2013年4月 (12)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_29" href="http://www.cnblogs.com/bluestorm/archive/2013/03.html">2013年3月 (15)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_30" href="http://www.cnblogs.com/bluestorm/archive/2013/01.html">2013年1月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_31" href="http://www.cnblogs.com/bluestorm/archive/2012/12.html">2012年12月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_32" href="http://www.cnblogs.com/bluestorm/archive/2012/11.html">2012年11月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_33" href="http://www.cnblogs.com/bluestorm/archive/2012/10.html">2012年10月 (14)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_34" href="http://www.cnblogs.com/bluestorm/archive/2012/09.html">2012年9月 (21)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_35" href="http://www.cnblogs.com/bluestorm/archive/2012/08.html">2012年8月 (14)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_36" href="http://www.cnblogs.com/bluestorm/archive/2012/07.html">2012年7月 (8)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_37" href="http://www.cnblogs.com/bluestorm/archive/2012/06.html">2012年6月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_38" href="http://www.cnblogs.com/bluestorm/archive/2012/05.html">2012年5月 (15)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_39" href="http://www.cnblogs.com/bluestorm/archive/2012/04.html">2012年4月 (14)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_40" href="http://www.cnblogs.com/bluestorm/archive/2012/03.html">2012年3月 (8)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_41" href="http://www.cnblogs.com/bluestorm/archive/2012/01.html">2012年1月 (5)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_42" href="http://www.cnblogs.com/bluestorm/archive/2011/12.html">2011年12月 (8)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_43" href="http://www.cnblogs.com/bluestorm/archive/2011/11.html">2011年11月 (5)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_44" href="http://www.cnblogs.com/bluestorm/archive/2011/10.html">2011年10月 (7)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_45" href="http://www.cnblogs.com/bluestorm/archive/2011/09.html">2011年9月 (4)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_46" href="http://www.cnblogs.com/bluestorm/archive/2011/08.html">2011年8月 (15)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_47" href="http://www.cnblogs.com/bluestorm/archive/2011/07.html">2011年7月 (13)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_48" href="http://www.cnblogs.com/bluestorm/archive/2011/06.html">2011年6月 (12)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_49" href="http://www.cnblogs.com/bluestorm/archive/2011/03.html">2011年3月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_50" href="http://www.cnblogs.com/bluestorm/archive/2010/05.html">2010年5月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_51" href="http://www.cnblogs.com/bluestorm/archive/2010/03.html">2010年3月 (1)</a> </li>
+
+</ul>
+
+</div>
+
+<div id="sidebar_articlecategory" class="catListArticleCategory sidebar-block">
+<h3 class="catListTitle">文章分类</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_2_Link_0" href="http://www.cnblogs.com/bluestorm/category/345242.html">C/C++(1)</a> </li>
+
+</ul>
+
+</div>
+
+<div id="sidebar_imagecategory" class="catListImageCategory sidebar-block">
+<h3 class="catListTitle">相册</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_3_Link_0" href="http://www.cnblogs.com/bluestorm/gallery/344583.html" rel="nofollow">MyPhoto</a> </li>
+
+</ul>
+
+</div>
+
+</div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap">
+<div class="catListComment">
+<h3 class="catListTitle">最新评论</h3>
+
+	<div id="RecentCommentsBlock"><ul>
+    <li class="recent_comment_title"><a href="http://www.cnblogs.com/bluestorm/archive/2011/06/20/2298174.html#3356417">1. Re:Python写爬虫——抓取网页并解析HTML</a></li>
+    <li class="recent_comment_body">~感谢分享~</li>
+    <li class="recent_comment_author">--jerry_0824</li>
+    <li class="recent_comment_title"><a href="http://www.cnblogs.com/bluestorm/p/3694729.html#3351037">2. Re:JDK8 API文档(下载)</a></li>
+    <li class="recent_comment_body">非常感谢</li>
+    <li class="recent_comment_author">--耶稣爱我</li>
+    <li class="recent_comment_title"><a href="http://www.cnblogs.com/bluestorm/p/3510398.html#3347364">3. Re:C# 编写Windows Service（windows服务程序）</a></li>
+    <li class="recent_comment_body">C# 编写Windows Service（windows服务程序）</li>
+    <li class="recent_comment_author">--xchsp</li>
+    <li class="recent_comment_title"><a href="http://www.cnblogs.com/bluestorm/archive/2012/10/28/2743792.html#3343190">4. Re:Source Insight 常用设置和快捷键大全</a></li>
+    <li class="recent_comment_body">总结的很好！谢谢</li>
+    <li class="recent_comment_author">--郝姬友</li>
+    <li class="recent_comment_title"><a href="http://www.cnblogs.com/bluestorm/p/4419135.html#3340982">5. Re:Ubuntu 下载 &amp; 编译 Android5.1 源码</a></li>
+    <li class="recent_comment_body">用oracle的jdk8 也不行吗？</li>
+    <li class="recent_comment_author">--qinyongxw</li>
+</ul>
+</div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">阅读排行榜</h3>
+	<div id="TopViewPostsBlock"><ul><li><a href="http://www.cnblogs.com/bluestorm/archive/2012/03/01/2376236.html">1. java中重载与重写的区别(99597)</a></li><li><a href="http://www.cnblogs.com/bluestorm/archive/2012/05/10/2493592.html">2. Ubuntu 12.04 中安装和配置 Java JDK(67765)</a></li><li><a href="http://www.cnblogs.com/bluestorm/p/3640786.html">3. px 与 dp, sp换算公式？(63062)</a></li><li><a href="http://www.cnblogs.com/bluestorm/archive/2013/05/20/3087889.html">4. IntelliJ IDEA 快捷键和设置(62944)</a></li><li><a href="http://www.cnblogs.com/bluestorm/p/3757402.html">5. 导入Eclipse工程 到 Android Studio(47103)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topcommentedposts" class="sidebar-block"><div id="topfeedback_posts_wrap">
+<div class="catListFeedback">
+<h3 class="catListTitle">评论排行榜</h3>
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="http://www.cnblogs.com/bluestorm/archive/2012/03/01/2376236.html">1. java中重载与重写的区别(13)</a></li><li><a href="http://www.cnblogs.com/bluestorm/p/3510398.html">2. C# 编写Windows Service（windows服务程序）(6)</a></li><li><a href="http://www.cnblogs.com/bluestorm/p/4419135.html">3. Ubuntu 下载 &amp; 编译 Android5.1 源码(6)</a></li><li><a href="http://www.cnblogs.com/bluestorm/archive/2012/03/02/2377615.html">4. java中equals方法的用法以及==的用法（转）(5)</a></li><li><a href="http://www.cnblogs.com/bluestorm/archive/2012/10/28/2743792.html">5. Source Insight 常用设置和快捷键大全(4)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topdiggedposts" class="sidebar-block"><div id="topdigg_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">推荐排行榜</h3>
+<div id="TopDiggPostsBlock"><ul><li><a href="http://www.cnblogs.com/bluestorm/archive/2012/03/01/2376236.html">1. java中重载与重写的区别(14)</a></li><li><a href="http://www.cnblogs.com/bluestorm/archive/2013/05/20/3087889.html">2. IntelliJ IDEA 快捷键和设置(11)</a></li><li><a href="http://www.cnblogs.com/bluestorm/archive/2012/03/02/2377326.html">3. Java中abstract class 和 interface 的解释和他们的异同点（转）(7)</a></li><li><a href="http://www.cnblogs.com/bluestorm/archive/2012/03/02/2377615.html">4. java中equals方法的用法以及==的用法（转）(5)</a></li><li><a href="http://www.cnblogs.com/bluestorm/p/3510398.html">5. C# 编写Windows Service（windows服务程序）(4)</a></li></ul></div>
+</div></div></div></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright ©2016 petercao
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+</body></html>

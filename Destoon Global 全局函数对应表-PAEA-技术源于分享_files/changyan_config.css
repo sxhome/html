@@ -1,0 +1,78 @@
+	#disp-cy-fbbs-left{
+        margin:0;
+        padding:0;
+        border:0;
+        position:fixed;
+        left:0;
+        bottom:0px;
+        z-index:2147483647;
+        font-size:12px;
+        font-family:SimSun;
+		overflow: visible;
+    }
+	*html #disp-cy-fbbs-left{
+        position:absolute;
+        left:expression(eval(document.documentElement.scrollLeft));
+        top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,0)||0)-(parseInt(this.currentStyle.marginBottom,0)||38)));
+    }
+	
+    #disp-cy-fbbs-left .disp-fbbs-close{
+        position:absolute;
+        top:0;
+        right:0;
+        width:44px;
+        height:15px;
+        overflow:hidden;
+        cursor:pointer;
+        text-indent:-20em;
+        background:#ccc url("http://changyan.itc.cn/activity/icon/config-close.png") no-repeat;
+    }
+    #disp-cy-fbbs-left .disp-fbbs-content{
+        margin:0;
+        padding:0;
+        border:0;
+        font-size:100%;
+        text-align:left;
+        width:250px;
+        height:250px;
+    }
+	
+	
+	#disp-cy-fbbs-right{
+        margin:0;
+        padding:0;
+        border:0;
+        position:fixed;
+        right:0;
+        bottom:38px;
+        z-index:2147483647;
+        font-size:12px;
+        font-family:SimSun;
+		overflow: visible;
+    }
+	#disp-cy-fbbs-right .disp-fbbs-close{
+        position:absolute;
+        top:0;
+        right:0;
+        width:44px;
+        height:15px;
+        overflow:hidden;
+        cursor:pointer;
+        text-indent:-20em;
+        background:#ccc url("http://changyan.itc.cn/activity/icon/config-close.png") no-repeat;
+    }
+    #disp-cy-fbbs-right .disp-fbbs-content{
+        margin:0;
+        padding:0;
+        border:0;
+        font-size:100%;
+        text-align:left;
+        width:250px;
+        height:250px;
+    }
+	
+	
+	#disp-cy-botr-sohu iframe {
+        width: 650px !important;
+        min-height: 0 !important;
+    }

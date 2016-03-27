@@ -1,0 +1,3 @@
+var OX_1259817e = '';
+OX_1259817e += "<"+"a href=\'//gg3.51cto.com/www/delivery/ck.php?oaparams=2__bannerid=2924__zoneid=255__cb=1da8be1f3d__oadest=http%3A%2F%2Fbbs.hc3i.cn%2Fviewthread.php%3Ftid%3D157969%26page%3D1%26extra%3D%23pid491552\' target=\'_blank\'><"+"font color=\'red\'>反统方大讨论 精美礼品等你拿<"+"/font><"+"/a><"+"div id=\'beacon_1da8be1f3d\' style=\'position: absolute; left: 0px; top: 0px; visibility: hidden;\'><"+"img src=\'//gg2.51cto.com/www/delivery/lg.php?bannerid=2924&amp;campaignid=657&amp;zoneid=255&amp;loc=1&amp;referer=http%3A%2F%2Fnetsecurity.51cto.com%2Fart%2F201103%2F248656.htm&amp;cb=1da8be1f3d\' width=\'0\' height=\'0\' alt=\'\' style=\'width: 0px; height: 0px;\' /><"+"/div>\n";
+document.write(OX_1259817e);

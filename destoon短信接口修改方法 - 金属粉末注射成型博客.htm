@@ -1,0 +1,566 @@
+<!-- destoon短信接口修改方法 - 金属粉末注射成型博客欢迎您！ http://www.cnpim.com/blog/ -->
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><script charset="utf-8" src="destoon%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95%20-%20%E9%87%91%E5%B1%9E%E7%B2%89%E6%9C%AB%E6%B3%A8%E5%B0%84%E6%88%90%E5%9E%8B%E5%8D%9A%E5%AE%A2_files/shares.php"></script><script charset="utf-8" src="destoon%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95%20-%20%E9%87%91%E5%B1%9E%E7%B2%89%E6%9C%AB%E6%B3%A8%E5%B0%84%E6%88%90%E5%9E%8B%E5%8D%9A%E5%AE%A2_files/id.php"></script>
+<meta charset="utf-8">
+<title>destoon短信接口修改方法 - 金属粉末注射成型博客</title>
+<meta name="keywords" content="cnpim,PIM,MIM,CIM,金属注射成型 MIM,金属零件,零件加工,粉末注射成型,金属喷射成型,金属注射成型">
+<meta name="description" content="">
+<meta name="generator" content="emlog">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<!-- 引用百度cdn公共库网站托管的Jquery，不成功则使用本地Jquery。 -->
+<script src="destoon%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95%20-%20%E9%87%91%E5%B1%9E%E7%B2%89%E6%9C%AB%E6%B3%A8%E5%B0%84%E6%88%90%E5%9E%8B%E5%8D%9A%E5%AE%A2_files/jquery.js" type="text/javascript"></script>
+<script>!window.jQuery && document.write('<script src="http://www.cnpim.com/blog/content/templates/bowen/js/jquery-1.11.1.min.js"><\/script >');</script>
+<link href="destoon%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95%20-%20%E9%87%91%E5%B1%9E%E7%B2%89%E6%9C%AB%E6%B3%A8%E5%B0%84%E6%88%90%E5%9E%8B%E5%8D%9A%E5%AE%A2_files/main.css" rel="stylesheet" type="text/css">
+<!-- js容错代码 -->
+<script language="javascript"> 
+<!-- 
+window.onerror=function(){return true;} 
+// --> 
+</script>
+<!-- 兼容IE6-IE9的html5、CSS3和兼容IE6 png不正常的js -->
+<!--[if lt IE 9]>
+    <script type="text/javascript" src="http://www.cnpim.com/blog/content/templates/bowen/js/css3-mediaqueries.js"></script>
+<![endif]-->
+<!--[if lt IE 9]>
+    <script type="text/javascript" src="http://www.cnpim.com/blog/content/templates/bowen/js/html5.js"></script>
+<![endif]-->
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.cnpim.com/blog/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.cnpim.com/blog/wlwmanifest.xml">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.cnpim.com/blog/rss.php">
+<link href="destoon%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95%20-%20%E9%87%91%E5%B1%9E%E7%B2%89%E6%9C%AB%E6%B3%A8%E5%B0%84%E6%88%90%E5%9E%8B%E5%8D%9A%E5%AE%A2_files/prettify.css" rel="stylesheet" type="text/css">
+<script src="destoon%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95%20-%20%E9%87%91%E5%B1%9E%E7%B2%89%E6%9C%AB%E6%B3%A8%E5%B0%84%E6%88%90%E5%9E%8B%E5%8D%9A%E5%AE%A2_files/prettify.js" type="text/javascript"></script>
+<script src="destoon%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95%20-%20%E9%87%91%E5%B1%9E%E7%B2%89%E6%9C%AB%E6%B3%A8%E5%B0%84%E6%88%90%E5%9E%8B%E5%8D%9A%E5%AE%A2_files/common_tpl.js" type="text/javascript"></script>
+<!-- css3动画库，它能让网页所有元素舞动起来，你将愛上它。 -->
+<link href="destoon%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95%20-%20%E9%87%91%E5%B1%9E%E7%B2%89%E6%9C%AB%E6%B3%A8%E5%B0%84%E6%88%90%E5%9E%8B%E5%8D%9A%E5%AE%A2_files/csshake.css" rel="stylesheet">
+<link href="destoon%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95%20-%20%E9%87%91%E5%B1%9E%E7%B2%89%E6%9C%AB%E6%B3%A8%E5%B0%84%E6%88%90%E5%9E%8B%E5%8D%9A%E5%AE%A2_files/animate.css" rel="stylesheet">
+<!-- 工具提示css -->
+<link href="destoon%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95%20-%20%E9%87%91%E5%B1%9E%E7%B2%89%E6%9C%AB%E6%B3%A8%E5%B0%84%E6%88%90%E5%9E%8B%E5%8D%9A%E5%AE%A2_files/hint.css" rel="stylesheet" type="text/css">
+		<!--[if IE 6]>
+<script type="text/javascript" src="http://www.cnpim.com/blog/content/templates/bowen/js/fixPNG.js"></script>
+<script>
+    DD_belatedPNG.fix('*');
+</script>
+<script type="text/javascript" src="http://www.cnpim.com/blog/content/templates/bowen/js/iefix.js"></script>
+        <![endif]-->		
+<script type="text/javascript" src="destoon%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95%20-%20%E9%87%91%E5%B1%9E%E7%B2%89%E6%9C%AB%E6%B3%A8%E5%B0%84%E6%88%90%E5%9E%8B%E5%8D%9A%E5%AE%A2_files/em_ad_common.js"></script></head>
+<body><link type="text/css" rel="stylesheet" href="destoon%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95%20-%20%E9%87%91%E5%B1%9E%E7%B2%89%E6%9C%AB%E6%B3%A8%E5%B0%84%E6%88%90%E5%9E%8B%E5%8D%9A%E5%AE%A2_files/jiathis_counter.css"><link type="text/css" rel="stylesheet" href="destoon%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95%20-%20%E9%87%91%E5%B1%9E%E7%B2%89%E6%9C%AB%E6%B3%A8%E5%B0%84%E6%88%90%E5%9E%8B%E5%8D%9A%E5%AE%A2_files/jiathis_share.css"><iframe style="position: fixed; display: none; opacity: 0;" frameborder="0"></iframe><div style="position: absolute; z-index: 1000000000; display: none; top: 50%; left: 50%; overflow: auto;" class="jiathis_style"></div><div style="position: absolute; z-index: 1000000000; display: none; overflow: auto;" class="jiathis_style"></div><iframe src="destoon%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95%20-%20%E9%87%91%E5%B1%9E%E7%B2%89%E6%9C%AB%E6%B3%A8%E5%B0%84%E6%88%90%E5%9E%8B%E5%8D%9A%E5%AE%A2_files/jiathis_utility_002.htm" style="display: none;" frameborder="0"></iframe><link type="text/css" rel="stylesheet" href="destoon%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95%20-%20%E9%87%91%E5%B1%9E%E7%B2%89%E6%9C%AB%E6%B3%A8%E5%B0%84%E6%88%90%E5%9E%8B%E5%8D%9A%E5%AE%A2_files/jiathis_counter.css"><link type="text/css" rel="stylesheet" href="destoon%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95%20-%20%E9%87%91%E5%B1%9E%E7%B2%89%E6%9C%AB%E6%B3%A8%E5%B0%84%E6%88%90%E5%9E%8B%E5%8D%9A%E5%AE%A2_files/jiathis_share.css"><iframe style="position: fixed; display: none; opacity: 0;" frameborder="0"></iframe><div style="position: absolute; z-index: 1000000000; display: none; top: 50%; left: 50%; overflow: auto;" class="jiathis_style"></div><div style="position: absolute; z-index: 1000000000; display: none; overflow: auto;" class="jiathis_style"></div><iframe src="destoon%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95%20-%20%E9%87%91%E5%B1%9E%E7%B2%89%E6%9C%AB%E6%B3%A8%E5%B0%84%E6%88%90%E5%9E%8B%E5%8D%9A%E5%AE%A2_files/jiathis_utility_002.htm" style="display: none;" frameborder="0"></iframe>
+  <!-- 顶部横幅随机图片31张，更多横幅请查看模版扩展素材页面：http://www.xunzhenji.com/127 -->
+<div id="top_banner" class="animated fadeIn">
+<script>
+var str=new Array("http://www.cnpim.com/blog/content/templates/bowen/images/top_banner1.jpg","http://www.cnpim.com/blog/content/templates/bowen/images/top_banner2.jpg","http://www.cnpim.com/blog/content/templates/bowen/images/top_banner3.jpg","http://www.cnpim.com/blog/content/templates/bowen/images/top_banner4.jpg");
+var a;
+a=str[parseInt(Math.random()*(str.length))];
+document.write("<div style='height:150px;background:url("+a+");color:#ffffff;font-size:20px;line-height:100px;'><a href='http://www.cnpim.com/blog/' style='color:#ffffff;'>金属注射成型(Metal Injection Molding)博客</a></div>");
+</script><div style="height:150px;background:url(http://www.cnpim.com/blog/content/templates/bowen/images/top_banner3.jpg);color:#ffffff;font-size:20px;line-height:100px;"><a href="http://www.cnpim.com/blog/" style="color:#ffffff;">金属注射成型(Metal Injection Molding)博客</a></div></div>
+<!-- 800px分辨率才出现的顶部logo 宽高:260×63 宽高不局限，大家自己看着设计。 其中class="Tada" 是响铃动画，不想要直接删除这句。-->
+<div id="bwgj_logo"><a href="http://www.cnpim.com/" title="点击返回首页"><img src="destoon%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95%20-%20%E9%87%91%E5%B1%9E%E7%B2%89%E6%9C%AB%E6%B3%A8%E5%B0%84%E6%88%90%E5%9E%8B%E5%8D%9A%E5%AE%A2_files/logo.png" class="animated tada"></a></div>
+<!-- 搜索框：800px分辨率才出现的。 -->
+<div id="sousuo2" title="在搜索框中输入关键字后，按“回车”即可搜到结果。">
+<form name="keyform" method="get" action="http://www.cnpim.com/blog/index.php">
+<input name="keyword" placeholder="框中输文字，回车索结果。" type="search"></form></div>
+<div id="wrap">
+<!-- 导航菜单 --><div id="nav">	<ul class="bar">
+			
+		<li class="item common">
+			<a href="http://www.cnpim.com/" class="chaffle" data-lang="zh">网站首页</a>
+			
+            
+		</li>
+			
+		<li class="item common">
+			<a href="http://www.cnpim.com/blog/" class="chaffle" data-lang="zh">博客首页</a>
+			
+            
+		</li>
+			
+		<li class="item common">
+			<a href="http://www.cnpim.com/blog/sort/keji" class="chaffle" data-lang="zh">科技新闻</a>
+			
+            
+		</li>
+			
+		<li class="item common">
+			<a href="http://www.cnpim.com/blog/sort/yingxiao" class="chaffle" data-lang="zh">网络营销</a>
+			
+            
+		</li>
+			
+		<li class="item common">
+			<a href="http://www.cnpim.com/blog/sort/news" class="chaffle" data-lang="zh">MIM资讯</a>
+			
+            
+		</li>
+			
+		<li class="item common">
+			<a href="http://www.cnpim.com/blog/sort/tech" class="chaffle" data-lang="zh">MIM工艺</a>
+			
+            
+		</li>
+			
+		<li class="item common">
+			<a href="http://www.cnpim.com/blog/sort/cim" class="chaffle" data-lang="zh">CIM相关</a>
+			
+            
+		</li>
+			
+		<li class="item common">
+			<a href="http://www.cnpim.com/blog/t" class="chaffle" data-lang="zh">微语</a>
+			
+            
+		</li>
+			<li class="item common"><a href="http://www.cnpim.com/blog/post/27" class="shake shake-little hint--top hint--error" data-hint="今日手气好，没事乱翻书。">手气不错</a></li>
+	</ul>
+</div><div id="nav2">	<div class="daohang2">
+		
+		<li class="item common">
+			<a href="http://www.cnpim.com/" class="shake shake-little">网站首页</a>&nbsp;&nbsp;&nbsp;
+		</li>
+		
+		<li class="item common">
+			<a href="http://www.cnpim.com/blog/" class="shake shake-little">博客首页</a>&nbsp;&nbsp;&nbsp;
+		</li>
+		
+		<li class="item common">
+			<a href="http://www.cnpim.com/blog/sort/keji" class="shake shake-little">科技新闻</a>&nbsp;&nbsp;&nbsp;
+		</li>
+		
+		<li class="item common">
+			<a href="http://www.cnpim.com/blog/sort/yingxiao" class="shake shake-little">网络营销</a>&nbsp;&nbsp;&nbsp;
+		</li>
+		
+		<li class="item common">
+			<a href="http://www.cnpim.com/blog/sort/news" class="shake shake-little">MIM资讯</a>&nbsp;&nbsp;&nbsp;
+		</li>
+		
+		<li class="item common">
+			<a href="http://www.cnpim.com/blog/sort/tech" class="shake shake-little">MIM工艺</a>&nbsp;&nbsp;&nbsp;
+		</li>
+		
+		<li class="item common">
+			<a href="http://www.cnpim.com/blog/sort/cim" class="shake shake-little">CIM相关</a>&nbsp;&nbsp;&nbsp;
+		</li>
+		
+		<li class="item common">
+			<a href="http://www.cnpim.com/blog/t" class="shake shake-little">微语</a>&nbsp;&nbsp;&nbsp;
+		</li>
+			<li class="item common"><a href="http://www.cnpim.com/blog/post/37" class="shake shake-little">手气不错</a>&nbsp;&nbsp;</li>
+	</div>
+</div>
+<!-- 首页公告，如果不需要删除后边这行即可。-->﻿
+
+
+<div id="content">
+<div id="contentleft">
+<!-- 显示置顶标记,日志标题 -->
+<div class="biaoti" id="masked">destoon短信接口修改方法</div>
+<!-- 标题下文章信息 -->
+	<div class="date2">
+	<span class="home"></span><a href="http://www.cnpim.com/" title="返回网站首页">首页</a> <b>&gt;</b>
+    <a href="http://www.cnpim.com/blog/sort/12">其它</a>	<!--分类原代码 	    <a href="http://www.cnpim.com/blog/sort/12">其它</a>
+	 -->&nbsp;&nbsp;
+	<span class="pauthor"></span>作者：<a href="http://www.cnpim.com/blog/author/1">cnpim</a>&nbsp;&nbsp;
+	<span class="ptime"></span> 2015年1月25日 13:57 星期日&nbsp;&nbsp;
+	<span class="pview"></span>热度：421°&nbsp;&nbsp;
+	<span class="zihao"></span>字号：<a style="font-size:12px;" href="javascript:doZoom(14)" class="hint--top  hint--success" data-hint="缩小到五号字体">小</a>
+    <a style="font-size:14px;" href="javascript:doZoom(16)" class="hint--top  hint--info" data-hint="适合阅读的小四字体">中</a>
+    <a style="font-size:18px;" href="javascript:doZoom(18)" class="hint--top  hint--error" data-hint="放大到四号字体">大</a>&nbsp; 
+	<!-- 以下是原评论代码，如果你没用多说社会化评论，那么请把下面的“注释”取消就行了。 -->
+	<!--  0条评论&nbsp;&nbsp;&nbsp;&nbsp;  -->
+	<!-- 以下是调用多说社会化评论数据，如果你没用多说，请删除下面这条代码。 -->
+	<a href="#comments"><span class="ds-thread-count" data-thread-key="229"></span></a>&nbsp;
+	<!-- editflg编辑 -->	</div>
+	
+	<!--分辨率小于600px时才出现，低于320px自动消失。-->
+    <div class="date4">
+	时间：2015-1-25 13:57&nbsp;&nbsp;
+	热度：421°&nbsp; 
+	<!-- 以下是调用多说社会化评论数据，如果你没用多说，请删除下面这条代码。 -->
+	<a href="#comments"><span class="ds-thread-count" data-thread-key="229"></span></a>
+	</div>
+	<div class="xiantiao"><img src="destoon%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95%20-%20%E9%87%91%E5%B1%9E%E7%B2%89%E6%9C%AB%E6%B3%A8%E5%B0%84%E6%88%90%E5%9E%8B%E5%8D%9A%E5%AE%A2_files/xiantiao1.png"></div>
+	
+	<!--  改变正文字号代码  -->
+<script type="text/javascript">function doZoom(size){document.getElementById('zoom').style.fontSize=size+'px'}</script>
+    <!-- 改变字号代码结束 -->
+	
+	<!-- 日志全文内容 --><div id="zoom">
+		
+	<p style="margin:15px auto 0px;color:#010101;font-family:宋体, tahoma, Srial, helvetica, sans-serif;font-size:14px;white-space:normal;border:medium none;padding:0px;line-height:25px;">
+	destoon是很优秀的B2B行业站程序。程序模块化开发契合度很高，二次开发起来也很顺畅。数据缓存，权限分配，SEO功能方面都不错。
+</p>
+<p style="margin:15px auto 0px;color:#010101;font-family:宋体, tahoma, Srial, helvetica, sans-serif;font-size:14px;white-space:normal;border:medium none;padding:0px;line-height:25px;">
+	但是在使用这套程序的时候，常常要用到<span id="6_nwp" style="width:auto;height:auto;float:none;"><span style="text-decoration:none;color:#0000FF;width:auto;height:auto;">发送短信</span></span>的功能，而destoon本身只接入了自己的短信接口。一些初接触destoon的开发者不知道如何修改。
+</p>
+<p style="margin:15px auto 0px;color:#010101;font-family:宋体, tahoma, Srial, helvetica, sans-serif;font-size:14px;white-space:normal;border:medium none;padding:0px;line-height:25px;">
+	所以铁牛特此写个文档分享如何修改destoon如何接入外部短信接口。
+</p>
+<p style="margin:15px auto 0px;color:#010101;font-family:宋体, tahoma, Srial, helvetica, sans-serif;font-size:14px;white-space:normal;border:medium none;padding:0px;line-height:25px;">
+	&nbsp;
+</p>
+<p style="margin:15px auto 0px;color:#010101;font-family:宋体, tahoma, Srial, helvetica, sans-serif;font-size:14px;white-space:normal;border:medium none;padding:0px;line-height:25px;">
+	<strong>第一步：找到/include/global.func.php文件，搜索函数send_sms</strong>
+</p>
+<p style="margin:15px auto 0px;color:#010101;font-family:宋体, tahoma, Srial, helvetica, sans-serif;font-size:14px;white-space:normal;border:medium none;padding:0px;line-height:25px;">
+	<strong>修改function send_sms为function send_sms_back，新建函数send_sms</strong>
+</p>
+<pre style="color:#010101;font-size:14px;line-height:24px;border:medium none;margin-top:0px;margin-bottom:0px;padding:0px;"><span style="color:#008080;"> 1</span> <span style="color:#0000FF;">function</span> send_sms(<span style="color:#800080;">$mobile</span>, <span style="color:#800080;">$message</span>, <span style="color:#800080;">$word</span> = 0, <span style="color:#800080;">$time</span> = 0<span style="color:#000000;">){</span><span style="color:#008080;"> 2</span> <span style="color:#0000FF;">global</span> <span style="color:#800080;">$db</span>, <span style="color:#800080;">$DT</span>, <span style="color:#800080;">$DT_TIME</span>, <span style="color:#800080;">$DT_IP</span>, <span style="color:#800080;">$_username</span><span style="color:#000000;">;</span><span style="color:#008080;"> 3</span> <span style="color:#0000FF;">if</span>(!<span style="color:#800080;">$DT</span>['sms'] || !<span style="color:#800080;">$DT</span>['sms_uid'] || !<span style="color:#800080;">$DT</span>['sms_key']) <span style="color:#0000FF;">return</span> <span style="color:#0000FF;">false</span><span style="color:#000000;">;</span><span style="color:#008080;"> 4</span> <span style="color:#800080;">$sms_url</span> = 'http://app.com/test/sms.php';<span style="color:#008000;">//</span><span style="color:#008000;">你的短信接口地址</span><span style="color:#008080;"> 5</span> <span style="color:#008000;"> //例如你的<span id="2_nwp" style="width:auto;height:auto;float:none;"><span style="text-decoration:none;color:#0000FF;width:auto;height:auto;">短信</span></span>接口是http://app.com/test/sms.<span id="3_nwp" style="width:auto;height:auto;float:none;"><span style="text-decoration:none;color:#0000FF;width:auto;height:auto;">php</span></span>?username=athena&amp;pwd=123456&amp;mobile=15889726201&amp;msg=我的测试短信内容</span><span style="color:#008080;"> 6</span> <span style="color:#008080;"> 7</span> <span style="color:#800080;">$word</span> or <span style="color:#800080;">$word</span> = word_count(<span style="color:#800080;">$message</span><span style="color:#000000;">);</span><span style="color:#008080;"> 8</span> <span style="color:#800080;">$sms_message</span> = <span style="color:#008080;">rawurlencode</span>(convert(<span style="color:#800080;">$message</span>, DT_CHARSET, 'UTF-8'<span style="color:#000000;">));</span><span style="color:#008080;"> 9</span> <span style="color:#008000;">//</span><span style="color:#008000;">data是你的url字符串 例如：username=athena&amp;pwd=123456&amp;mobile=15889726201&amp;msg=我的测试<span id="1_nwp" style="width:auto;height:auto;float:none;"><span style="text-decoration:none;color:#0000FF;width:auto;height:auto;">短信内容</span></span></span><span style="color:#008080;">10</span> <span style="color:#800080;">$data</span> = 'username='.<span style="color:#800080;">$DT</span>['sms_uid'<span style="color:#000000;">]</span><span style="color:#008080;">11</span> . '&amp;pwd='.<span style="color:#800080;">$DT</span>['sms_key'<span style="color:#000000;">]</span><span style="color:#008080;">12</span> . '&amp;mobile='.<span style="color:#800080;">$mobile</span><span style="color:#008080;">13</span> . '&amp;msg='.<span style="color:#800080;">$sms_message</span><span style="color:#000000;">;</span><span style="color:#008080;">14</span> <span style="color:#008080;">15</span> <span style="color:#008000;">//</span><span style="color:#008000;">采用PHP的cURL库推送网页 </span><span style="color:#008080;">16</span> <span style="color:#800080;">$cur</span> = curl_init(<span style="color:#800080;">$sms_url</span><span style="color:#000000;">);</span><span style="color:#008080;">17</span> curl_setopt(<span style="color:#800080;">$cur</span>, CURLOPT_POST, 1<span style="color:#000000;">);</span><span style="color:#008080;">18</span> curl_setopt(<span style="color:#800080;">$cur</span>, CURLOPT_POSTFIELDS, <span style="color:#800080;">$data</span><span style="color:#000000;">);</span><span style="color:#008080;">19</span> curl_setopt(<span style="color:#800080;">$cur</span>, CURLOPT_FOLLOWLOCATION, 1<span style="color:#000000;">);</span><span style="color:#008080;">20</span> curl_setopt(<span style="color:#800080;">$cur</span>, CURLOPT_HEADER, 0<span style="color:#000000;">);</span><span style="color:#008080;">21</span> curl_setopt(<span style="color:#800080;">$cur</span>, CURLOPT_SSL_VERIFYPEER, 0<span style="color:#000000;">);</span><span style="color:#008080;">22</span> curl_setopt(<span style="color:#800080;">$cur</span>, CURLOPT_RETURNTRANSFER, 1<span style="color:#000000;">);</span><span style="color:#008080;">23</span> <span style="color:#800080;">$rec</span> = curl_exec(<span style="color:#800080;">$cur</span><span style="color:#000000;">);</span><span style="color:#008080;">24</span> curl_close(<span style="color:#800080;">$cur</span><span style="color:#000000;">);</span><span style="color:#008080;">25</span> <span style="color:#800080;">$code</span>=''<span style="color:#000000;">;</span><span style="color:#008080;">26</span> <span style="color:#0000FF;">if</span>(!<span style="color:#800080;">$rec</span>==<span style="color:#800080;">$DT</span>['sms_ok'<span style="color:#000000;">]){</span><span style="color:#008080;">27</span> <span style="color:#800080;">$code</span> = 'Can Not Connect SMS Server'<span style="color:#000000;">;</span><span style="color:#008080;">28</span> <span style="color:#000000;">}</span><span style="color:#008080;">29</span> <span style="color:#0000FF;">else</span><span style="color:#000000;">{</span><span style="color:#008080;">30</span> <span style="color:#800080;">$code</span> =<span style="color:#800080;">$DT</span>['sms_ok'<span style="color:#000000;">];</span><span style="color:#008080;">31</span> <span style="color:#000000;">}</span><span style="color:#008080;">32</span> <span style="color:#008080;">33</span> <span style="color:#800080;">$db</span>-&gt;query("INSERT INTO {<span style="color:#800080;">$db</span>-&gt;pre}sms (mobile,message,word,editor,sendtime,code) VALUES ('<span style="color:#800080;">$<span id="0_nwp" style="width:auto;height:auto;float:none;"><span style="text-decoration:none;color:#0000FF;width:auto;height:auto;">mobile</span></span></span>','<span style="color:#800080;">$message</span>','<span style="color:#800080;">$word</span>','<span style="color:#800080;">$_username</span>','<span style="color:#800080;">$DT_TIME</span>','<span style="color:#800080;">$code</span>')"<span style="color:#000000;">);</span><span style="color:#008080;">34</span> <span style="color:#008080;">35</span> <span style="color:#0000FF;">return</span> <span style="color:#800080;">$code</span><span style="color:#000000;">; </span><span style="color:#008080;">36</span> }</pre>
+<p style="margin:15px auto 0px;color:#010101;font-family:宋体, tahoma, Srial, helvetica, sans-serif;font-size:14px;white-space:normal;border:medium none;padding:0px;line-height:25px;">
+	第二步：设置短信返回值
+</p>
+<p style="margin:15px auto 0px;color:#010101;font-family:宋体, tahoma, Srial, helvetica, sans-serif;font-size:14px;white-space:normal;border:medium none;padding:0px;line-height:25px;">
+	我的短信接口地址是：http://app.com/test/sms.php，如果<span id="5_nwp" style="width:auto;height:auto;float:none;"><span style="text-decoration:none;color:#0000FF;width:auto;height:auto;">短信发送</span></span>成功，信息是success，这个发送成功的信息需要在destoon管理后台去设置
+</p>
+<p style="margin:15px auto 0px;color:#010101;font-family:宋体, tahoma, Srial, helvetica, sans-serif;font-size:14px;white-space:normal;border:medium none;padding:0px;line-height:25px;">
+	<img src="destoon%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95%20-%20%E9%87%91%E5%B1%9E%E7%B2%89%E6%9C%AB%E6%B3%A8%E5%B0%84%E6%88%90%E5%9E%8B%E5%8D%9A%E5%AE%A2_files/ccd637fb2814130714ee52e6d8d4587320150125055803.jpg" alt="" style="margin:0px;padding:10px 0px;max-width:600px;vertical-align:middle;">
+</p>
+<p style="margin:15px auto 0px;color:#010101;font-family:宋体, tahoma, Srial, helvetica, sans-serif;font-size:14px;white-space:normal;border:medium none;padding:0px;line-height:25px;">
+	&nbsp;
+</p>
+<p style="margin:15px auto 0px;color:#010101;font-family:宋体, tahoma, Srial, helvetica, sans-serif;font-size:14px;white-space:normal;border:medium none;padding:0px;line-height:25px;">
+	&nbsp;
+</p>
+<p style="margin:15px auto 0px;color:#010101;font-family:宋体, tahoma, Srial, helvetica, sans-serif;font-size:14px;white-space:normal;border:medium none;padding:0px;line-height:25px;">
+	&nbsp;<img src="destoon%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95%20-%20%E9%87%91%E5%B1%9E%E7%B2%89%E6%9C%AB%E6%B3%A8%E5%B0%84%E6%88%90%E5%9E%8B%E5%8D%9A%E5%AE%A2_files/a494fc9d17376a34c5bfc62dcd7dc36020150125055804.jpg" alt="" style="margin:0px;padding:10px 0px;max-width:600px;vertical-align:middle;">
+</p>
+<p style="margin:15px auto 0px;color:#010101;font-family:宋体, tahoma, Srial, helvetica, sans-serif;font-size:14px;white-space:normal;border:medium none;padding:0px;line-height:25px;">
+	&nbsp;
+</p>
+<p style="margin:15px auto 0px;color:#010101;font-family:宋体, tahoma, Srial, helvetica, sans-serif;font-size:14px;white-space:normal;border:medium none;padding:0px;line-height:25px;">
+	<strong>提示：如果你的curl_init()函数不可用</strong>
+</p>
+<p style="margin:15px auto 0px;color:#010101;font-family:宋体, tahoma, Srial, helvetica, sans-serif;font-size:14px;white-space:normal;border:medium none;padding:0px;line-height:25px;">
+	找到找到php.ini，修改extension=php_curl.dll 把前面的分号去掉<br>
+如果你的php库没有php_curl.dll，那么将php_curl.dll php5ts.dlllibeay32.dll ssleay32.dll 复制到&nbsp;<span id="4_nwp" style="width:auto;height:auto;float:none;"><span style="text-decoration:none;color:#0000FF;width:auto;height:auto;">windows</span></span>/system32下 重启IIS或Apache服务即可。
+</p></div>
+
+	<!-- 侵权申明 -->
+	
+	<br><br>	
+		<fieldset style="padding:5px;margin:0px;color:#333333;white-space:normal;border:1px solid #00BBEC;font-family:微软雅黑;line-height:24px;background-color:#F8F7F5;">
+		<legend style="padding:0px;margin:0px 10px;border-width:0px;"><span class="main" style="padding:5px 10px;margin:0px;border:0px;color:#FFFFFF;font-weight:bold;font-size:14px;background-color:#00BBEC;border-top-left-radius:5px;border-top-right-radius:5px;border-bottom-right-radius:5px;border-bottom-left-radius:5px;"><span style="padding:0px;margin:0px;border:0px;max-width:100%;word-wrap:break-word !important;box-sizing:border-box !important;">实用信息推荐</span></span></legend>
+		<blockquote style="padding:0px;margin:0px;border:0px;">
+		<p style="padding:0px;margin-top:0px;margin-bottom:0px;border:0px;">
+			<span style="padding:0px;margin:0px;border:0px;max-width:100%;color:#00B0F0;word-wrap:break-word !important;box-sizing:border-box !important;">
+			<script type="text/javascript" src="destoon%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95%20-%20%E9%87%91%E5%B1%9E%E7%B2%89%E6%9C%AB%E6%B3%A8%E5%B0%84%E6%88%90%E5%9E%8B%E5%8D%9A%E5%AE%A2_files/em_ad_js.php"></script></span></p><div class="" style="display:inline-block;">
+	请先关注CNPIM公众号(微信搜索<span style="color:#ff0000">cnpim001</span>)，然后回复关键词即可获取相关信息<br>
+如：回复<span style="color:#ff0000">脱脂烧结炉</span>，<span style="color:#ff0000">模具</span>，<span style="color:#ff0000">PVD</span>，<span style="color:#ff0000">喂料</span>等。<br>
+
+回复<span style="color:#ff0000">张弛</span>获取张弛-《金属粉末注射成形技术.pdf》-电子版下载<br>
+回复<span style="color:#ff0000">粉末注射成型</span>获取美国日耳曼著《粉末注射成型》扫描档下载<br>
+回复<span style="color:#ff0000">项目管理ppt</span>获取《项目（专案）管理基础知识介绍及案例分享》ppt下载<br>
+回复<span style="color:#ff0000">01</span>查看《金属注射成型原理、工艺流程介绍相关资料》<br>
+回复<span style="color:#ff0000">02</span>查看《粉末冶金专业术语》<br>
+回复<span style="color:#ff0000">03</span>查看《MIM常见问题解答》<br>
+回复<span style="color:#ff0000">04</span>查看《金属粉末注射成型真空脱脂烧结炉原理及示意图》<br>
+回复<span style="color:#ff0000">05</span>查看《粘结剂常见配方及性质》<br>
+回复<span style="color:#ff0000">06</span>查看《8D详解》工程师们都要看！<br>
+回复<span style="color:#ff0000">07</span>查看《什么是PVD，真空镀膜技术相关技术问答》<br>
+回复<span style="color:#ff0000">08</span>查看《时间管理与工作效率》ppt讲义下载<br>
+回复<span style="color:#ff0000">09</span>查看《模具企业如何通过电子商务获得订单》<br>
+回复<span style="color:#ff0000">10</span>查看《猜不准你咬我2015十大手机技术预测》<br>
+回复<span style="color:#ff0000">11</span>查看《铝合金产业急需向粉末冶金、MIM等高端材料及工艺转型升级》<br>
+回复<span style="color:#ff0000">12</span>查看《德国生产总监总结的中国工厂的八大类151种浪费》<br>
+回复<span style="color:#ff0000">13</span>查看《滴滴的阴谋？》<br>
+回复<span style="color:#ff0000">14</span>查看《创业CEO是这样搞砸早期成功的--最后一条你一定没想到》<br>
+回复<span style="color:#ff0000">16</span>查看《多年的注塑模具设计经验总结》<br>
+回复<span style="color:#ff0000">17</span>查看《[注塑]常用注塑术语中英文对照表》<br>
+回复<span style="color:#ff0000">18</span>查看《常见金相组织名词解释-全面的特征描述》<br>
+回复<span style="color:#ff0000">19</span>查看《金属粉末注射成型Catamold催化脱脂工艺介绍》<br>
+回复<span style="color:#ff0000">20</span>查看《MIM催化脱脂炉工作原理及示意图》<br>
+回复<span style="color:#ff0000">21</span>查看《MIM真空脱脂烧结炉工作原理及示意图》<br>
+回复<span style="color:#ff0000">22</span>查看《MIM工艺流程详细介绍/视频演示/工艺特点》<br>
+回复<span style="color:#ff0000">23</span>查看《MIM工艺的优点/工艺优势/适用材料及性能/应用领域等》<br></div>	
+
+
+			
+		<p></p>
+		</blockquote>
+		</fieldset>
+
+		<br><br>
+		<fieldset style="padding:5px;margin:0px;color:#333333;white-space:normal;border:1px solid #00BBEC;font-family:微软雅黑;line-height:24px;background-color:#F8F7F5;">
+		<legend style="padding:0px;margin:0px 10px;border-width:0px;"><span class="main" style="padding:5px 10px;margin:0px;border:0px;color:#FFFFFF;font-weight:bold;font-size:14px;background-color:#00BBEC;border-top-left-radius:5px;border-top-right-radius:5px;border-bottom-right-radius:5px;border-bottom-left-radius:5px;"><span style="padding:0px;margin:0px;border:0px;max-width:100%;word-wrap:break-word !important;box-sizing:border-box !important;">关于CNPIM</span></span></legend>
+		<blockquote style="padding:0px;margin:0px;border:0px;">
+		<p style="padding:0px;margin-top:0px;margin-bottom:0px;border:0px;">		中国粉末注射成型网(CNPIM.COM)官方微信公众号，想第一时间了解金属粉末注射成型行业（MIM）最新市场、产品、资源信息，请关注我们。也欢迎业内朋友踊跃投稿宣传。关注办法：搜索微信号<span style="color:#ff0000">cnpim001</span> 或扫描以下二维码，添加关注。本站文章如有疏漏或侵权，还请批评指正！更多商务资讯，请访问官网http://www.cnpim.com<br>
+		<img src="destoon%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95%20-%20%E9%87%91%E5%B1%9E%E7%B2%89%E6%9C%AB%E6%B3%A8%E5%B0%84%E6%88%90%E5%9E%8B%E5%8D%9A%E5%AE%A2_files/wx.jpg">
+		</p>
+		</blockquote>
+		</fieldset>
+	
+	
+	
+	<div id="qinquan">本站资源来源于会员投稿或网络整理，版权归原作者所有。如有侵权，请联系我们删除。</div>
+	
+	<!-- 统计访客停留时间 -->
+	<div id="tingliu"><span class="tingliu2 hint--top hint--bounce" data-hint="希望这篇文章能给你带来收获，去发表评论吧！？"><a href="#.ds-replybox"><img src="destoon%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95%20-%20%E9%87%91%E5%B1%9E%E7%B2%89%E6%9C%AB%E6%B3%A8%E5%B0%84%E6%88%90%E5%9E%8B%E5%8D%9A%E5%AE%A2_files/tishi.gif" class="tingliu5"></a></span> &nbsp;<span class="tingliu2">您阅读这篇文章共花了：</span>&nbsp;<span class="tingliu3" id="stime">0小时00分44秒</span>&nbsp;
+	 <img src="destoon%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95%20-%20%E9%87%91%E5%B1%9E%E7%B2%89%E6%9C%AB%E6%B3%A8%E5%B0%84%E6%88%90%E5%9E%8B%E5%8D%9A%E5%AE%A2_files/shizhong.gif" class="tingliu4"></div>
+<script language="JavaScript">var ss=0,mm=0,hh=0;function TimeGo(){ss++;if(ss>=60){mm+=1;ss=0}if(mm>=60){hh+=1;mm=0}ss_str=(ss<10?"0"+ss:ss);mm_str=(mm<10?"0"+mm:mm);tMsg=""+hh+"小时"+mm_str+"分"+ss_str+"秒";document.getElementById("stime").innerHTML=tMsg;setTimeout("TimeGo()",1000)}TimeGo();</script>
+    <!-- 统计访客停留时间结束 -->
+	
+	<!-- 结束分割线 -->
+	<div class="jieshu"><img src="destoon%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95%20-%20%E9%87%91%E5%B1%9E%E7%B2%89%E6%9C%AB%E6%B3%A8%E5%B0%84%E6%88%90%E5%9E%8B%E5%8D%9A%E5%AE%A2_files/jieshu.png"></div>
+	<div class="jieshu2"><img src="destoon%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95%20-%20%E9%87%91%E5%B1%9E%E7%B2%89%E6%9C%AB%E6%B3%A8%E5%B0%84%E6%88%90%E5%9E%8B%E5%8D%9A%E5%AE%A2_files/jieshu3.gif"></div>
+	
+	<!-- 上一篇及下一篇 -->
+	<div id="shangxiapian_2">		<div id="shangxiapian3">
+	<a href="http://www.cnpim.com/blog/post/230">
+	<img src="destoon%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95%20-%20%E9%87%91%E5%B1%9E%E7%B2%89%E6%9C%AB%E6%B3%A8%E5%B0%84%E6%88%90%E5%9E%8B%E5%8D%9A%E5%AE%A2_files/shang2.png" onmouseover="this.src='http://www.cnpim.com/blog/content/templates/bowen/images/shang1.png'" onmouseout="this.src='http://www.cnpim.com/blog/content/templates/bowen/images/shang2.png'"></a></div>
+			<div id="shangxiapian4"><a href="http://www.cnpim.com/blog/post/228"><img src="destoon%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95%20-%20%E9%87%91%E5%B1%9E%E7%B2%89%E6%9C%AB%E6%B3%A8%E5%B0%84%E6%88%90%E5%9E%8B%E5%8D%9A%E5%AE%A2_files/xia2.png" onmouseover="this.src='http://www.cnpim.com/blog/content/templates/bowen/images/xia1.png'" onmouseout="this.src='http://www.cnpim.com/blog/content/templates/bowen/images/xia2.png'"></a></div>
+	<div id="gaodu1"></div></div>
+	<div id="shangxiapian">		<div id="sxpbk1"><div id="anniu1">
+	<a href="http://www.cnpim.com/blog/post/230" class="hint--right hint--bounce" data-hint="苹果“掰弯”获专利">
+	<img src="destoon%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95%20-%20%E9%87%91%E5%B1%9E%E7%B2%89%E6%9C%AB%E6%B3%A8%E5%B0%84%E6%88%90%E5%9E%8B%E5%8D%9A%E5%AE%A2_files/shangpian1.png" onmouseover="this.src='http://www.cnpim.com/blog/content/templates/bowen/images/shangpian2.png'" onmouseout="this.src='http://www.cnpim.com/blog/content/templates/bowen/images/shangpian1.png'"></a></div>
+<div id="wzlj1"><a href="http://www.cnpim.com/blog/post/230">苹果“掰弯”获专利</a></div></div>
+    		<div id="sxpbk2"><div id="wzlj2"><a href="http://www.cnpim.com/blog/post/228">强势回归中国，摩托罗拉能否重新站稳脚跟？</a></div>
+		<div id="anniu2"><a href="http://www.cnpim.com/blog/post/228" class="hint--left hint--bounce" data-hint="强势回归中国，摩托罗拉能否重新站稳脚跟？">
+		<img src="destoon%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95%20-%20%E9%87%91%E5%B1%9E%E7%B2%89%E6%9C%AB%E6%B3%A8%E5%B0%84%E6%88%90%E5%9E%8B%E5%8D%9A%E5%AE%A2_files/xiapian1.png" onmouseover="this.src='http://www.cnpim.com/blog/content/templates/bowen/images/xiapian2.png'" onmouseout="this.src='http://www.cnpim.com/blog/content/templates/bowen/images/xiapian1.png'"></a></div></div>
+	<div id="gaodu1"></div></div> 
+	
+	<!-- 捐赠。分为文字和图片，文字只在小分辨率下显示，图片则是大分辨率。 -->
+	<!--div class="juanzhu"><a href="/19" title="捐赠支持作者！点击進入。" target="_blank"><img src="http://www.cnpim.com/blog/content/templates/bowen/images/juanzeng1.gif"></a></div>
+	<div class="juanzhu2"><b>捐赠支持：</b>如果觉得这篇文章对您有帮助，请<b><a href="/" class="shake shake-little" title="去看看有谁捐赠了。">“扫一扫”</a></b>鼓励作者！</div-->
+	
+	<!-- 感兴趣文章 -->
+   <div class="gxq"><div class="bti"><img src="destoon%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95%20-%20%E9%87%91%E5%B1%9E%E7%B2%89%E6%9C%AB%E6%B3%A8%E5%B0%84%E6%88%90%E5%9E%8B%E5%8D%9A%E5%AE%A2_files/xiangguan.png">&nbsp;<span class="chaffle" data-lang="zh">相关文章</span></div>
+            <ul>
+                    <li>
+            <a href="http://www.cnpim.com/blog/post/233" title="查看文章:2015年中国每个行业都将洗牌" class="shake shake-little">2015年中国每个行业都将洗牌</a>
+            </li>
+                    <li>
+            <a href="http://www.cnpim.com/blog/post/235" title="查看文章:样品发了一万多个单后没有一个客户下订单我该怎么办？" class="shake shake-little">样品发了一万多个单后没有一个客户下订单我该怎么办？</a>
+            </li>
+                    <li>
+            <a href="http://www.cnpim.com/blog/post/222" title="查看文章:一张图看懂巴斯夫（BASF）集团" class="shake shake-little">一张图看懂巴斯夫（BASF）集团</a>
+            </li>
+                    <li>
+            <a href="http://www.cnpim.com/blog/post/177" title="查看文章:[励志语录]人的一生，只有5天" class="shake shake-little">[励志语录]人的一生，只有5天</a>
+            </li>
+                    <li>
+            <a href="http://www.cnpim.com/blog/post/174" title="查看文章:盘点那些富可敌国的公司" class="shake shake-little">盘点那些富可敌国的公司</a>
+            </li>
+                    <li>
+            <a href="http://www.cnpim.com/blog/post/234" title="查看文章:为什么小老板上厕所都很忙，事业却做不大？" class="shake shake-little">为什么小老板上厕所都很忙，事业却做不大？</a>
+            </li>
+                    <li>
+            <a href="http://www.cnpim.com/blog/post/194" title="查看文章:每个人心中都有两只狼，你看懂了吗" class="shake shake-little">每个人心中都有两只狼，你看懂了吗</a>
+            </li>
+                    <li>
+            <a href="http://www.cnpim.com/blog/post/193" title="查看文章:为什么高价总是打败低价：非常有价值，值得一看！" class="shake shake-little">为什么高价总是打败低价：非常有价值，值得一看！</a>
+            </li>
+                    <li>
+            <a href="http://www.cnpim.com/blog/post/229" title="查看文章:destoon短信接口修改方法" class="shake shake-little">destoon短信接口修改方法</a>
+            </li>
+                    <li>
+            <a href="http://www.cnpim.com/blog/post/173" title="查看文章:8D详解，工程师们都要看！" class="shake shake-little">8D详解，工程师们都要看！</a>
+            </li>
+                </ul>
+    <div id="gaodu1"></div></div>
+     <!-- 感兴趣文章代码结束 -->
+
+    <!-- JiaThis 分享代码开始，请替换为自己的分享代码！ 申请地址：http://www.jiathis.com -->
+	<div class="fenxiang">
+<!-- JiaThis Button BEGIN -->
+<div class="jiathis_style_24x24">
+	<a title="分享到微信" class="jiathis_button_weixin"><span class="jiathis_txt jtico jtico_weixin"></span></a>
+	<a title="分享到QQ好友" class="jiathis_button_cqq"><span class="jiathis_txt jtico jtico_cqq"></span></a>
+	<a title="分享到QQ空间" class="jiathis_button_qzone"><span class="jiathis_txt jtico jtico_qzone"></span></a>
+	<a title="分享到新浪微博" class="jiathis_button_tsina"><span class="jiathis_txt jtico jtico_tsina"></span></a>
+	<a title="分享到腾讯微博" class="jiathis_button_tqq"><span class="jiathis_txt jtico jtico_tqq"></span></a>
+	<a title="分享到人人网" class="jiathis_button_renren"><span class="jiathis_txt jtico jtico_renren"></span></a>
+	<a title="分享到百度空间" class="jiathis_button_hi"><span class="jiathis_txt jtico jtico_hi"></span></a>
+	<a title="分享到百度贴吧" class="jiathis_button_tieba"><span class="jiathis_txt jtico jtico_tieba"></span></a>
+	<a title="分享到搜狐微博" class="jiathis_button_tsohu"><span class="jiathis_txt jtico jtico_tsohu"></span></a>
+	<a title="分享到网易微博" class="jiathis_button_t163"><span class="jiathis_txt jtico jtico_t163"></span></a>
+	<a title="分享到豆瓣" class="jiathis_button_douban"><span class="jiathis_txt jtico jtico_douban"></span></a>
+	<a title="分享到天涯社区" class="jiathis_button_tianya"><span class="jiathis_txt jtico jtico_tianya"></span></a>
+	<a title="分享到朋友网" class="jiathis_button_xiaoyou"><span class="jiathis_txt jtico jtico_xiaoyou"></span></a>
+	<a title="分享到QQ书签" class="jiathis_button_qq"><span class="jiathis_txt jtico jtico_qq"></span></a>
+	<a title="分享到爱分享" class="jiathis_button_i139"><span class="jiathis_txt jtico jtico_i139"></span></a>
+	<a title="复制网址" class="jiathis_button_copy"><span class="jiathis_txt jtico jtico_copy"></span></a>
+	<a title="分享到邮件" class="jiathis_button_email"><span class="jiathis_txt jtico jtico_email"></span></a>
+	<a title="分享到一键分享" class="jiathis_button_ishare"><span class="jiathis_txt jtico jtico_ishare"></span></a>
+	<a href="http://www.jiathis.com/share?uid=1941800" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"><span id="jiathis_counter_65" class="jiathis_button_expanded jiathis_counter jiathis_bubble_style">0</span></a>
+</div>
+<script type="text/javascript">
+var jiathis_config = {data_track_clickback:'true'};
+</script>
+<script type="text/javascript" src="destoon%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95%20-%20%E9%87%91%E5%B1%9E%E7%B2%89%E6%9C%AB%E6%B3%A8%E5%B0%84%E6%88%90%E5%9E%8B%E5%8D%9A%E5%AE%A2_files/jia.js" charset="utf-8"></script><script type="text/javascript" src="destoon%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95%20-%20%E9%87%91%E5%B1%9E%E7%B2%89%E6%9C%AB%E6%B3%A8%E5%B0%84%E6%88%90%E5%9E%8B%E5%8D%9A%E5%AE%A2_files/plugin.js" charset="utf-8"></script><!-- JiaThis Button END --></div>
+<!-- 手机低分辨率下才显示的小图标分享 -->
+	<div class="fenxiang2"><!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+	<a title="分享到微信" class="jiathis_button_weixin"><span class="jiathis_txt jtico jtico_weixin"></span></a>
+	<a title="分享到QQ空间" class="jiathis_button_qzone"><span class="jiathis_txt jtico jtico_qzone"></span></a>
+	<a title="分享到QQ好友" class="jiathis_button_cqq"><span class="jiathis_txt jtico jtico_cqq"></span></a>
+	<a title="分享到腾讯微博" class="jiathis_button_tqq"><span class="jiathis_txt jtico jtico_tqq"></span></a>
+	<a title="分享到新浪微博" class="jiathis_button_tsina"><span class="jiathis_txt jtico jtico_tsina"></span></a>
+	<a title="分享到人人网" class="jiathis_button_renren"><span class="jiathis_txt jtico jtico_renren"></span></a>
+	<a title="分享到百度贴吧" class="jiathis_button_tieba"><span class="jiathis_txt jtico jtico_tieba"></span></a>
+	<a title="分享到搜狐微博" class="jiathis_button_tsohu"><span class="jiathis_txt jtico jtico_tsohu"></span></a>
+	<a title="分享到QQ书签" class="jiathis_button_qq"><span class="jiathis_txt jtico jtico_qq"></span></a>
+	<a title="分享到豆瓣" class="jiathis_button_douban"><span class="jiathis_txt jtico jtico_douban"></span></a>
+	<a title="分享到一键分享" class="jiathis_button_ishare"><span class="jiathis_txt jtico jtico_ishare"></span></a>
+	<a href="http://www.jiathis.com/share?uid=1941800" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"><span id="jiathis_counter_78" class="jiathis_button_expanded jiathis_counter jiathis_bubble_style">0</span></a>
+</div>
+<script type="text/javascript">
+var jiathis_config = {data_track_clickback:'true'};
+</script>
+<script type="text/javascript" src="destoon%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95%20-%20%E9%87%91%E5%B1%9E%E7%B2%89%E6%9C%AB%E6%B3%A8%E5%B0%84%E6%88%90%E5%9E%8B%E5%8D%9A%E5%AE%A2_files/jia.js" charset="utf-8"></script><!-- JiaThis Button END --></div><!-- 分享代码结束 -->
+	
+<div id="tag"><span class="color">&nbsp;本文无需标签！</span></div> <!-- 日志标签 -->
+	<!-- 版权信息 -->
+	<div id="banquan">
+	<!-- 二维码地址生成 -->
+	<div class="tupian hint--right hint--rounded" data-hint="这篇文章太棒了，我要分享给我的小伙伴们！
+	1、用手机扫二维码。2、点右上角分享到朋友圈。">
+	<img src="destoon%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95%20-%20%E9%87%91%E5%B1%9E%E7%B2%89%E6%9C%AB%E6%B3%A8%E5%B0%84%E6%88%90%E5%9E%8B%E5%8D%9A%E5%AE%A2_files/api.png" alt="二维码加载中..."></div>
+<div class="xinxi">
+<span class="zuozhe">本文作者：</span><a href="http://www.cnpim.com/blog/author/1">cnpim</a> &nbsp;&nbsp;&nbsp;&nbsp;
+<span class="biaoti2">文章标题：</span> <a href="http://www.cnpim.com/blog/post/229">destoon短信接口修改方法</a><br>
+<span class="blog_url">本文地址：</span><a href="http://www.cnpim.com/blog/post/229">http://www.cnpim.com/blog/post/229</a><br>
+<b>版权声明：</b>若无注明，本文皆为“<span class="blog_name">粉末注射成型博客(CNPIM.COM)</span>”原创，转载请保留文章出处。
+	</div><div id="gaodu1"></div></div>
+		<!--?php doAction('log_related', $logData); ?--> <!-- 相关日志的挂载点 -->
+		    <div id="pagenavi">
+	        </div>
+ <!-- 输出该日志评论列表 -->
+	 <!-- 输出发表评论框 -->
+	<div style="clear:both;"></div>
+</div><!--end #contentleft-->
+﻿<div id="sidebar">
+	<div id="zidingyi">
+	<h3><span>欢迎来到CNPIM技术学院</span></h3>
+	<ul>
+	<a href="mailto:admin@cnpim.com"><img src="destoon%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95%20-%20%E9%87%91%E5%B1%9E%E7%B2%89%E6%9C%AB%E6%B3%A8%E5%B0%84%E6%88%90%E5%9E%8B%E5%8D%9A%E5%AE%A2_files/tougao.jpg" width="250px"></a>
+<div style="height:10px;">&nbsp;</div>
+<img src="destoon%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95%20-%20%E9%87%91%E5%B1%9E%E7%B2%89%E6%9C%AB%E6%B3%A8%E5%B0%84%E6%88%90%E5%9E%8B%E5%8D%9A%E5%AE%A2_files/weixin_300.jpg" width="250px">	</ul>
+	</div>
+	<div id="sousuo">
+	<h3><span>搜索</span></h3>
+	<ul id="logsearch">
+	<form name="keyform" method="get" action="http://www.cnpim.com/blog/index.php">
+	<input name="keyword" class="search" onblur="if(this.value==''){this.value='请输入搜索关键字';}" onfocus="this.value='';" value="请输入搜索关键字" title="丘比龙小提示：如果你要搜索内容，请在搜索框中输入关键词，然后按“回车”即可查询到结果。" type="text">
+    <input name="submit" value="搜索" class="submit button" title="猛击我搜索" type="submit">
+	</form>
+	</ul>
+	</div>
+	<div id="fenlei">
+	<div id="fenlei_biaoti"><span>分类</span></div>
+	<div id="fenlei_biankuang">
+	<ul id="blogsort">
+		<li>
+	<a href="http://www.cnpim.com/blog/sort/keji">科技新闻 (54)</a>
+			</li><li>
+	<a href="http://www.cnpim.com/blog/sort/14">企业管理 (1)</a>
+			</li><li>
+	<a href="http://www.cnpim.com/blog/sort/yingxiao">网络营销 (11)</a>
+			</li><li>
+	<a href="http://www.cnpim.com/blog/sort/news">MIM业内资讯 (20)</a>
+			</li><li>
+	<a href="http://www.cnpim.com/blog/sort/tech">MIM工艺技术 (96)</a>
+			</li><li>
+	<a href="http://www.cnpim.com/blog/sort/material">MIM材料相关 (1)</a>
+			</li><li>
+	<a href="http://www.cnpim.com/blog/sort/cim">CIM相关信息 (6)</a>
+			</li><li>
+	<a href="http://www.cnpim.com/blog/sort/13">MIM招聘信息 (4)</a>
+			</li><li>
+	<a href="http://www.cnpim.com/blog/sort/12">其它 (22)</a>
+			</li></ul></div></div>
+	<div id="pinglun">
+	<div id="pinglun_biaoti"><span>最新评论</span></div>
+	<div id="pinglun_wenzi">
+	<ul id="newcomment">
+		</ul></div></div>
+	<div id="zuixinwenzhang">
+	<div id="zuixin_biaoti"><span>最新日志</span></div>
+	<div id="zuixin_biankuang"><div class="wenzhang">
+	<ul>
+		<li>
+    <em class="hotone">1</em>
+	    <a title="3D打印方法及适用材料大全" href="http://www.cnpim.com/blog/post/247">3D打印方法及适用材料大全</a></li>
+		<li>
+    <em class="hottwo">2</em>
+	    <a title="惊呆了，这就是传说中的液态金属？" href="http://www.cnpim.com/blog/post/246">惊呆了，这就是传说中的液态金属？</a></li>
+		<li>
+    <em class="hotthree">3</em>
+	    <a title="一张图八遍3D打印让人脑洞大开的产品" href="http://www.cnpim.com/blog/post/245">一张图八遍3D打印让人脑洞大开的...</a></li>
+		<li>
+    <em class="hotSoSo">4</em>    <a title="2015年3月3日-MIM人才招聘信息汇总" href="http://www.cnpim.com/blog/post/244">2015年3月3日-MIM人才招...</a></li>
+		<li>
+    <em class="hotSoSo">5</em>    <a title="BYD AM（液態金屬）简介，液态金属原理简介，液态工艺流程介绍" href="http://www.cnpim.com/blog/post/243">BYD AM（液態金屬）简介，液...</a></li>
+		</ul></div></div></div>
+	<div id="remenwenzhang">
+	<div id="remen_biaoti"><span>热门日志</span></div>
+	<div id="remen_biankuang"><div class="wenzhang">
+	<ul>
+		<li><a href="http://www.cnpim.com/blog/post/23">MIM技术介绍（ppt课件下载）</a></li>
+		<li><a href="http://www.cnpim.com/blog/post/22">粉末注射成型(PIM)-用金属和陶瓷生产复杂的成型零件</a></li>
+		<li><a href="http://www.cnpim.com/blog/post/3">MIM（金属射出成型）工艺简介</a></li>
+		<li><a href="http://www.cnpim.com/blog/post/10">电镀专业术语的中英文对照及名词解释</a></li>
+		<li><a href="http://www.cnpim.com/blog/post/14">MIM技术及工艺流程概述</a></li>
+		</ul>
+	</div></div></div>
+	<!-- 博客统计代码，请在下面修改网站生日：2014年4月24日为你的日期。 -->
+	<!-- 博客统计代码结束 -->
+
+<!-- 侧边栏浮动跟随广告 -->
+<!-- 在这里请自行添加图片或者其他内容。如果不需要广告，请删除以下代码。 -->
+<div id="guanggao2"><div id="float" class="div1">
+<a href="http://www.cnpim.com/" title="图片广告招租" target="_blank"><img src="destoon%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95%20-%20%E9%87%91%E5%B1%9E%E7%B2%89%E6%9C%AB%E6%B3%A8%E5%B0%84%E6%88%90%E5%9E%8B%E5%8D%9A%E5%AE%A2_files/guanggao.gif"></a><br>
+<li class="wzgg1"><a href="http://www.cnpim.com/" class="shake" title="欢迎给我们投稿" target="_blank">
+欢迎给我们投稿
+</a></li>
+<li class="wzgg2"><a href="http://www.cnpim.com/" class="shake" title="本广告文字招租" target="_blank">
+文字招租2：1月10元起
+</a></li>
+<li class="wzgg3"><a href="http://www.cnpim.com/" class="shake" title="本广告文字招租" target="_blank">
+文字招租3：1月10元起
+</a></li>
+<li class="wzgg4"><a href="http://www.cnpim.com/" title="返回首页">返回首页</a>&nbsp;&nbsp;<a href="http://www.cnpim.com/" title="喜欢本站就捐赠支持我们吧！">捐赠支持</a>&nbsp;&nbsp;
+<a title="返回顶部" href="javascript:void(0);" onclick="goTop();">返回顶部</a></li>
+<div class="clear"></div></div></div>
+<script>(function(){var oDiv=document.getElementById("float");var H=0,iE6;var Y=oDiv;while(Y){H+=Y.offsetTop;Y=Y.offsetParent};iE6=window.ActiveXObject&&!window.XMLHttpRequest;if(!iE6){window.onscroll=function(){var s=document.body.scrollTop||document.documentElement.scrollTop;if(s>H){oDiv.className="div1 div2";if(iE6){oDiv.style.top=(s-H)+"px"}}else{oDiv.className="div1"}}}})();</script>
+<!-- 侧边栏浮动跟随广告代码结束 -->
+</div><!--end #siderbar-->﻿</div><!--end #content-->
+<div style="clear:both;"></div>
+<div id="footerbar">
+	<a onclick="goTop();" href="javascript:void(0);">返回顶部</a> &nbsp;&nbsp;
+	<a href="http://www.cnpim.com/">首页</a> &nbsp;&nbsp;
+<a href="http://www.cnpim.com/blog/m/" title="手机版本">手机版本</a> &nbsp;&nbsp;
+博客名称：<a href="http://www.cnpim.com/blog/" class="" data-lang="zh">粉末注射成型博客(CNPIM.COM)</a>&nbsp;&nbsp;&nbsp;
+<!--
+站长：<span class="chaffle" data-lang="zh">
+<a href="http://www.cnpim.com/blog/author/1" >cnpim</a></span>&nbsp;&nbsp;&nbsp;
+-->
+<a href="http://www.miibeian.gov.cn/" target="_blank"></a>&nbsp;&nbsp;版权所有：<a href="http://www.cnpim.com/">CNPIM.COM</a>  技术支持：<a href="http://www.chinmei.com/" class="hint--left  hint--bounce">勤美科技</a> &nbsp;&nbsp;<br><script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F1a86cd9c615d8d5da0880c3a928f4d79' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="destoon%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95%20-%20%E9%87%91%E5%B1%9E%E7%B2%89%E6%9C%AB%E6%B3%A8%E5%B0%84%E6%88%90%E5%9E%8B%E5%8D%9A%E5%AE%A2_files/h.js" type="text/javascript"></script><a href="http://tongji.baidu.com/hm-web/welcome/ico?s=1a86cd9c615d8d5da0880c3a928f4d79" target="_blank"><img src="destoon%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95%20-%20%E9%87%91%E5%B1%9E%E7%B2%89%E6%9C%AB%E6%B3%A8%E5%B0%84%E6%88%90%E5%9E%8B%E5%8D%9A%E5%AE%A2_files/21.gif" border="0" height="20" width="20"></a>&nbsp;&nbsp;
+	<a href="http://www.cnpim.com/blog/sitemap.xml" rel="sitemap">sitemap</a>	<!-- 友情链接，如何需要这个功能在底部，请去掉后面的注释即可。 --> <!-- <div id="ilink"></div> -->
+</div><!--end #footerbar-->
+</div><!--end #wrap-->
+<!-- 返回顶部代码开始 -->
+<div id="shangxia" class="animated bounceInUp">
+<div id="shang" title="回到顶部"></div>
+<div id="comt"><a id="ds-reset" title="走马观花看评论"><img src="destoon%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95%20-%20%E9%87%91%E5%B1%9E%E7%B2%89%E6%9C%AB%E6%B3%A8%E5%B0%84%E6%88%90%E5%9E%8B%E5%8D%9A%E5%AE%A2_files/kongbai.png"></a></div>
+<div id="xia" title="直下底部"></div>
+</div><!-- 返回顶部代码 结束 -->
+ <!-- 底部横幅代码开始 -->
+ <!--div id="bottom_banner">
+ <script>
+var str=new Array("http://www.cnpim.com/blog/content/templates/bowen/images/bottom_banner1.jpg","http://www.cnpim.com/blog/content/templates/bowen/images/bottom_banner2.jpg","http://www.cnpim.com/blog/content/templates/bowen/images/bottom_banner3.jpg","http://www.cnpim.com/blog/content/templates/bowen/images/bottom_banner4.jpg","http://www.cnpim.com/blog/content/templates/bowen/images/bottom_banner5.jpg");
+var a;
+a=str[parseInt(Math.random()*(str.length))];
+document.write("<img src="+a+">");
+</script></div--> <!-- 底部横幅代码结束 -->
+<script>$(document).ready(function(){$('.chaffle').chaffle()});</script><!-- 随机字符特效 Chaffle -->
+<script>window.onload=function(){Gifffer()}</script><!-- js控制gif动画播放-->
+<script src="destoon%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95%20-%20%E9%87%91%E5%B1%9E%E7%B2%89%E6%9C%AB%E6%B3%A8%E5%B0%84%E6%88%90%E5%9E%8B%E5%8D%9A%E5%AE%A2_files/bowen.js" type="text/javascript"></script>
+<script src="destoon%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95%20-%20%E9%87%91%E5%B1%9E%E7%B2%89%E6%9C%AB%E6%B3%A8%E5%B0%84%E6%88%90%E5%9E%8B%E5%8D%9A%E5%AE%A2_files/swfobject_modified.js" type="text/javascript"></script>
+<script>prettyPrint();</script>
+
+</body></html>

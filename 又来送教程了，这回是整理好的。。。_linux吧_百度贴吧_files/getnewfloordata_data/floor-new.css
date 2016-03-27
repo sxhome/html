@@ -1,0 +1,195 @@
+/* box-sizing */
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+  font-family: arial;
+}
+h2,
+ul {
+  padding: 0;
+  margin: 0;
+}
+h2 li,
+ul li {
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+.main-content {
+  width: 708px;
+  height: 185px;
+  padding: 0 16px;
+  background-color: #FAFBFC;
+}
+.main-content .edu-header {
+  *zoom: 1;
+  height: 22px;
+  padding: 8px;
+}
+.main-content .edu-header:before,
+.main-content .edu-header:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+.main-content .edu-header:after {
+  clear: both;
+}
+.main-content .change-batch {
+  background: #fefefe url(../img/new-icon.png) no-repeat 5px -20px;
+  background: url(../img/new-icon.png) no-repeat 5px -20px, -webkit-gradient(linear, 0 0, 0 100%, from(#fefefe), to(#f5f5f5));
+  background: url(../img/new-icon.png) no-repeat 5px -20px, -webkit-linear-gradient(top, #fefefe, #f5f5f5);
+  background: url(../img/new-icon.png) no-repeat 5px -20px, -moz-linear-gradient(top, #fefefe, #f5f5f5);
+  background: url(../img/new-icon.png) no-repeat 5px -20px, linear-gradient(to bottom, #fefefe, #f5f5f5);
+  _background-image: url(../img/new-icon.gif);
+  float: right;
+  width: 42px;
+  height: 20px;
+  line-height: 20px;
+  padding-left: 20px;
+  text-align: center;
+  border: 1px solid #E6E6E6;
+  border-bottom-color: #CCC;
+  font-size: 12px;
+  cursor: pointer;
+  color: #666;
+}
+.main-content .change-batch:hover {
+  background: #f5f5f5 url(../img/new-icon.png) no-repeat 5px -20px;
+  background: url(../img/new-icon.png) no-repeat 5px -20px, -webkit-gradient(linear, 0 0, 0 100%, from(#f5f5f5), to(#fefefe));
+  background: url(../img/new-icon.png) no-repeat 5px -20px, -webkit-linear-gradient(top, #f5f5f5, #fefefe);
+  background: url(../img/new-icon.png) no-repeat 5px -20px, -moz-linear-gradient(top, #f5f5f5, #fefefe);
+  background: url(../img/new-icon.png) no-repeat 5px -20px, linear-gradient(to bottom, #f5f5f5, #fefefe);
+}
+.main-content .title {
+  float: left;
+  height: 22px;
+  line-height: 22px;
+  padding-left: 30px;
+  margin: 0;
+  font-size: 18px;
+  background: url(../img/new-icon.png) no-repeat 0 2px;
+  _background-image: url(../img/new-icon.gif);
+}
+.main-content .edu-content {
+  *zoom: 1;
+  display: none;
+}
+.main-content .edu-content:before,
+.main-content .edu-content:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+.main-content .edu-content:after {
+  clear: both;
+}
+.main-content .current-content {
+  display: block;
+}
+.main-content .image-list {
+  float: left;
+  width: 471px;
+  margin-right: 20px;
+}
+.main-content .ad-list {
+  float: left;
+  width: 217px;
+}
+.main-content .image-item {
+  float: left;
+  width: 147px;
+  margin-right: 15px;
+}
+.main-content .image-item .item-header {
+  position: relative;
+  width: 147px;
+  height: 98px;
+}
+.main-content .image-item img {
+  border: none;
+  width: 100%;
+  height: 100%;
+}
+.main-content .image-item .item-mask {
+  opacity: 0.7;
+  filter: alpha(opacity=70);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 19px;
+  background-color: #000;
+  z-index: 1;
+}
+.main-content .image-item .item-front {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 19px;
+  line-height: 19px;
+  text-align: center;
+  font-size: 12px;
+  color: #FFF;
+  z-index: 2;
+}
+.main-content .image-item .image-desc {
+  display: block;
+  padding: 7px 2px;
+  line-height: 17px;
+  font-size: 12px;
+  color: #333;
+}
+.main-content .last-image-item {
+  margin-right: 0;
+}
+.main-content .list-item {
+  *zoom: 1;
+  margin-bottom: 10px;
+  *margin-bottom: 7px;
+  height: 14px;
+  overflow: hidden;
+}
+.main-content .list-item:before,
+.main-content .list-item:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+.main-content .list-item:after {
+  clear: both;
+}
+.main-content .order {
+  float: left;
+  height: 12px;
+  width: 12px;
+  line-height: 12px;
+  margin-right: 5px;
+  font-size: 12px;
+  text-align: center;
+  background-color: #A0A0A0;
+  color: #FFF;
+  overflow: hidden;
+  margin-top: 1px;
+}
+.main-content .item {
+  float: left;
+  color: #333;
+  font-size: 12px;
+  height: 12px;
+  width: 195px;
+}
+.main-content .list-item:hover .order {
+  background-color: #2D64b3;
+}
+.main-content .list-item:hover .item {
+  color: #2D64b3;
+  cursor: pointer;
+  text-decoration: underline;
+}

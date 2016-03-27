@@ -1,0 +1,36 @@
+
+/* zoom-section */
+.zoom-section{width:756px;min-height:770px;display:block;position:relative;}
+*html .zoom-section{display:inline;clear:both;}
+.zoom-desc{width:760px;min-height:159px;.display: block;}
+.zoom-small-image{width:751px;height:530px;}
+.zoom-small-image img{height:510px;width:auto;position:absolute;left:45%;margin-left:-200px;}
+.zoom-tiny-image{border:1px solid #CCC;margin:0px;}
+/* 这是下方的鼠标指针的移动镜头平方米。 */
+.cloud-zoom-lens {width:450px !important;height:210px !important;display:block;background-color:#fff;cursor:move;position:absolute;left:45% !important;margin-left:-200px;}
+/* 这是标题文本 */
+.cloud-zoom-title {background-color:#000;color:#fff;padding:3px;width:100%;text-align:center;font-weight:bold;font-size:12px;top:0px;}
+/* 这是缩放窗口。 */
+.cloud-zoom-big {border:1px solid #ccc;overflow:hidden;display:block;margin-top:10px;width: 570px !important;height:510px;}
+/* 这是加载消息。 */
+.cloud-zoom-loading {color:white;background:#222;padding:3px;border:1px solid #000;}
+.item td { line-height:30px;}
+
+.ab_im {
+  border: 1px solid #C0C0C0;
+  margin: 10px 0 10px 13px;
+  padding: 2px;
+}
+.ab_on {
+  background: none repeat scroll 0 0 #FF6600;
+  border: 1px solid #FF6600;
+  margin: 10px 0 10px 13px;
+  padding: 2px;
+}
+.mousetrap{  z-index: 22;
+  position: absolute;
+  width: 425px;
+  height: 510px;
+  left: 150px !important;
+  top: 0px;
+  cursor: move}

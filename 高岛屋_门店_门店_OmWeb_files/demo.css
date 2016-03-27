@@ -1,0 +1,25 @@
+.order,.map,.cart{width:100%;height:150px;}
+.cart li{display:block;height:25px;}
+.number{float:left;}
+.pric{float:left;}
+/*删除订单提示框*/
+.popup-bg{width:100%;height:100%;position:absolute;top:0;left:0;}
+.popup-bg .popup{width:340px;height:170px;position:absolute;top:50%;left:50%;margin-top:-85px;margin-left:-170px;background:#f1f1f1;}
+.popup-bg .popup p{text-align:center;height:50%;display:block;vertical-align:middle;line-height:110px;}
+.popup-bg .popup p input{width:82px;height:30px;border:0 none;background:#b6b6b6;border-radius:5px;font-size:15px;line-height:30px;text-align:center;color:#fff;cursor:pointer;margin:0 15px;outline:none;}
+.popup-bg .popup p input:hover{background:#4f4f4f;}
+/*显示地图提示框*/
+.show_map_bg{width:100%;height:100%;background:#000;filter:alpha(opacity=70);-moz-opacity:0.7;opacity:0.7;position:fixed;left:0;top:0;}
+.show_map{width:100%;height:100%;position:fixed;left:0;top:0;z-index:30000}
+.map_img{padding:4px;background:#fff;width:900px;height:550px;position:absolute;top:50%;margin-top:-275px;left:50%;margin-left:-450px;}
+.map_img .close_map{width:35px;height:35px;background:url(../images/close.png) no-repeat center;position:absolute;z-index:99;display:block;right:-2px;top:-2px;}
+
+.text{border:1px solid #eee;  width: 30px;
+  font-size: 14px;
+  text-align: center;}
+
+
+
+
+
+

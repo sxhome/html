@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="zh-cn"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>我所了解的cgi - 掸尘 - 博客园</title>
+<link type="text/css" rel="stylesheet" href="%E6%88%91%E6%89%80%E4%BA%86%E8%A7%A3%E7%9A%84cgi%20-%20%E6%8E%B8%E5%B0%98%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="%E6%88%91%E6%89%80%E4%BA%86%E8%A7%A3%E7%9A%84cgi%20-%20%E6%8E%B8%E5%B0%98%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/bundle-Minyx2_Lite.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/liuzhang/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/liuzhang/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/liuzhang/wlwmanifest.xml">
+<script src="%E6%88%91%E6%89%80%E4%BA%86%E8%A7%A3%E7%9A%84cgi%20-%20%E6%8E%B8%E5%B0%98%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/encoder.js" type="text/javascript"></script><script src="%E6%88%91%E6%89%80%E4%BA%86%E8%A7%A3%E7%9A%84cgi%20-%20%E6%8E%B8%E5%B0%98%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'liuzhang', cb_enable_mathjax=false;</script>
+<script src="%E6%88%91%E6%89%80%E4%BA%86%E8%A7%A3%E7%9A%84cgi%20-%20%E6%8E%B8%E5%B0%98%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/blog-common.js" type="text/javascript"></script>
+<script src="%E6%88%91%E6%89%80%E4%BA%86%E8%A7%A3%E7%9A%84cgi%20-%20%E6%8E%B8%E5%B0%98%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/bundle-Minyx2_Lite.js" language="javascript" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+
+
+<div id="container">
+    <a class="minyx" href="http://www.cnblogs.com/">代码改变世界</a>
+    <ul id="topMnu">
+        <!-- 统计数据 -->
+        <li>
+            
+                
+            
+        </li>
+        <!-- 这边可以增加一些链接 -->
+        <!-- 博客园 -->
+        <li><a href="http://www.cnblogs.com/">Cnblogs</a></li>
+        <!-- 管理 -->
+        <li id="topMnu-dashboard">
+            <a id="lnkDashboard" href="http://www.cnblogs.com/liuzhang/admin/EditPosts.aspx">Dashboard</a></li>
+        <li>
+            <a id="lnkLogin" href="http://passport.cnblogs.com/login.aspx?ReturnUrl=http://www.cnblogs.com/liuzhang/p/3929198.html">Login</a></li>
+    </ul>
+
+    <script type="text/javascript">
+        var m = window.__blog.topMenuRendered;
+        if (m) { m(__$("topMnu")); }
+    </script>
+
+    <div id="header">
+        <ul id="menu">
+            <!-- 首页，当前section加上current类 -->
+            <li id="menu-home" class="current">
+                <a id="lnkHome" href="http://www.cnblogs.com/liuzhang/">Home</a></li>
+            <!-- 联系 -->
+            <li id="menu-contact">
+                <a id="lnkContact" href="http://space.cnblogs.com/msg/send/%e6%8e%b8%e5%b0%98">Contact</a></li>
+            <!-- 相册 -->
+            <li id="menu-gallary">
+                <a id="lnkGallery" href="http://www.cnblogs.com/liuzhang/gallery.html">Gallery</a></li>
+            <!-- Rss订阅 -->
+            <li id="rss">
+                <a id="lnkRss" href="http://www.cnblogs.com/liuzhang/rss">RSS</a></li>
+        </ul>
+        <div id="newmsg"></div>
+        <h1>
+            <!-- 主标题 -->
+            <a id="lnkBlogTitle" href="http://www.cnblogs.com/liuzhang/">临渊羡鱼，不如退而结网</a>
+            <!-- 子标题 -->
+            <small>
+                只会hello world 码农</small>
+        </h1>
+    </div>
+
+    <script type="text/javascript">
+        var m = window.__blog.headerRendered;
+        if (m) { m(__$("header")); }
+    </script>
+
+    <div id="wrapper">
+        <div id="content">
+            <script type="text/javascript">
+                var m = window.__blog.preRenderPosts;
+                if (m) { m(); }
+            </script>
+            
+<div id="post_detail">
+<div class="post" id="post">
+    <a name="top"></a>
+    <h2><a id="cb_post_title_url" href="http://www.cnblogs.com/liuzhang/p/3929198.html">我所了解的cgi</a></h2>
+    <small>2014-08-25 09:01 by 掸尘, <span id="post_view_count">5936</span> 阅读, <span id="post_comment_count">7</span> 评论, <a href="#" onclick="AddToWz(3929198);return false;">收藏</a>,  <a href="http://i.cnblogs.com/EditPosts.aspx?postid=3929198" rel="nofollow">编辑</a></small>
+    <div class="entry">
+        <div id="cnblogs_post_body"><h2 style="background: #2B6695 !important; border-radius: 6px 6px 6px 6px !important; box-shadow: 0 0 0 1px #5F5A4B, 1px 1px 6px 1px rgba(10, 10, 0, 0.5); color: #ffffff;">&nbsp; 当我们在谈到cgi的时候，我们在讨论什么</h2>
+<div>　　</div>
+<div>　　最早的Web服务器简单地响应浏览器发来的HTTP请求，并将存储在服务器上的HTML文件返回给浏览器，也就是静态html。事物总是不
+断发展，网站也越来越复杂，所以出现动态技术。但是服务器并不能直接运行 
+php，asp这样的文件，自己不能做，外包给别人吧，但是要与第三做个约定，我给你什么，然后你给我什么，就是握把请求参数发送给你，然后我接收你的处
+理结果给客户端。那这个约定就是&nbsp;common gateway 
+interface，简称cgi。这个协议可以用vb，c，php，python 来实现。cgi只是接口协议，根本不是什么语言。下面图可以看到流程 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp;</div>
+<div>
+<p>&nbsp;<img style="display: block; margin-left: auto; margin-right: auto;" src="%E6%88%91%E6%89%80%E4%BA%86%E8%A7%A3%E7%9A%84cgi%20-%20%E6%8E%B8%E5%B0%98%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/222132422994681.gif" alt=""></p>
+</div>
+<h2 style="background: #2B6695 !important; border-radius: 6px 6px 6px 6px !important; box-shadow: 0 0 0 1px #5F5A4B, 1px 1px 6px 1px rgba(10, 10, 0, 0.5); color: #ffffff;">&nbsp; WEB服务器与cgi程序交互</h2>
+<p>&nbsp;　　WEB服务器将根据CGI程序的类型决定数据向CGI程序的传送方式，一般来讲是通过标准输入/输出流和环境变量来与CGI程序间传递数据。 如下图所示：</p>
+<p><img style="display: block; margin-left: auto; margin-right: auto;" src="%E6%88%91%E6%89%80%E4%BA%86%E8%A7%A3%E7%9A%84cgi%20-%20%E6%8E%B8%E5%B0%98%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/222140260037310.gif" alt=""></p>
+<p>　　CGI程序通过标准输入（STDIN）和标准输出（STDOUT）来进行输入输出。此外CGI程序还通过环境变量来得到输入，操作系统提供了许
+多环境变量，它们定义了程序的执行环境，应用程序可以存取它们。Web服务器和CGI接口又另外设置了一些环境变量，用来向CGI程序传递一些重要的参
+数。CGI的GET方法还通过环境变量QUERY-STRING向CGI程序传递Form中的数据。&nbsp;下面是一些常用的CGI环境变量：</p>
+<table class="reference" style="margin-left: 60px; font-size: 12px;">
+<tbody>
+<tr><th>变量名</th><th>描述</th></tr>
+<tr>
+<td width="130">CONTENT_TYPE</td>
+<td>这个环境变量的值指示所传递来的信息的MIME类型。目前，环境变量CONTENT_TYPE一般都是：application/x-www-form-urlencoded,他表示数据来自于HTML表单。</td>
+</tr>
+<tr>
+<td>CONTENT_LENGTH</td>
+<td>如果服务器与CGI程序信息的传递方式是POST，这个环境变量即使从标准输入STDIN中可以读到的有效数据的字节数。这个环境变量在读取所输入的数据时必须使用。</td>
+</tr>
+<tr>
+<td>HTTP_COOKIE</td>
+<td>客户机内的 COOKIE 内容。</td>
+</tr>
+<tr>
+<td>HTTP_USER_AGENT</td>
+<td>提供包含了版本数或其他专有数据的客户浏览器信息。</td>
+</tr>
+<tr>
+<td>PATH_INFO</td>
+<td>这个环境变量的值表示紧接在CGI程序名之后的其他路径信息。它常常作为CGI程序的参数出现。</td>
+</tr>
+<tr>
+<td>QUERY_STRING</td>
+<td>如果服务器与CGI程序信息的传递方式是GET，这个环境变量的值即使所传递的信息。这个信息经跟在CGI程序名的后面，两者中间用一个问号'?'分隔。</td>
+</tr>
+<tr>
+<td>REMOTE_ADDR</td>
+<td>这个环境变量的值是发送请求的客户机的IP地址，例如上面的192.168.1.67。这个值总是存在的。而且它是Web客户机需要提供给Web服务器的唯一标识，可以在CGI程序中用它来区分不同的Web客户机。</td>
+</tr>
+<tr>
+<td>REMOTE_HOST</td>
+<td>这个环境变量的值包含发送CGI请求的客户机的主机名。如果不支持你想查询，则无需定义此环境变量。</td>
+</tr>
+<tr>
+<td>REQUEST_METHOD</td>
+<td>提供脚本被调用的方法。对于使用 HTTP/1.0 协议的脚本，仅 GET 和 POST 有意义。</td>
+</tr>
+<tr>
+<td>SCRIPT_FILENAME</td>
+<td>CGI脚本的完整路径</td>
+</tr>
+<tr>
+<td>SCRIPT_NAME</td>
+<td>CGI脚本的的名称</td>
+</tr>
+<tr>
+<td>SERVER_NAME</td>
+<td>这是你的 WEB 服务器的主机名、别名或IP地址。</td>
+</tr>
+<tr>
+<td>SERVER_SOFTWARE</td>
+<td>这个环境变量的值包含了调用CGI程序的HTTP服务器的名称和版本号。例如，上面的值为Apache/2.2.14(Unix)</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<h2 style="background: #2B6695 !important; border-radius: 6px 6px 6px 6px !important; box-shadow: 0 0 0 1px #5F5A4B, 1px 1px 6px 1px rgba(10, 10, 0, 0.5); color: #ffffff;">&nbsp; 一个例子</h2>
+<p>　　说了这么多，你也许感觉烦了，写个小程序可能会更好的理解。&nbsp;lighttpd + CGI，用c语言写cgi程序&nbsp;。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lighttpd 配置 cgi， 打开cgi.conf，<span class="Apple-converted-space">&nbsp;cgi.assign = (".cgi" =&gt; "") 设置 cgi 模块的扩展名和解释器。就本语句而言，表示cgi模块的扩展名是“.cgi”且该 cgi 模块不需要特别的解释器来执行。因为用c来写的是可执行文件。</span></p>
+<p><span class="Apple-converted-space">&nbsp;&nbsp;&nbsp;&nbsp; 下面是 test.c 代码：</span></p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="%E6%88%91%E6%89%80%E4%BA%86%E8%A7%A3%E7%9A%84cgi%20-%20%E6%8E%B8%E5%B0%98%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre>#include <span style="color: #800000;">"</span><span style="color: #800000;">stdio.h</span><span style="color: #800000;">"</span><span style="color: #000000;">
+#include </span><span style="color: #800000;">"</span><span style="color: #800000;">stdlib.h</span><span style="color: #800000;">"</span><span style="color: #000000;">
+#include </span>&lt;<span style="color: #0000ff;">string</span>.h&gt;
+
+<span style="color: #0000ff;">int</span><span style="color: #000000;"> main()
+{
+     </span><span style="color: #0000ff;">char</span> *<span style="color: #000000;">data;
+     data </span>= getenv(<span style="color: #800000;">"</span><span style="color: #800000;">QUERY_STRING</span><span style="color: #800000;">"</span><span style="color: #000000;">);
+     puts(data);
+     printf(</span><span style="color: #800000;">"</span><span style="color: #800000;">Hello cgi!</span><span style="color: #800000;">"</span><span style="color: #000000;">);
+
+     </span><span style="color: #0000ff;">return</span> <span style="color: #800080;">0</span><span style="color: #000000;">;
+}</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="%E6%88%91%E6%89%80%E4%BA%86%E8%A7%A3%E7%9A%84cgi%20-%20%E6%8E%B8%E5%B0%98%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>&nbsp;生成可执行文件放到你的服务器配置程序的目录下</p>
+<div class="cnblogs_code">
+<pre>gcc test.c -o test.cgi</pre>
+</div>
+<p>&nbsp;访问：<a href="http://localhost/test.cgi?a=b&amp;c=d">http://localhost/test.cgi?a=b&amp;c=d</a>&nbsp;结果为：&nbsp;</p>
+<div class="cnblogs_code">
+<pre>a=b&amp;c=<span style="color: #000000;">d
+Hello cgi</span>!</pre>
+</div>
+<p>　　通过环境变量"QUERY_STRING" 获取get 方式提交的内容，如果想获取post 提交的内容可以通过getenv(<span class="string">"CONTENT-LENGTH")，Web服务器在调用使用POST方法的CGI程序时设置此环境变量，它的文本值表示Web服务器传送给CGI程序的输入中的字符数目。上面例子展示了cgi 程序与web服务器的交互。</span></p>
+<h2 style="background: #2B6695 !important; border-radius: 6px 6px 6px 6px !important; box-shadow: 0 0 0 1px #5F5A4B, 1px 1px 6px 1px rgba(10, 10, 0, 0.5); color: #ffffff;">&nbsp; cgi 与 fastcgi</h2>
+<p>　　CGI工作原理：每当客户请求CGI的时候，WEB服务器就请求操作系统生成一个新的CGI解释器进程(如php-cgi.exe)，CGI 
+的一个进程则处理完一个请求后退出，下一个请求来时再创建新进程。当然，这样在访问量很少没有并发的情况也行。可是当访问量增大，并发存在，这种方式就不
+适合了。于是就有了fastcgi。</p>
+<p>　　FastCGI像是一个常驻(long-live)型的CGI，它可以一直执行着，只要激活后，不会每次都要花费时间去fork一次（这是CGI最为人诟病的fork-and-execute 模式）。</p>
+<p>　　<strong>一般情况下，FastCGI的整个工作流程是这样的：</strong></p>
+<p><strong>　　1.<span style="display: inline! important; float: none; word-spacing: 0px; font: 14px/24px Helvetica, Arial, sans-serif; text-transform: none; color: #222222; text-indent: 0px; white-space: normal; letter-spacing: normal; text-align: left; orphans: 2; widows: 2; webkit-text-stroke-width: 0px; webkit-text-size-adjust: auto;">Web Server启动时载入FastCGI进程管理器（IIS ISAPI或Apache Module)</span></strong></p>
+<p><strong><span style="display: inline! important; float: none; word-spacing: 0px; font: 14px/24px Helvetica, Arial, sans-serif; text-transform: none; color: #222222; text-indent: 0px; white-space: normal; letter-spacing: normal; text-align: left; orphans: 2; widows: 2; webkit-text-stroke-width: 0px; webkit-text-size-adjust: auto;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>2.</strong><span style="display: inline! important; float: none; word-spacing: 0px; font: 14px/24px Helvetica, Arial, sans-serif; text-transform: none; color: #222222; text-indent: 0px; white-space: normal; letter-spacing: normal; text-align: left; orphans: 2; widows: 2; webkit-text-stroke-width: 0px; webkit-text-size-adjust: auto;">FastCGI进程管理器自身初始化，启动多个CGI解释器进程(可见多个php-cgi)并等待来自Web Server的连接。</span></span></strong></p>
+<p><strong><span style="display: inline! important; float: none; word-spacing: 0px; font: 14px/24px Helvetica, Arial, sans-serif; text-transform: none; color: #222222; text-indent: 0px; white-space: normal; letter-spacing: normal; text-align: left; orphans: 2; widows: 2; webkit-text-stroke-width: 0px; webkit-text-size-adjust: auto;"><span style="display: inline! important; float: none; word-spacing: 0px; font: 14px/24px Helvetica, Arial, sans-serif; text-transform: none; color: #222222; text-indent: 0px; white-space: normal; letter-spacing: normal; text-align: left; orphans: 2; widows: 2; webkit-text-stroke-width: 0px; webkit-text-size-adjust: auto;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>3.</strong><span style="display: inline! important; float: none; word-spacing: 0px; font: 14px/24px Helvetica, Arial, sans-serif; text-transform: none; color: #222222; text-indent: 0px; white-space: normal; letter-spacing: normal; text-align: left; orphans: 2; widows: 2; webkit-text-stroke-width: 0px; webkit-text-size-adjust: auto;">当客户端请求到达Web Server时，FastCGI进程管理器选择并连接到一个CGI解释器。 Web server将CGI环境变量和标准输入发送到FastCGI子进程php-cgi。</span></span></span></strong></p>
+<p><strong><span style="display: inline! important; float: none; word-spacing: 0px; font: 14px/24px Helvetica, Arial, sans-serif; text-transform: none; color: #222222; text-indent: 0px; white-space: normal; letter-spacing: normal; text-align: left; orphans: 2; widows: 2; webkit-text-stroke-width: 0px; webkit-text-size-adjust: auto;"><span style="display: inline! important; float: none; word-spacing: 0px; font: 14px/24px Helvetica, Arial, sans-serif; text-transform: none; color: #222222; text-indent: 0px; white-space: normal; letter-spacing: normal; text-align: left; orphans: 2; widows: 2; webkit-text-stroke-width: 0px; webkit-text-size-adjust: auto;"><span style="display: inline! important; float: none; word-spacing: 0px; font: 14px/24px Helvetica, Arial, sans-serif; text-transform: none; color: #222222; text-indent: 0px; white-space: normal; letter-spacing: normal; text-align: left; orphans: 2; widows: 2; webkit-text-stroke-width: 0px; webkit-text-size-adjust: auto;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong> 4</strong>.<span style="display: inline! important; float: none; word-spacing: 0px; font: 14px/24px Helvetica, Arial, sans-serif; text-transform: none; color: #222222; text-indent: 0px; white-space: normal; letter-spacing: normal; text-align: left; orphans: 2; widows: 2; webkit-text-stroke-width: 0px; webkit-text-size-adjust: auto;">FastCGI
+子进程完成处理后将标准输出和错误信息从同一连接返回Web Server。当FastCGI子进程关闭连接时， 
+请求便告处理完成。FastCGI子进程接着等待并处理来自FastCGI进程管理器(运行在Web Server中)的下一个连接。 
+在CGI模式中，php-cgi在此便退出了。</span></span></span></span></strong></p>
+<p><strong><span style="display: inline! important; float: none; word-spacing: 0px; font: 14px/24px Helvetica, Arial, sans-serif; text-transform: none; color: #222222; text-indent: 0px; white-space: normal; letter-spacing: normal; text-align: left; orphans: 2; widows: 2; webkit-text-stroke-width: 0px; webkit-text-size-adjust: auto;"><span style="display: inline! important; float: none; word-spacing: 0px; font: 14px/24px Helvetica, Arial, sans-serif; text-transform: none; color: #222222; text-indent: 0px; white-space: normal; letter-spacing: normal; text-align: left; orphans: 2; widows: 2; webkit-text-stroke-width: 0px; webkit-text-size-adjust: auto;"><span style="display: inline! important; float: none; word-spacing: 0px; font: 14px/24px Helvetica, Arial, sans-serif; text-transform: none; color: #222222; text-indent: 0px; white-space: normal; letter-spacing: normal; text-align: left; orphans: 2; widows: 2; webkit-text-stroke-width: 0px; webkit-text-size-adjust: auto;"><span style="display: inline! important; float: none; word-spacing: 0px; font: 14px/24px Helvetica, Arial, sans-serif; text-transform: none; color: #222222; text-indent: 0px; white-space: normal; letter-spacing: normal; text-align: left; orphans: 2; widows: 2; webkit-text-stroke-width: 0px; webkit-text-size-adjust: auto;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>PHP-FPM与Spawn-FCGI</strong></span></span></span></span></strong></p>
+<p><strong><span style="display: inline! important; float: none; word-spacing: 0px; font: 14px/24px Helvetica, Arial, sans-serif; text-transform: none; color: #222222; text-indent: 0px; white-space: normal; letter-spacing: normal; text-align: left; orphans: 2; widows: 2; webkit-text-stroke-width: 0px; webkit-text-size-adjust: auto;"><span style="display: inline! important; float: none; word-spacing: 0px; font: 14px/24px Helvetica, Arial, sans-serif; text-transform: none; color: #222222; text-indent: 0px; white-space: normal; letter-spacing: normal; text-align: left; orphans: 2; widows: 2; webkit-text-stroke-width: 0px; webkit-text-size-adjust: auto;"><span style="display: inline! important; float: none; word-spacing: 0px; font: 14px/24px Helvetica, Arial, sans-serif; text-transform: none; color: #222222; text-indent: 0px; white-space: normal; letter-spacing: normal; text-align: left; orphans: 2; widows: 2; webkit-text-stroke-width: 0px; webkit-text-size-adjust: auto;"><span style="display: inline! important; float: none; word-spacing: 0px; font: 14px/24px Helvetica, Arial, sans-serif; text-transform: none; color: #222222; text-indent: 0px; white-space: normal; letter-spacing: normal; text-align: left; orphans: 2; widows: 2; webkit-text-stroke-width: 0px; webkit-text-size-adjust: auto;">　　<span style="display: inline! important; float: none; word-spacing: 0px; font: 14px/20px Arial, Tahoma; text-transform: none; color: #333333; text-indent: 28px; white-space: normal; letter-spacing: normal; orphans: auto; widows: auto; webkit-text-stroke-width: 0px;">Spawn-FCGI是一个通用的FastCGI管理服务器，它是lighttpd中的一部份，很多人都用Lighttpd的Spawn-FCGI进行FastCGI模式下的管理工作。 但是有缺点，于是</span><span style="display: inline! important; float: none; word-spacing: 0px; font: 14px/21px 'Helvetica Neue', Helvetica, 'Trebuchet MS', Arial, sans-serif; text-transform: none; color: #333333; text-indent: 0px; white-space: normal; letter-spacing: normal; orphans: 2; widows: 2; webkit-text-stroke-width: 0px; webkit-text-size-adjust: auto;">PHP-fpm就是针对于PHP的，Fastcgi的一种实现，他负责管理一个进程池，来处理来自Web服务器的请求。目前，PHP-fpm是内置于PHP的。</span></span></span></span></span></strong></p>
+<h2 style="background: #2B6695 !important; border-radius: 6px 6px 6px 6px !important; box-shadow: 0 0 0 1px #5F5A4B, 1px 1px 6px 1px rgba(10, 10, 0, 0.5); color: #ffffff;">&nbsp; apache 模块方式</h2>
+<p>　　记得曾在xp 配置 apache + php ，会在apache 配置下面一段：</p>
+<div class="cnblogs_code">
+<pre>LoadModule php5_module C:/php/php5apache2_2.dll</pre>
+</div>
+<p>　　当PHP需要在Apache服务器下运行时，一般来说，它可以模块的形式集成， 
+此时模块的作用是接收Apache传递过来的PHP文件请求，并处理这些请求， 
+然后将处理后的结果返回给Apache。如果我们在Apache启动前在其配置文件中配置好了PHP模块， 
+PHP模块通过注册apache2的ap_hook_post_config挂钩，在Apache启动的时候启动此模块以接受PHP文件的请求。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp; <span style="display: inline! important; float: none; word-spacing: 0px; font: 14px/24px Helvetica, Arial, sans-serif; text-transform: none; color: #222222; text-indent: 28px; white-space: normal; letter-spacing: normal; text-align: left; orphans: 2; widows: 2; webkit-text-stroke-width: 0px; webkit-text-size-adjust: auto;">Apache
+ 的Hook机制是指：Apache 
+允许模块(包括内部模块和外部模块，例如mod_php5.so，mod_perl.so等)将自定义的函数注入到请求处理循环中。 
+换句话说，模块可以在Apache的任何一个处理阶段中挂接(Hook)上自己的处理函数，从而参与Apache的请求处理过程。 
+mod_php5.so/ 
+php5apache2.dll就是将所包含的自定义函数，通过Hook机制注入到Apache中，在Apache处理流程的各个阶段负责处理php请
+求。</span></p>
+<p><span style="display: inline! important; float: none; word-spacing: 0px; font: 14px/24px Helvetica, Arial, sans-serif; text-transform: none; color: #222222; text-indent: 28px; white-space: normal; letter-spacing: normal; text-align: left; orphans: 2; widows: 2; webkit-text-stroke-width: 0px; webkit-text-size-adjust: auto;">有人测试<span style="color: #333333;">nginx+PHP-FPM<span style="color: #333333;">在高并发情况下可能会达到<span style="color: #333333;"><span style="color: black;">Apache+mod_php5<span style="color: #333333;">的<span style="color: #333333;">5~10<span style="color: #333333;">倍，现在<span style="color: #333333;">nginx+PHP-FPM<span style="color: #333333;">使用的人越来越多<span style="color: #333333;"><span style="color: #333333;">。<!-- Baidu Button BEGIN --></span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p><span style="display: inline! important; float: none; word-spacing: 0px; font: 14px/24px Helvetica, Arial, sans-serif; text-transform: none; color: #222222; text-indent: 28px; white-space: normal; letter-spacing: normal; text-align: left; orphans: 2; widows: 2; webkit-text-stroke-width: 0px; webkit-text-size-adjust: auto;"><span style="color: #333333;"><span style="color: #333333;"><span style="color: #333333;"><span style="color: black;"><span style="color: #333333;"><span style="color: #333333;"><span style="color: #333333;"><span style="color: #333333;"><span style="color: #333333;"><span style="color: #333333;"><span style="color: #333333;">--EOF</span></span></span></span></span></span></span></span></span></span></span></span></p>
+<style><!--
+#Copyright {
+	BORDER-BOTTOM: #e5e5e5 1px solid; BORDER-LEFT: #e5e5e5 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 60px; PADDING-RIGHT: 10px; BACKGROUND: url(http://images.cnblogs.com/cnblogs_com/Terrylee/147338/o_info.png) no-repeat 1% 50%; BORDER-TOP: #e5e5e5 1px solid; BORDER-RIGHT: #e5e5e5 1px solid; PADDING-TOP: 10px
+}
+--></style>
+<div id="Copyright">&nbsp;我不是码农，我只是互联网的搬运工。如果对你有帮助，麻烦点赞啊:-D</div></div><div id="MySignature"></div>
+        <div class="clear"></div>
+        <div id="blog_post_info_block">
+        <div id="blog_post_info"><div id="green_channel">
+<a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(3929198,cb_blogId,1);green_channel_success(this,'谢谢推荐！');">好文要顶</a>
+<a id="green_channel_follow" onclick="c_follow();" href="javascript:void(0);">关注我</a>
+<a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a><a id="green_channel_contact" href="http://msg.cnblogs.com/send/%E6%8E%B8%E5%B0%98" target="_blank">联系我</a>
+<a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="%E6%88%91%E6%89%80%E4%BA%86%E8%A7%A3%E7%9A%84cgi%20-%20%E6%8E%B8%E5%B0%98%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/icon_weibo_24.png" alt=""></a>
+<a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="%E6%88%91%E6%89%80%E4%BA%86%E8%A7%A3%E7%9A%84cgi%20-%20%E6%8E%B8%E5%B0%98%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+<div id="author_profile_info" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/liuzhang/" target="_blank"><img src="%E6%88%91%E6%89%80%E4%BA%86%E8%A7%A3%E7%9A%84cgi%20-%20%E6%8E%B8%E5%B0%98%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/20130202001055.jpg" class="author_avatar" alt=""></a>
+<div id="author_profile_detail" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/liuzhang/">掸尘</a><br>
+<a href="http://home.cnblogs.com/u/liuzhang/followees">关注 - 59</a><br>
+<a href="http://home.cnblogs.com/u/liuzhang/followers">粉丝 - 72</a>
+</div>
+</div>
+<div class="clear"></div>
+<div id="author_profile_honor"></div>
+<div id="author_profile_follow">
+    <a href="javascript:void(0);" onclick="c_follow();return false;">+加关注</a>
+</div>
+</div>
+<div id="div_digg">										
+    <div class="diggit" onclick="votePost(3929198,'Digg')">
+        <span class="diggnum" id="digg_count">28</span>
+    </div>
+	<div class="buryit" onclick="votePost(3929198,'Bury')"> 
+		<span class="burynum" id="bury_count">1</span>
+	</div>
+	<div class="clear"></div>	
+	<div class="diggword" id="digg_tips">
+    (请您对文章做出评价)
+    </div>	
+</div>
+</div>
+        <div class="clear"></div>
+        <div id="post_next_prev"><a href="http://www.cnblogs.com/liuzhang/p/3729167.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/liuzhang/p/3729167.html" title="发布于2014-05-19 00:05">c语言指针学习</a><br><a href="http://www.cnblogs.com/liuzhang/p/4161213.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/liuzhang/p/4161213.html" title="发布于2014-12-15 09:16">PHP 输出缓冲控制(Output Control) 学习</a><br></div>
+    </div>
+</div>
+    <ul class="postmetadata">
+        <li class="icon_cat" id="BlogPostCategory">分类: <a href="http://www.cnblogs.com/liuzhang/category/444323.html">php</a></li>
+        <li class="icon_bullet" id="EntryTag"></li>
+    </ul>
+</div>
+<script type="text/javascript">var allowComments=true,isLogined=false,cb_blogId=138690,cb_entryId=3929198,cb_blogApp=currentBlogApp,cb_blogUserGuid='90311fa2-2114-e111-b422-842b2b196315',cb_entryCreatedDate='2014/8/25 9:01:00';loadViewCount(cb_entryId);</script>
+<script type="text/javascript">
+    var m = window.__blog.postRendered;
+    if (m) { m(__$("post")); }
+</script>
+<script type="text/javascript">
+    var m = window.__blog.postRenderPosts;
+    if (m) { m(); }
+</script>
+</div><a name="!comments"></a><div id="blog-comments-placeholder"><div id="comments_pager_top"></div>
+<a class="addcomment" href="#comment_tip">Add your comment</a>
+<h3 id="comments"></h3>
+<div class="feedbackNoItems"></div>
+
+
+<ol class="commentlist" id="commentList">	
+
+		<li class="alt">
+			<h5>
+				<cite><a href="#3016085" class="layer">#1楼</a><a name="3016085" id="comment_anchor_3016085"></a></cite> <a id="a_comment_author_3016085" href="http://www.cnblogs.com/icez/" target="_blank">艾斯泽</a> <a href="http://msg.cnblogs.com/send/%E8%89%BE%E6%96%AF%E6%B3%BD" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2014-08-25 12:47</span></small>
+			</h5>
+			<div id="comment_body_3016085" class="blog_comment_body">对web服务器有了更深的认识！好文。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3016085,'Digg',this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3016085,'Bury',this)">反对(0)</a></div><span id="comment_3016085_avatar" style="display:none;">http://pic.cnblogs.com/face/503399/20130320163345.png</span>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="#3016090" class="layer">#2楼</a><a name="3016090" id="comment_anchor_3016090"></a>[<span class="louzhu">楼主</span>]</cite> <a id="a_comment_author_3016090" href="http://www.cnblogs.com/liuzhang/" target="_blank">掸尘</a> <a href="http://msg.cnblogs.com/send/%E6%8E%B8%E5%B0%98" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2014-08-25 12:54</span></small>
+			</h5>
+			<div id="comment_body_3016090" class="blog_comment_body"><a href="#3016085" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3016085);">@</a>艾斯泽<br>谢谢</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3016090,'Digg',this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3016090,'Bury',this)">反对(1)</a></div><span id="comment_3016090_avatar" style="display:none;">http://pic.cnblogs.com/face/353089/20130202001055.png</span>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="#3016168" class="layer">#3楼</a><a name="3016168" id="comment_anchor_3016168"></a></cite> <a id="a_comment_author_3016168" href="http://www.cnblogs.com/xylc/" target="_blank">星夜落尘</a> <a href="http://msg.cnblogs.com/send/%E6%98%9F%E5%A4%9C%E8%90%BD%E5%B0%98" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2014-08-25 14:42</span></small>
+			</h5>
+			<div id="comment_body_3016168" class="blog_comment_body"><a href="#3016090" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3016090);">@</a>为法而来<br>点错了，不小心点到反对了。。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3016168,'Digg',this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3016168,'Bury',this)">反对(0)</a></div><span id="comment_3016168_avatar" style="display:none;">http://pic.cnblogs.com/face/296875/20131011104501.png</span>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="#3016174" class="layer">#4楼</a><a name="3016174" id="comment_anchor_3016174"></a>[<span class="louzhu">楼主</span>]</cite> <a id="a_comment_author_3016174" href="http://www.cnblogs.com/liuzhang/" target="_blank">掸尘</a> <a href="http://msg.cnblogs.com/send/%E6%8E%B8%E5%B0%98" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2014-08-25 14:49</span></small>
+			</h5>
+			<div id="comment_body_3016174" class="blog_comment_body"><a href="#3016168" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3016168);">@</a>星夜落尘<br>也支持反对呵呵</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3016174,'Digg',this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3016174,'Bury',this)">反对(0)</a></div><span id="comment_3016174_avatar" style="display:none;">http://pic.cnblogs.com/face/353089/20130202001055.png</span>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="#3199740" class="layer">#5楼</a><a name="3199740" id="comment_anchor_3199740"></a></cite> <a id="a_comment_author_3199740" href="http://www.cnblogs.com/meizhouxiang/" target="_blank">美洲象</a> <a href="http://msg.cnblogs.com/send/%E7%BE%8E%E6%B4%B2%E8%B1%A1" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2015-06-03 23:58</span></small>
+			</h5>
+			<div id="comment_body_3199740" class="blog_comment_body">good!</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3199740,'Digg',this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3199740,'Bury',this)">反对(0)</a></div>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="#3250219" class="layer">#6楼</a><a name="3250219" id="comment_anchor_3250219"></a></cite> <a id="a_comment_author_3250219" href="http://home.cnblogs.com/u/322156/" target="_blank">V知</a> <a href="http://msg.cnblogs.com/send/V%E7%9F%A5" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2015-08-19 11:57</span></small>
+			</h5>
+			<div id="comment_body_3250219" class="blog_comment_body">看了这篇文章，终于对CGI有点认识了。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3250219,'Digg',this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3250219,'Bury',this)">反对(0)</a></div>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+		<li class="alt">
+			<h5>
+				<cite><a href="#3313477" class="layer">#7楼</a><a name="3313477" id="comment_anchor_3313477"></a><span id="comment-maxId" style="display:none;">3313477</span><span id="comment-maxDate" style="display:none;">2015/11/25 10:26:06</span></cite> <a id="a_comment_author_3313477" href="http://www.cnblogs.com/Yang-kid/" target="_blank">Yang.kid</a> <a href="http://msg.cnblogs.com/send/Yang.kid" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><small> <span class="comment_date">2015-11-25 10:26</span></small>
+			</h5>
+			<div id="comment_body_3313477" class="blog_comment_body">没有提到setenv来设置环境变量啊，环境变量的值是先在服务器程序通过setenv设置，才能在cgi程序中getenv得到。要不然不会存入特定的字符串。虽然博主写得蛮好，但这一点会误导人哦。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3313477,'Digg',this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3313477,'Bury',this)">反对(0)</a></div>
+			<div class="opt_comment"><span class="comment_actions"></span></div>
+		</li>
+	
+</ol>
+
+<div id="comments_pager_bottom"></div></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" id="lnk_RefreshComments" onclick="return RefreshCommentList();">刷新评论</a><a href="#" onclick="return RefreshPage();">刷新页面</a><a href="#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login('commentform');">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="site_nav_under"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】50万行VC++源码: 大型组态工控、电力仿真CAD与GIS源码库</a><br><a href="http://www.rongcloud.cn/" target="_blank">【推荐】融云即时通讯云－专注为 App 开发者提供IM云服务</a><br><a href="https://www.jpush.cn/" target="_blank">【福利】极光推送-富媒体+大数据驱动精准推送，完全免费开放啦</a><br></div>
+<div id="opt_under_post"></div>
+<script type="text/javascript">
+    fixPostBodyFormat();
+</script>
+<div id="google_ad_c1" class="c_ad_block"><a href="http://www.gcpowertools.com.cn/products/activereports_overview.htm?utm_source=cnblogs&amp;utm_medium=blogpage&amp;utm_term=bottom&amp;utm_content=AR&amp;utm_campaign=community" target="_blank"><img src="%E6%88%91%E6%89%80%E4%BA%86%E8%A7%A3%E7%9A%84cgi%20-%20%E6%8E%B8%E5%B0%98%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/24442-20151030141346279-2034275742.gif" alt="" title="" height="250" width="300"></a></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/533719/" target="_blank">17岁少年为证明实力DDoS攻击赌博网站被判缓刑1年</a><br> ·  <a href="http://news.cnblogs.com/n/533718/" target="_blank">谷歌翻译网站被爆受XSS漏洞影响 官方回应没问题</a><br> ·  <a href="http://news.cnblogs.com/n/533716/" target="_blank">iOS版Cortana测试版即将开放给测试者试用</a><br> ·  <a href="http://news.cnblogs.com/n/533715/" target="_blank">苹果今年未参加“黑五”活动： 但依然是主角</a><br> ·  <a href="http://news.cnblogs.com/n/533714/" target="_blank">程序员如何在职场中实现“跨越式”成长？</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="google_ad_c2" class="c_ad_block"><a href="http://e.jikexueyuan.com/java.html?hmsr=cnb_banner_java_11.20" target="_blank"><img src="%E6%88%91%E6%89%80%E4%BA%86%E8%A7%A3%E7%9A%84cgi%20-%20%E6%8E%B8%E5%B0%98%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/24442-20151120154810296-978269479.jpg" alt="" title="" height="60" width="468"></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/527814/" target="_blank">从涂鸦到发布——理解API的设计过程</a><br> ·  <a href="http://kb.cnblogs.com/page/531834/" target="_blank">好的架构是进化来的，不是设计来的</a><br> ·  <a href="http://kb.cnblogs.com/page/532236/" target="_blank">被误解的MVC和被神化的MVVM</a><br> ·  <a href="http://kb.cnblogs.com/page/530046/" target="_blank">再谈设计和编码</a><br> ·  <a href="http://kb.cnblogs.com/page/531270/" target="_blank">什么时候应该避免写代码注释？</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+$(function () {
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 200);
+});
+</script>
+</div>
+
+        </div>
+
+        <script type="text/javascript">
+            var m = window.__blog.contentRendered;
+            if (m) { m(__$("content")); }
+        </script>
+
+        <div id="sidebar">
+            
+<div id="about">
+<div>
+<h2 id="about_title">About</h2>
+<div id="about_body">
+<div id="blog-news"><span style="display:block">
+        <!-- GoStats JavaScript Based Code -->
+        您是第<a target="_blank" title="流量统计源码" href="http://gostats.cn/"><img alt="流量统计源码" src="%E6%88%91%E6%89%80%E4%BA%86%E8%A7%A3%E7%9A%84cgi%20-%20%E6%8E%B8%E5%B0%98%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/counter.png" style="border-width:0"></a>位访客，欢迎您~</span>
+
+<br>
+<strong>声明:</strong>
+
+<strong>本博的一切言论只是本人观点，与雇主以及他人无关。</strong><div id="profile_block">昵称：<a href="http://home.cnblogs.com/u/liuzhang/">掸尘</a><br>园龄：<a href="http://home.cnblogs.com/u/liuzhang/" title="入园时间：2011-11-21">4年</a><br>粉丝：<a href="http://home.cnblogs.com/u/liuzhang/followers/">72</a><br>关注：<a href="http://home.cnblogs.com/u/liuzhang/followees/">59</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="cnblogs.UserManager.FollowBlogger('90311fa2-2114-e111-b422-842b2b196315')">+加关注</a></div></div></div>
+<script type="text/javascript">loadBlogNews();</script>
+</div>
+</div>
+</div>
+
+            <script type="text/javascript">
+                var m = window.__blog.aboutRendered;
+                if (m) { m(__$("about")); }
+            </script>
+            
+<div id="mySearchWrapper">
+    <div id="mySearch">
+        <input src="%E6%88%91%E6%89%80%E4%BA%86%E8%A7%A3%E7%9A%84cgi%20-%20%E6%8E%B8%E5%B0%98%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/btnsearch.gif" id="btnZzk" class="submit" onclick="zzk_go();return false;" type="image">
+        <label class="lb_search"><input id="q" onkeydown="return zzk_go_enter(event);" class="keyword" type="text"></label>
+    </div>
+</div>
+
+            <script type="text/javascript">
+                var m = window.__blog.searchFormRendered;
+                if (m) { m(__$("searchform")); }
+            </script>
+            <div id="sideMain">
+            </div>
+            <div id="sideRight">
+                
+    
+
+
+</div>
+            <div id="sideLeft">
+            <div id="side-calendar">
+        <h2>日历</h2>
+        <div id="blog-calendar"><table id="blogCalendar" class="Cal" title="Calendar" cellpadding="0" cellspacing="0">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a href="javascript:void(0);" onclick="loadBlogCalendar('2015/10/01');return false;">&lt;</a></td><td align="center">2015年11月</td><td class="CalNextPrev" align="right"><a href="javascript:void(0);" onclick="loadBlogCalendar('2015/12/01');return false;">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" abbr="日" scope="col" align="center">日</th><th class="CalDayHeader" abbr="一" scope="col" align="center">一</th><th class="CalDayHeader" abbr="二" scope="col" align="center">二</th><th class="CalDayHeader" abbr="三" scope="col" align="center">三</th><th class="CalDayHeader" abbr="四" scope="col" align="center">四</th><th class="CalDayHeader" abbr="五" scope="col" align="center">五</th><th class="CalDayHeader" abbr="六" scope="col" align="center">六</th></tr><tr><td class="CalOtherMonthDay" align="center">25</td><td class="CalOtherMonthDay" align="center">26</td><td class="CalOtherMonthDay" align="center">27</td><td class="CalOtherMonthDay" align="center">28</td><td class="CalOtherMonthDay" align="center">29</td><td class="CalOtherMonthDay" align="center">30</td><td class="CalOtherMonthDay" align="center">31</td></tr><tr><td class="CalWeekendDay" align="center">1</td><td align="center">2</td><td align="center">3</td><td align="center">4</td><td align="center">5</td><td align="center">6</td><td class="CalWeekendDay" align="center">7</td></tr><tr><td class="CalWeekendDay" align="center">8</td><td align="center">9</td><td align="center">10</td><td align="center">11</td><td align="center">12</td><td align="center">13</td><td class="CalWeekendDay" align="center">14</td></tr><tr><td class="CalWeekendDay" align="center">15</td><td align="center">16</td><td align="center">17</td><td align="center">18</td><td align="center">19</td><td align="center">20</td><td class="CalWeekendDay" align="center">21</td></tr><tr><td class="CalWeekendDay" align="center">22</td><td align="center">23</td><td align="center">24</td><td align="center">25</td><td align="center">26</td><td align="center">27</td><td class="CalTodayDay" align="center">28</td></tr><tr><td class="CalWeekendDay" align="center">29</td><td align="center">30</td><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td><td class="CalOtherMonthDay" align="center">5</td></tr>
+</tbody></table></div>
+    </div><div id="side-categories">
+        <h2>随笔分类</h2>
+        <ul class="folder">
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/liuzhang/category/453729.html">backbone(3)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/liuzhang/category/580104.html">c语言(2)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/liuzhang/category/481402.html">http 协议(1)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/liuzhang/category/467958.html">java(1)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/liuzhang/category/444055.html">jquery 研究(5)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/liuzhang/category/485056.html">js(1)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/liuzhang/category/551884.html">linux(1)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/liuzhang/category/444323.html">php(9)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/liuzhang/category/460577.html">uml(2)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/liuzhang/category/450709.html">单元测试(2)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/liuzhang/category/444655.html">个人感悟(2)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/liuzhang/category/456518.html">设计模式(3)</a>
+                </li>
+        </ul>
+    </div><div id="side-top-posts-custom">
+    <h2>推荐排行榜</h2>
+    <div id="TopDiggPostsBlock"><ul><li><a href="http://www.cnblogs.com/liuzhang/p/3929198.html">1. 我所了解的cgi(28)</a></li><li><a href="http://www.cnblogs.com/liuzhang/p/3729167.html">2. c语言指针学习(23)</a></li><li><a href="http://www.cnblogs.com/liuzhang/archive/2013/03/17/2964095.html">3. uml 类图依赖与关联的区别(4)</a></li><li><a href="http://www.cnblogs.com/liuzhang/archive/2013/05/31/3109789.html">4. 查看js 执行效率工具(3)</a></li><li><a href="http://www.cnblogs.com/liuzhang/archive/2013/01/07/2850079.html">5. 有关jquery  live的效率的问题(3)</a></li></ul></div>
+</div><div id="side-top-posts">
+    <h2>阅读排行榜</h2>
+    <div id="TopViewPostsBlock"><ul><li><a href="http://www.cnblogs.com/liuzhang/p/3929198.html">1. 我所了解的cgi(5936)</a></li><li><a href="http://www.cnblogs.com/liuzhang/p/3729167.html">2. c语言指针学习(5627)</a></li><li><a href="http://www.cnblogs.com/liuzhang/archive/2013/03/17/2964095.html">3. uml 类图依赖与关联的区别(5027)</a></li><li><a href="http://www.cnblogs.com/liuzhang/p/3544004.html">4. ubuntu 安装 zend studio(4905)</a></li><li><a href="http://www.cnblogs.com/liuzhang/archive/2013/02/21/2920974.html">5. backbone  与 ajax(3773)</a></li></ul></div>
+</div></div>
+            
+                <div id="sideContainer"></div>
+                <script type="text/javascript">
+                    $.ajax({
+                        url: '/' + currentBlogApp + '/mvc/blog/Minyx2_Lite_SideColumn.aspx',
+                        data: '{}',
+                        type: 'post',
+                        dataType: 'text',
+                        contentType: 'application/json; charset=utf-8',
+                        success: function (data) {
+                            if (data) {
+                                $("#sideContainer").html(data);
+                                loadBlogDefaultCalendar();
+                                loadBlogSideBlocks();
+                                var m = window.__blog.sideContainerRendered;
+                                if (m) { m(__$("sideContainer")); }
+                                window.__blog.sidebar.__layout();
+                            }
+                        }
+                    });
+
+                </script>
+            
+        </div>
+
+        <script type="text/javascript">
+            var m = window.__blog.sidebarRendered;
+            if (m) { m(__$("sidebar")); }
+        </script>
+
+        <div id="footer">
+            
+<p id="logoFoot">
+    <a href="http://www.spiga.com.mx/" title="Agencia Interactiva Spiga">www.spiga.com.mx</a>
+</p>
+<div class="footText">
+<p>
+Copyright ©2015 掸尘
+</p>
+<p>
+<a href="http://www.cnblogs.com/">博客园</a>
+</p>
+</div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var m = window.__blog.wrapperRendered;
+        if (m) { m(__$("wrapper")); }
+    </script>
+
+</div>
+<script type="text/javascript">
+    var m = window.__blog.containerRendered;
+    if (m) { m(__$("container")); }
+</script>
+
+
+</body></html>

@@ -1,0 +1,837 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-cn"><head><script src="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/analytics.js" async=""></script><script src="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/encoder.js" type="text/javascript"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>php的cURL库介绍 - 方倍工作室 - 博客园</title>
+<link type="text/css" rel="stylesheet" href="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/bundle-SimpleBlue.css">
+<link type="text/css" rel="stylesheet" href="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/99079.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/txw1958/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/txw1958/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/txw1958/wlwmanifest.xml">
+<script src="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'txw1958', cb_enable_mathjax=false;</script>
+<script src="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/blog-common.js" type="text/javascript"></script>
+<script src="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/share.js"></script><link href="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/slide_share.css" rel="stylesheet"></head>
+<body>
+<a name="top"></a>
+<div id="page_begin_html"></div><script>load_page_begin_html();</script>
+
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+		
+<!--done-->
+<div class="title"><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/txw1958/">方倍工作室</a></div>
+<div class="subtitle">微信公众平台开发 商务联系QQ:1354386063</div>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li id="nav_sitehome"></li>
+<li id="nav_myhome"><a id="MyLinks1_MyHomeLink" class="menu" href="http://www.cnblogs.com/txw1958/">首页</a></li>
+<li id="nav_q"><a class="menu" href="http://q.cnblogs.com/">博问</a></li>
+<li id="nav_ing"><a class="menu" href="http://home.cnblogs.com/ing/">闪存</a></li>
+<li id="nav_newpost"><a id="MyLinks1_NewPostLink" class="menu" rel="nofollow" href="http://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+<li id="nav_contact"><a id="MyLinks1_ContactLink" class="menu" rel="nofollow" href="http://msg.cnblogs.com/send/%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4">联系</a></li>
+<li id="nav_rss">
+<!----></li>
+<li id="nav_admin"><a id="MyLinks1_Admin" class="menu" rel="nofollow" href="http://i.cnblogs.com/">管理</a></li>
+</ul>
+
+		<div class="blogStats">
+			
+			
+<!--done-->
+随笔-561&nbsp;
+文章-8&nbsp;
+评论-1579&nbsp;
+
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+<div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class="post">
+		<h1 class="postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="http://www.cnblogs.com/txw1958/archive/2013/01/11/php-curl.html">php的cURL库介绍</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body"><p><strong>PHP</strong> <strong>cURL&nbsp;post get init exec cookie https&nbsp;</strong></p>
+<p>作者：http://txw1958.cnblogs.com/<br>地址：</p>
+<p>cURL 是一个利用URL语法规定来传输文件和数据的工具，支持很多协议，如HTTP、FTP、TELNET等。很多小偷程序都是使用这个函数。<br>最爽的是，PHP也支持 cURL 库。本文将介绍 cURL 的一些高级特性，以及在PHP中如何运用它。 <br><br></p>
+<p>正文：<br>cURL 是一种功能强大的库，支持很多不同的协议、选项，能提供 URL 请求相关的各种细节信息。<br><br></p>
+<p><strong>启用 cURL 设置</strong><br>首先，我们得先要确定我们的PHP是否开启了这个库，你可以通过使用php_info()函数来得到这一信息。</p>
+<div class="cnblogs_code">
+<pre>﹤?<span style="color: #000000;">php
+</span><span style="color: #008080;">phpinfo</span><span style="color: #000000;">();
+</span>?﹥</pre>
+</div>
+<p>如果你可以在网页上看到下面的输出，那么表示cURL库已被开启。</p>
+<p><img src="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/11120846-7f33df10def145a4a3dc26120f57f703.jpg" alt=""></p>
+<p>如果你看到的话，那么你需要设置你的PHP并开启这个库。如果你是在Windows平台下，那么非常简单，你需要改一改你的php.ini文件的设置，找到php_curl.dll，并取消前面的分号注释就行了。如下所示：</p>
+<div class="cnblogs_code">
+<pre><span style="color: #008000;">//</span><span style="color: #008000;">取消下面的注释</span>
+extension=php_curl.dll</pre>
+</div>
+<p>如果你是在Linux下面，那么，你需要重新编译你的PHP了，编辑时，你需要打开编译参数——在configure命令上加上“–with-curl” 参数。</p>
+<p><strong>为什么要用 cURL?</strong><br>是的，我们可以通过其他办法获取网页内容。大多数时候，我因为想偷懒，都直接用简单的PHP函数：</p>
+<div class="cnblogs_code">
+<pre><span style="color: #800080;">$content</span> = <span style="color: #008080;">file_get_contents</span>("http://www.doucube.com"<span style="color: #000000;">);
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> or</span>
+<span style="color: #800080;">$lines</span> = <span style="color: #008080;">file</span>("http://www.doucube.com"<span style="color: #000000;">);
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> or</span>
+<span style="color: #008080;">readfile</span>(http:<span style="color: #008000;">//</span><span style="color: #008000;">www.doucube.com);</span></pre>
+</div>
+<p>不过，这种做法缺乏灵活性和有效的错误处理。而且，你也不能用它完成一些高难度任务——比如处理coockies、验证、表单提交、文件上传等等。</p>
+<p><strong>基本结构</strong></p>
+<p>在学习更为复杂的功能之前，先来看一下在PHP中建立cURL请求的基本步骤：</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #008000;">//</span><span style="color: #008000;"> 1. 初始化</span>
+<span style="color: #800080;">$ch</span> =<span style="color: #000000;"> curl_init();
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 2. 设置选项，包括URL</span>
+curl_setopt(<span style="color: #800080;">$ch</span>, CURLOPT_URL, "http://www.doucube.com"<span style="color: #000000;">);
+curl_setopt(</span><span style="color: #800080;">$ch</span>, CURLOPT_RETURNTRANSFER, 1<span style="color: #000000;">);
+curl_setopt(</span><span style="color: #800080;">$ch</span>, CURLOPT_HEADER, 0<span style="color: #000000;">);
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 3. 执行并获取HTML文档内容</span>
+<span style="color: #800080;">$output</span> = curl_exec(<span style="color: #800080;">$ch</span><span style="color: #000000;">);
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 4. 释放curl句柄</span>
+curl_close(<span style="color: #800080;">$ch</span>);</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>第二步（也就是 curl_setopt() ）最为重要，一切玄妙均在此。有一长串cURL参数可供设置，它们能指定URL请求的各个细节。要一次性全部看完并理解可能比较困难，所以今天我们只试一下那些更常用也更有用的选项。</p>
+<p>检查错误<br>你可以加一段检查错误的语句（虽然这并不是必需的）：</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #008000;">//</span><span style="color: #008000;"> ...</span>
+<span style="color: #800080;">$output</span> = curl_exec(<span style="color: #800080;">$ch</span><span style="color: #000000;">);
+</span><span style="color: #0000ff;">if</span> (<span style="color: #800080;">$output</span> === <span style="color: #0000ff;">FALSE</span><span style="color: #000000;">) {
+</span><span style="color: #0000ff;">echo</span> "cURL Error: " . curl_error(<span style="color: #800080;">$ch</span><span style="color: #000000;">);
+}
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> ...</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>请注意，比较的时候我们用的是“<span style="background-color: #ffcc99;">=== FALSE</span>”，而非“== FALSE”。因为我们得区分 空输出 和 布尔值FALSE，后者才是真正的错误。</p>
+<p><strong>获取信息</strong><br>这是另一个可选的设置项，能够在cURL执行后获取这一请求的有关信息：</p>
+<div class="cnblogs_code">
+<pre><span style="color: #008000;">//</span><span style="color: #008000;"> ...</span>
+curl_exec(<span style="color: #800080;">$ch</span><span style="color: #000000;">);
+</span><span style="color: #800080;">$info</span> = curl_getinfo(<span style="color: #800080;">$ch</span><span style="color: #000000;">);
+</span><span style="color: #0000ff;">echo</span> '获取'. <span style="color: #800080;">$info</span>['url'] . '耗时'. <span style="color: #800080;">$info</span>['total_time'] . '秒'<span style="color: #000000;">;
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> ...</span></pre>
+</div>
+<p>返回的数组中包括了以下信息：</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre>“url” <span style="color: #008000;">//</span><span style="color: #008000;">资源网络地址 </span>
+“content_type” <span style="color: #008000;">//</span><span style="color: #008000;">内容编码 </span>
+“http_code” <span style="color: #008000;">//</span><span style="color: #008000;">HTTP状态码 </span>
+“header_size” <span style="color: #008000;">//</span><span style="color: #008000;">header的大小 </span>
+“request_size” <span style="color: #008000;">//</span><span style="color: #008000;">请求的大小 </span>
+“filetime” <span style="color: #008000;">//</span><span style="color: #008000;">文件创建时间 </span>
+“ssl_verify_result” <span style="color: #008000;">//</span><span style="color: #008000;">SSL验证结果 </span>
+“redirect_count” <span style="color: #008000;">//</span><span style="color: #008000;">跳转技术 </span>
+“total_time” <span style="color: #008000;">//</span><span style="color: #008000;">总耗时 </span>
+“namelookup_time” <span style="color: #008000;">//</span><span style="color: #008000;">DNS查询耗时 </span>
+“connect_time” <span style="color: #008000;">//</span><span style="color: #008000;">等待连接耗时 </span>
+“pretransfer_time” <span style="color: #008000;">//</span><span style="color: #008000;">传输前准备耗时 </span>
+“size_upload” <span style="color: #008000;">//</span><span style="color: #008000;">上传数据的大小 </span>
+“size_download” <span style="color: #008000;">//</span><span style="color: #008000;">下载数据的大小 </span>
+“speed_download” <span style="color: #008000;">//</span><span style="color: #008000;">下载速度 </span>
+“speed_upload” <span style="color: #008000;">//</span><span style="color: #008000;">上传速度 </span>
+“download_content_length”<span style="color: #008000;">//</span><span style="color: #008000;">下载内容的长度 </span>
+“upload_content_length” <span style="color: #008000;">//</span><span style="color: #008000;">上传内容的长度 </span>
+“starttransfer_time” <span style="color: #008000;">//</span><span style="color: #008000;">开始传输的时间 </span>
+“redirect_time”<span style="color: #008000;">//</span><span style="color: #008000;">重定向耗时 </span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>&nbsp;</p>
+<p><strong>基于浏览器的重定向</strong><br>在第一个例子中，我们将提供一段用于侦测服务器是否有基于浏览器的重定向的代码。例如，有些网站会根据是否是手机浏览器甚至用户来自哪个国家来重定向网页。<br>我们利用 CURLOPT_HTTPHEADER 选项来设定我们发送出的HTTP请求头信息（http headers），包括user agent信息和默认语言。然后我们来看看这些特定网站是否会把我们重定向到不同的URL。</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #008000;">//</span><span style="color: #008000;"> 测试用的URL</span>
+<span style="color: #800080;">$urls</span> = <span style="color: #0000ff;">array</span><span style="color: #000000;">(
+</span>"http://www.doucube.com",
+"http://www.mozilla.com",
+"http://www.facebook.com"<span style="color: #000000;">
+);
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 测试用的浏览器信息</span>
+<span style="color: #800080;">$browsers</span> = <span style="color: #0000ff;">array</span><span style="color: #000000;">(
+    </span>"standard" =&gt; <span style="color: #0000ff;">array</span><span style="color: #000000;"> (
+        </span>"user_agent" =&gt; "Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.6) Gecko/20091201 Firefox/3.5.6 (.NET CLR 3.5.30729)",
+        "language" =&gt; "en-us,en;q=0.5"<span style="color: #000000;">
+    )</span>,
+    "iphone" =&gt; <span style="color: #0000ff;">array</span><span style="color: #000000;"> (
+        </span>"user_agent" =&gt; "Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A537a Safari/419.3",
+        "language" =&gt; "en"<span style="color: #000000;">
+    )</span>,
+    "french" =&gt; <span style="color: #0000ff;">array</span><span style="color: #000000;"> (
+        </span>"user_agent" =&gt; "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; GTB6; .NET CLR 2.0.50727)",
+        "language" =&gt; "fr,fr-FR;q=0.5"<span style="color: #000000;">
+    )
+);
+</span><span style="color: #0000ff;">foreach</span> (<span style="color: #800080;">$urls</span> <span style="color: #0000ff;">as</span> <span style="color: #800080;">$url</span><span style="color: #000000;">) {
+    </span><span style="color: #0000ff;">echo</span> "URL: <span style="color: #800080;">$url</span>\n"<span style="color: #000000;">;
+    </span><span style="color: #0000ff;">foreach</span> (<span style="color: #800080;">$browsers</span> <span style="color: #0000ff;">as</span> <span style="color: #800080;">$test_name</span> =&gt; <span style="color: #800080;">$browser</span><span style="color: #000000;">) {
+        </span><span style="color: #800080;">$ch</span> =<span style="color: #000000;"> curl_init();
+        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 设置 url</span>
+        curl_setopt(<span style="color: #800080;">$ch</span>, CURLOPT_URL, <span style="color: #800080;">$url</span><span style="color: #000000;">);
+        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 设置浏览器的特定header</span>
+        curl_setopt(<span style="color: #800080;">$ch</span>, CURLOPT_HTTPHEADER, <span style="color: #0000ff;">array</span><span style="color: #000000;">(
+        </span>"User-Agent: {<span style="color: #800080;">$browser</span>['user_agent']}",
+        "Accept-Language: {<span style="color: #800080;">$browser</span>['language']}"<span style="color: #000000;">
+        ));
+        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 页面内容我们并不需要</span>
+        curl_setopt(<span style="color: #800080;">$ch</span>, CURLOPT_NOBODY, 1<span style="color: #000000;">);
+        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 只需返回HTTP header</span>
+        curl_setopt(<span style="color: #800080;">$ch</span>, CURLOPT_HEADER, 1<span style="color: #000000;">);
+        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 返回结果，而不是输出它</span>
+        curl_setopt(<span style="color: #800080;">$ch</span>, CURLOPT_RETURNTRANSFER, 1<span style="color: #000000;">);
+        </span><span style="color: #800080;">$output</span> = curl_exec(<span style="color: #800080;">$ch</span><span style="color: #000000;">);
+        curl_close(</span><span style="color: #800080;">$ch</span><span style="color: #000000;">);
+        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 有重定向的HTTP头信息吗?</span>
+        <span style="color: #0000ff;">if</span> (<span style="color: #008080;">preg_match</span>("!Location: (.*)!", <span style="color: #800080;">$output</span>, <span style="color: #800080;">$matches</span><span style="color: #000000;">)) {
+            </span><span style="color: #0000ff;">echo</span> "<span style="color: #800080;">$test_name</span>: redirects to <span style="color: #800080;">$matches</span>[1]\n"<span style="color: #000000;">;
+        } </span><span style="color: #0000ff;">else</span><span style="color: #000000;"> {
+            </span><span style="color: #0000ff;">echo</span> "<span style="color: #800080;">$test_name</span>: no redirection\n"<span style="color: #000000;">;
+        }
+    }
+    </span><span style="color: #0000ff;">echo</span> "\n\n"<span style="color: #000000;">;
+}</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>&nbsp;</p>
+<p>首先，我们建立一组需要测试的URL，接着指定一组需要测试的浏览器信息。最后通过循环测试各种URL和浏览器匹配可能产生的情况。<br>因为我们指定了cURL选项，所以返回的输出内容则只包括HTTP头信息（被存放于 $output 中）。利用一个简单的正则，我们检查这个头信息中是否包含了“Location:”字样。<br><br><strong>用POST方法发送数据</strong><br>当发起GET请求时，数据可以通过“查询字串”（query string）传递给一个URL。例如，在google中搜索时，搜索关键即为URL的查询字串的一部分：<br>http://www.google.com/search?q=nettuts<br>这种情况下你可能并不需要cURL来模拟。把这个URL丢给“file_get_contents()”就能得到相同结果。 <br>不过有一些HTML表单是用POST方法提交的。这种表单提交时，数据是通过 HTTP请求体（request body） 发送，而不是查询字串。例如，当使用CodeIgniter论坛的表单，无论你输入什么关键字，总是被POST到如下页面：<br>http://codeigniter.com/forums/do_search/<br>你可以用PHP脚本来模拟这种URL请求。首先，新建一个可以接受并显示POST数据的文件，我们给它命名为post_output.php：<br>print_r($_POST);<br>接下来，写一段PHP脚本来执行cURL请求：</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #800080;">$url</span> = "http://localhost/post_output.php"<span style="color: #000000;">;
+</span><span style="color: #800080;">$post_data</span> = <span style="color: #0000ff;">array</span><span style="color: #000000;"> (
+</span>"foo" =&gt; "bar",
+"query" =&gt; "Nettuts",
+"action" =&gt; "Submit"<span style="color: #000000;">
+);
+</span><span style="color: #800080;">$ch</span> =<span style="color: #000000;"> curl_init();
+curl_setopt(</span><span style="color: #800080;">$ch</span>, CURLOPT_URL, <span style="color: #800080;">$url</span><span style="color: #000000;">);
+curl_setopt(</span><span style="color: #800080;">$ch</span>, CURLOPT_RETURNTRANSFER, 1<span style="color: #000000;">);
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 我们在POST数据哦！</span>
+curl_setopt(<span style="color: #800080;">$ch</span>, CURLOPT_POST, 1<span style="color: #000000;">);
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 把post的变量加上</span>
+curl_setopt(<span style="color: #800080;">$ch</span>, CURLOPT_POSTFIELDS, <span style="color: #800080;">$post_data</span><span style="color: #000000;">);
+</span><span style="color: #800080;">$output</span> = curl_exec(<span style="color: #800080;">$ch</span><span style="color: #000000;">);
+curl_close(</span><span style="color: #800080;">$ch</span><span style="color: #000000;">);
+</span><span style="color: #0000ff;">echo</span> <span style="color: #800080;">$output</span>;</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>这段脚本发送一个POST请求给 post_output.php ，这个页面 $_POST 变量并返回，我们利用cURL捕捉了这个输出。</p>
+<p><strong>文件上传</strong><br>上传文件和前面的POST十分相似。因为所有的文件上传表单都是通过POST方法提交的。<br>首先新建一个接收文件的页面，命名为 upload_output.php：<br>print_r($_FILES);<br>以下是真正执行文件上传任务的脚本：</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #800080;">$url</span> = "http://localhost/upload_output.php"<span style="color: #000000;">;
+</span><span style="color: #800080;">$post_data</span> = <span style="color: #0000ff;">array</span><span style="color: #000000;"> (
+</span>"foo" =&gt; "bar",
+<span style="color: #008000;">//</span><span style="color: #008000;"> 要上传的本地文件地址</span>
+"upload" =&gt; "@C:/doucube/www/test.zip"<span style="color: #000000;">
+);
+</span><span style="color: #800080;">$ch</span> =<span style="color: #000000;"> curl_init();
+curl_setopt(</span><span style="color: #800080;">$ch</span>, CURLOPT_URL, <span style="color: #800080;">$url</span><span style="color: #000000;">);
+curl_setopt(</span><span style="color: #800080;">$ch</span>, CURLOPT_RETURNTRANSFER, 1<span style="color: #000000;">);
+curl_setopt(</span><span style="color: #800080;">$ch</span>, CURLOPT_POST, 1<span style="color: #000000;">);
+curl_setopt(</span><span style="color: #800080;">$ch</span>, CURLOPT_POSTFIELDS, <span style="color: #800080;">$post_data</span><span style="color: #000000;">);
+</span><span style="color: #800080;">$output</span> = curl_exec(<span style="color: #800080;">$ch</span><span style="color: #000000;">);
+curl_close(</span><span style="color: #800080;">$ch</span><span style="color: #000000;">);
+</span><span style="color: #0000ff;">echo</span> <span style="color: #800080;">$output</span>;</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>如果你需要上传一个文件，只需要把文件路径像一个post变量一样传过去，不过记得在前面加上@符号。</p>
+<p><strong>cURL批处理（multi cURL）</strong><br>cURL还有一个高级特性——批处理句柄（handle）。这一特性允许你同时或异步地打开多个URL连接。<br>下面是来自来自php.net的示例代码：</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #008000;">//</span><span style="color: #008000;"> 创建两个cURL资源</span>
+<span style="color: #800080;">$ch1</span> =<span style="color: #000000;"> curl_init();
+</span><span style="color: #800080;">$ch2</span> =<span style="color: #000000;"> curl_init();
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 指定URL和适当的参数</span>
+curl_setopt(<span style="color: #800080;">$ch1</span>, CURLOPT_URL, "http://lxr.php.net/"<span style="color: #000000;">);
+curl_setopt(</span><span style="color: #800080;">$ch1</span>, CURLOPT_HEADER, 0<span style="color: #000000;">);
+curl_setopt(</span><span style="color: #800080;">$ch2</span>, CURLOPT_URL, "http://www.php.net/"<span style="color: #000000;">);
+curl_setopt(</span><span style="color: #800080;">$ch2</span>, CURLOPT_HEADER, 0<span style="color: #000000;">);
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 创建cURL批处理句柄</span>
+<span style="color: #800080;">$mh</span> =<span style="color: #000000;"> curl_multi_init();
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 加上前面两个资源句柄</span>
+curl_multi_add_handle(<span style="color: #800080;">$mh</span>,<span style="color: #800080;">$ch1</span><span style="color: #000000;">);
+curl_multi_add_handle(</span><span style="color: #800080;">$mh</span>,<span style="color: #800080;">$ch2</span><span style="color: #000000;">);
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 预定义一个状态变量</span>
+<span style="color: #800080;">$active</span> = <span style="color: #0000ff;">null</span><span style="color: #000000;">;
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 执行批处理</span>
+<span style="color: #0000ff;">do</span><span style="color: #000000;"> {
+</span><span style="color: #800080;">$mrc</span> = curl_multi_exec(<span style="color: #800080;">$mh</span>, <span style="color: #800080;">$active</span><span style="color: #000000;">);
+} </span><span style="color: #0000ff;">while</span> (<span style="color: #800080;">$mrc</span> ==<span style="color: #000000;"> CURLM_CALL_MULTI_PERFORM);
+</span><span style="color: #0000ff;">while</span> (<span style="color: #800080;">$active</span> &amp;&amp; <span style="color: #800080;">$mrc</span> ==<span style="color: #000000;"> CURLM_OK) {
+</span><span style="color: #0000ff;">if</span> (curl_multi_select(<span style="color: #800080;">$mh</span>) != -1<span style="color: #000000;">) {
+</span><span style="color: #0000ff;">do</span><span style="color: #000000;"> {
+</span><span style="color: #800080;">$mrc</span> = curl_multi_exec(<span style="color: #800080;">$mh</span>, <span style="color: #800080;">$active</span><span style="color: #000000;">);
+} </span><span style="color: #0000ff;">while</span> (<span style="color: #800080;">$mrc</span> ==<span style="color: #000000;"> CURLM_CALL_MULTI_PERFORM);
+}
+}
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 关闭各个句柄</span>
+curl_multi_remove_handle(<span style="color: #800080;">$mh</span>, <span style="color: #800080;">$ch1</span><span style="color: #000000;">);
+curl_multi_remove_handle(</span><span style="color: #800080;">$mh</span>, <span style="color: #800080;">$ch2</span><span style="color: #000000;">);
+curl_multi_close(</span><span style="color: #800080;">$mh</span>);</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>这里要做的就是打开多个cURL句柄并指派给一个批处理句柄。然后你就只需在一个while循环里等它执行完毕。</p>
+<p>这个示例中有两个主要循环。第一个 do-while 循环重复调用 curl_multi_exec() 
+。这个函数是无隔断（non-blocking）的，但会尽可能少地执行。它返回一个状态值，只要这个值等于常量 
+CURLM_CALL_MULTI_PERFORM 
+，就代表还有一些刻不容缓的工作要做（例如，把对应URL的http头信息发送出去）。也就是说，我们需要不断调用该函数，直到返回值发生改变。<br>而
+接下来的 while 循环，只在 $active 变量为 true 时继续。这一变量之前作为第二个参数传给了 curl_multi_exec()
+ ，代表只要批处理句柄中是否还有活动连接。接着，我们调用 curl_multi_select() 
+，在活动连接（例如接受服务器响应）出现之前，它都是被“屏蔽”的。这个函数成功执行后，我们又会进入另一个 do-while 
+循环，继续下一条URL。<br>还是来看一看怎么把这一功能用到实处吧：</p>
+<p><br><strong>WordPress 连接检查器</strong><br>想象一下你有一个文章数目庞大的博客，这些文章中包含了大量外部网站链接。一段时间之后，因为这样那样的原因，这些链接中相当数量都失效了。要么是被和谐了，要么是整个站点都被功夫网了... <br>我们下面建立一个脚本，分析所有这些链接，找出打不开或者404的网站/网页，并生成一个报告。<br>请注意，以下并不是一个真正可用的WordPress插件，仅仅是一段独立功能的脚本而已，仅供演示，谢谢。<br>好，开始吧。首先，从数据库中读取所有这些链接：</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #008000;">//</span><span style="color: #008000;"> CONFIG</span>
+<span style="color: #800080;">$db_host</span> = 'localhost'<span style="color: #000000;">;
+</span><span style="color: #800080;">$db_user</span> = 'root'<span style="color: #000000;">;
+</span><span style="color: #800080;">$db_pass</span> = ''<span style="color: #000000;">;
+</span><span style="color: #800080;">$db_name</span> = 'wordpress'<span style="color: #000000;">;
+</span><span style="color: #800080;">$excluded_domains</span> = <span style="color: #0000ff;">array</span><span style="color: #000000;">(
+</span>'localhost', 'www.mydomain.com'<span style="color: #000000;">);
+</span><span style="color: #800080;">$max_connections</span> = 10<span style="color: #000000;">;
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 初始化一些变量</span>
+<span style="color: #800080;">$url_list</span> = <span style="color: #0000ff;">array</span><span style="color: #000000;">();
+</span><span style="color: #800080;">$working_urls</span> = <span style="color: #0000ff;">array</span><span style="color: #000000;">();
+</span><span style="color: #800080;">$dead_urls</span> = <span style="color: #0000ff;">array</span><span style="color: #000000;">();
+</span><span style="color: #800080;">$not_found_urls</span> = <span style="color: #0000ff;">array</span><span style="color: #000000;">();
+</span><span style="color: #800080;">$active</span> = <span style="color: #0000ff;">null</span><span style="color: #000000;">;
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 连到 MySQL</span>
+<span style="color: #0000ff;">if</span> (!<span style="color: #008080;">mysql_connect</span>(<span style="color: #800080;">$db_host</span>, <span style="color: #800080;">$db_user</span>, <span style="color: #800080;">$db_pass</span><span style="color: #000000;">)) {
+</span><span style="color: #0000ff;">die</span>('Could not connect: ' . <span style="color: #008080;">mysql_error</span><span style="color: #000000;">());
+}
+</span><span style="color: #0000ff;">if</span> (!<span style="color: #008080;">mysql_select_db</span>(<span style="color: #800080;">$db_name</span><span style="color: #000000;">)) {
+</span><span style="color: #0000ff;">die</span>('Could not select db: ' . <span style="color: #008080;">mysql_error</span><span style="color: #000000;">());
+}
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 找出所有含有链接的文章</span>
+<span style="color: #800080;">$q</span> = "<span style="color: #000000;">SELECT post_content FROM wp_posts
+WHERE post_content LIKE '%href=%'
+AND post_status = 'publish'
+AND post_type = 'post'</span>"<span style="color: #000000;">;
+</span><span style="color: #800080;">$r</span> = <span style="color: #008080;">mysql_query</span>(<span style="color: #800080;">$q</span>) or <span style="color: #0000ff;">die</span>(<span style="color: #008080;">mysql_error</span><span style="color: #000000;">());
+</span><span style="color: #0000ff;">while</span> (<span style="color: #800080;">$d</span> = <span style="color: #008080;">mysql_fetch_assoc</span>(<span style="color: #800080;">$r</span><span style="color: #000000;">)) {
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 用正则匹配链接</span>
+<span style="color: #0000ff;">if</span> (<span style="color: #008080;">preg_match_all</span>("!href=\"(.*?)\"!", <span style="color: #800080;">$d</span>['post_content'], <span style="color: #800080;">$matches</span><span style="color: #000000;">)) {
+</span><span style="color: #0000ff;">foreach</span> (<span style="color: #800080;">$matches</span>[1] <span style="color: #0000ff;">as</span> <span style="color: #800080;">$url</span><span style="color: #000000;">) {
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> exclude some domains</span>
+<span style="color: #800080;">$tmp</span> = <span style="color: #008080;">parse_url</span>(<span style="color: #800080;">$url</span><span style="color: #000000;">);
+</span><span style="color: #0000ff;">if</span> (<span style="color: #008080;">in_array</span>(<span style="color: #800080;">$tmp</span>['host'], <span style="color: #800080;">$excluded_domains</span><span style="color: #000000;">)) {
+</span><span style="color: #0000ff;">continue</span><span style="color: #000000;">;
+}
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> store the url</span>
+<span style="color: #800080;">$url_list</span> []= <span style="color: #800080;">$url</span><span style="color: #000000;">;
+}
+}
+}
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 移除重复链接</span>
+<span style="color: #800080;">$url_list</span> = <span style="color: #008080;">array_values</span>(<span style="color: #008080;">array_unique</span>(<span style="color: #800080;">$url_list</span><span style="color: #000000;">));
+</span><span style="color: #0000ff;">if</span> (!<span style="color: #800080;">$url_list</span><span style="color: #000000;">) {
+</span><span style="color: #0000ff;">die</span>('No URL to check'<span style="color: #000000;">);
+}</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>我们首先配置好数据库，一系列要排除的域名（$excluded_domains），以及最大并发连接数（$max_connections）。然后，连接数据库，获取文章和包含的链接，把它们收集到一个数组中（$url_list）。&nbsp;</p>
+<p>下面的代码有点复杂了，因此我将一小步一小步地详细解释：</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #008000;">//</span><span style="color: #008000;"> 1. 批处理器</span>
+<span style="color: #800080;">$mh</span> =<span style="color: #000000;"> curl_multi_init();
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 2. 加入需批量处理的URL</span>
+<span style="color: #0000ff;">for</span> (<span style="color: #800080;">$i</span> = 0; <span style="color: #800080;">$i</span> &lt; <span style="color: #800080;">$max_connections</span>; <span style="color: #800080;">$i</span>++<span style="color: #000000;">) {
+add_url_to_multi_handle(</span><span style="color: #800080;">$mh</span>, <span style="color: #800080;">$url_list</span><span style="color: #000000;">);
+}
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 3. 初始处理</span>
+<span style="color: #0000ff;">do</span><span style="color: #000000;"> {
+</span><span style="color: #800080;">$mrc</span> = curl_multi_exec(<span style="color: #800080;">$mh</span>, <span style="color: #800080;">$active</span><span style="color: #000000;">);
+} </span><span style="color: #0000ff;">while</span> (<span style="color: #800080;">$mrc</span> ==<span style="color: #000000;"> CURLM_CALL_MULTI_PERFORM);
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 4. 主循环</span>
+<span style="color: #0000ff;">while</span> (<span style="color: #800080;">$active</span> &amp;&amp; <span style="color: #800080;">$mrc</span> ==<span style="color: #000000;"> CURLM_OK) {
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 5. 有活动连接</span>
+<span style="color: #0000ff;">if</span> (curl_multi_select(<span style="color: #800080;">$mh</span>) != -1<span style="color: #000000;">) {
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 6. 干活</span>
+<span style="color: #0000ff;">do</span><span style="color: #000000;"> {
+</span><span style="color: #800080;">$mrc</span> = curl_multi_exec(<span style="color: #800080;">$mh</span>, <span style="color: #800080;">$active</span><span style="color: #000000;">);
+} </span><span style="color: #0000ff;">while</span> (<span style="color: #800080;">$mrc</span> ==<span style="color: #000000;"> CURLM_CALL_MULTI_PERFORM);
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 7. 有信息否？</span>
+<span style="color: #0000ff;">if</span> (<span style="color: #800080;">$mhinfo</span> = curl_multi_info_read(<span style="color: #800080;">$mh</span><span style="color: #000000;">)) {
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 意味着该连接正常结束
+// 8. 从curl句柄获取信息</span>
+<span style="color: #800080;">$chinfo</span> = curl_getinfo(<span style="color: #800080;">$mhinfo</span>['handle'<span style="color: #000000;">]);
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 9. 死链么？</span>
+<span style="color: #0000ff;">if</span> (!<span style="color: #800080;">$chinfo</span>['http_code'<span style="color: #000000;">]) {
+</span><span style="color: #800080;">$dead_urls</span> []= <span style="color: #800080;">$chinfo</span>['url'<span style="color: #000000;">];
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 10. 404了?</span>
+} <span style="color: #0000ff;">else</span> <span style="color: #0000ff;">if</span> (<span style="color: #800080;">$chinfo</span>['http_code'] == 404<span style="color: #000000;">) {
+</span><span style="color: #800080;">$not_found_urls</span> []= <span style="color: #800080;">$chinfo</span>['url'<span style="color: #000000;">];
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 11. 还能用</span>
+} <span style="color: #0000ff;">else</span><span style="color: #000000;"> {
+</span><span style="color: #800080;">$working_urls</span> []= <span style="color: #800080;">$chinfo</span>['url'<span style="color: #000000;">];
+}
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 12. 移除句柄</span>
+curl_multi_remove_handle(<span style="color: #800080;">$mh</span>, <span style="color: #800080;">$mhinfo</span>['handle'<span style="color: #000000;">]);
+curl_close(</span><span style="color: #800080;">$mhinfo</span>['handle'<span style="color: #000000;">]);
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 13. 加入新URL，干活</span>
+<span style="color: #0000ff;">if</span> (add_url_to_multi_handle(<span style="color: #800080;">$mh</span>, <span style="color: #800080;">$url_list</span><span style="color: #000000;">)) {
+</span><span style="color: #0000ff;">do</span><span style="color: #000000;"> {
+</span><span style="color: #800080;">$mrc</span> = curl_multi_exec(<span style="color: #800080;">$mh</span>, <span style="color: #800080;">$active</span><span style="color: #000000;">);
+} </span><span style="color: #0000ff;">while</span> (<span style="color: #800080;">$mrc</span> ==<span style="color: #000000;"> CURLM_CALL_MULTI_PERFORM);
+}
+}
+}
+}
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 14. 完了</span>
+curl_multi_close(<span style="color: #800080;">$mh</span><span style="color: #000000;">);
+</span><span style="color: #0000ff;">echo</span> "==Dead URLs==\n"<span style="color: #000000;">;
+</span><span style="color: #0000ff;">echo</span> <span style="color: #008080;">implode</span>("\n",<span style="color: #800080;">$dead_urls</span>) . "\n\n"<span style="color: #000000;">;
+</span><span style="color: #0000ff;">echo</span> "==404 URLs==\n"<span style="color: #000000;">;
+</span><span style="color: #0000ff;">echo</span> <span style="color: #008080;">implode</span>("\n",<span style="color: #800080;">$not_found_urls</span>) . "\n\n"<span style="color: #000000;">;
+</span><span style="color: #0000ff;">echo</span> "==Working URLs==\n"<span style="color: #000000;">;
+</span><span style="color: #0000ff;">echo</span> <span style="color: #008080;">implode</span>("\n",<span style="color: #800080;">$working_urls</span><span style="color: #000000;">);
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 15. 向批处理器添加url</span>
+<span style="color: #0000ff;">function</span> add_url_to_multi_handle(<span style="color: #800080;">$mh</span>, <span style="color: #800080;">$url_list</span><span style="color: #000000;">) {
+</span><span style="color: #0000ff;">static</span> <span style="color: #800080;">$index</span> = 0<span style="color: #000000;">;
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 如果还剩url没用</span>
+<span style="color: #0000ff;">if</span> (<span style="color: #800080;">$url_list</span>[<span style="color: #800080;">$index</span><span style="color: #000000;">]) {
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 新建curl句柄</span>
+<span style="color: #800080;">$ch</span> =<span style="color: #000000;"> curl_init();
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 配置url</span>
+curl_setopt(<span style="color: #800080;">$ch</span>, CURLOPT_URL, <span style="color: #800080;">$url_list</span>[<span style="color: #800080;">$index</span><span style="color: #000000;">]);
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 不想输出返回的内容</span>
+curl_setopt(<span style="color: #800080;">$ch</span>, CURLOPT_RETURNTRANSFER, 1<span style="color: #000000;">);
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 重定向到哪儿我们就去哪儿</span>
+curl_setopt(<span style="color: #800080;">$ch</span>, CURLOPT_FOLLOWLOCATION, 1<span style="color: #000000;">);
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 不需要内容体，能够节约带宽和时间</span>
+curl_setopt(<span style="color: #800080;">$ch</span>, CURLOPT_NOBODY, 1<span style="color: #000000;">);
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 加入到批处理器中</span>
+curl_multi_add_handle(<span style="color: #800080;">$mh</span>, <span style="color: #800080;">$ch</span><span style="color: #000000;">);
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 拨一下计数器，下次调用该函数就能添加下一个url了</span>
+<span style="color: #800080;">$index</span>++<span style="color: #000000;">;
+</span><span style="color: #0000ff;">return</span> <span style="color: #0000ff;">true</span><span style="color: #000000;">;
+} </span><span style="color: #0000ff;">else</span><span style="color: #000000;"> {
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 没有新的URL需要处理了</span>
+<span style="color: #0000ff;">return</span> <span style="color: #0000ff;">false</span><span style="color: #000000;">;
+}
+}</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>&nbsp;</p>
+<p>下面解释一下以上代码。列表的序号对应着代码注释中的顺序数字。<br>新建一个批处理器。Created a multi handle. <br>稍后我们将创建一个把URL加入批处理器的函数 add_url_to_multi_handle() 。每当这个函数被调用，就有一个新url被加入批处理器。一开始，我们给批处理器添加了10个URL（这一数字由 $max_connections 所决定）。 <br>运行 curl_multi_exec() 进行初始化工作是必须的，只要它返回 CURLM_CALL_MULTI_PERFORM 就还有事情要做。这么做主要是为了创建连接，它不会等待完整的URL响应。 <br>只要批处理中还有活动连接主循环就会一直持续。 <br>curl_multi_select() 会一直等待，直到某个URL查询产生活动连接。 <br>cURL的活儿又来了，主要是获取响应数据。 <br>检查各种信息。当一个URL请求完成时，会返回一个数组。 <br>在返回的数组中有一个 cURL 句柄。我们利用其获取单个cURL请求的相应信息。 <br>如果这是一个死链或者请求超时，不会返回http状态码。 <br>如果这个页面找不到了，会返回404状态码。 <br>其他情况我们都认为这个链接是可用的（当然，你也可以再检查一下500错误之类...）。 <br>从该批次移除这个cURL句柄，因为它已经没有利用价值了，关了它！ <br>很好，现在可以另外加一个URL进来了。再一次地，初始化工作又开始进行... <br>嗯，该干的都干了。关闭批处理器，生成报告。 <br>回过头来看给批处理器添加新URL的函数。这个函数每调用一次，静态变量 $index 就递增一次，这样我们才能知道还剩多少URL没处理。 <br>我把这个脚本在我的博客上跑了一遍（测试需要，有一些错误链接是故意加上的），结果如下：<br>&lt;img border="0" src="/upload/201106/20110602225008534.png" /&gt;<br> <br>共检查约40个URL，只耗费两秒不到。当需要检查更加大量的URL时，其省心省力的效果可想而知！如果你同时打开10个连接，还能再快上10倍！另外，你还可以利用cURL批处理的无隔断特性来处理大量URL请求，而不会阻塞你的Web脚本。</p>
+<p><br>另一些有用的cURL 选项<br><strong>HTTP 认证</strong><br>如果某个URL请求需要基于 HTTP 的身份验证，你可以使用下面的代码：</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #800080;">$url</span> = "http://www.somesite.com/members/"<span style="color: #000000;">;
+</span><span style="color: #800080;">$ch</span> =<span style="color: #000000;"> curl_init();
+curl_setopt(</span><span style="color: #800080;">$ch</span>, CURLOPT_URL, <span style="color: #800080;">$url</span><span style="color: #000000;">);
+curl_setopt(</span><span style="color: #800080;">$ch</span>, CURLOPT_RETURNTRANSFER, 1<span style="color: #000000;">);
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 发送用户名和密码</span>
+curl_setopt(<span style="color: #800080;">$ch</span>, CURLOPT_USERPWD, "myusername:mypassword"<span style="color: #000000;">);
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 你可以允许其重定向</span>
+curl_setopt(<span style="color: #800080;">$ch</span>, CURLOPT_FOLLOWLOCATION, 1<span style="color: #000000;">);
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 下面的选项让 cURL 在重定向后
+// 也能发送用户名和密码</span>
+curl_setopt(<span style="color: #800080;">$ch</span>, CURLOPT_UNRESTRICTED_AUTH, 1<span style="color: #000000;">);
+</span><span style="color: #800080;">$output</span> = curl_exec(<span style="color: #800080;">$ch</span><span style="color: #000000;">);
+curl_close(</span><span style="color: #800080;">$ch</span>);</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p><strong>FTP 上传</strong></p>
+<p>PHP 自带有 FTP 类库， 但你也能用 cURL：</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #008000;">//</span><span style="color: #008000;"> 开一个文件指针</span>
+<span style="color: #800080;">$file</span> = <span style="color: #008080;">fopen</span>("/path/to/file", "r"<span style="color: #000000;">);
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> url里包含了大部分所需信息</span>
+<span style="color: #800080;">$url</span> = "ftp://username:password@mydomain.com:21/path/to/new/file"<span style="color: #000000;">;
+</span><span style="color: #800080;">$ch</span> =<span style="color: #000000;"> curl_init();
+curl_setopt(</span><span style="color: #800080;">$ch</span>, CURLOPT_URL, <span style="color: #800080;">$url</span><span style="color: #000000;">);
+curl_setopt(</span><span style="color: #800080;">$ch</span>, CURLOPT_RETURNTRANSFER, 1<span style="color: #000000;">);
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 上传相关的选项</span>
+curl_setopt(<span style="color: #800080;">$ch</span>, CURLOPT_UPLOAD, 1<span style="color: #000000;">);
+curl_setopt(</span><span style="color: #800080;">$ch</span>, CURLOPT_INFILE, <span style="color: #800080;">$fp</span><span style="color: #000000;">);
+curl_setopt(</span><span style="color: #800080;">$ch</span>, CURLOPT_INFILESIZE, <span style="color: #008080;">filesize</span>("/path/to/file"<span style="color: #000000;">));
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 是否开启ASCII模式 (上传文本文件时有用)</span>
+curl_setopt(<span style="color: #800080;">$ch</span>, CURLOPT_FTPASCII, 1<span style="color: #000000;">);
+</span><span style="color: #800080;">$output</span> = curl_exec(<span style="color: #800080;">$ch</span><span style="color: #000000;">);
+curl_close(</span><span style="color: #800080;">$ch</span>);</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>&nbsp;</p>
+<p><strong>FQ术</strong><br>你可以用代理发起cURL请求：</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #800080;">$ch</span> =<span style="color: #000000;"> curl_init();
+curl_setopt(</span><span style="color: #800080;">$ch</span>, CURLOPT_URL,'http://www.example.com'<span style="color: #000000;">);
+curl_setopt(</span><span style="color: #800080;">$ch</span>, CURLOPT_RETURNTRANSFER, 1<span style="color: #000000;">);
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 指定代理地址</span>
+curl_setopt(<span style="color: #800080;">$ch</span>, CURLOPT_PROXY, '11.11.11.11:8080'<span style="color: #000000;">);
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 如果需要的话，提供用户名和密码</span>
+curl_setopt(<span style="color: #800080;">$ch</span>, CURLOPT_PROXYUSERPWD,'user:pass'<span style="color: #000000;">);
+</span><span style="color: #800080;">$output</span> = curl_exec(<span style="color: #800080;">$ch</span><span style="color: #000000;">);
+curl_close (</span><span style="color: #800080;">$ch</span>);</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>&nbsp;</p>
+<p><strong>回调函数</strong><br>可以在一个URL请求过程中，让cURL调用某指定的回调函数。例如，在内容或者响应下载的过程中立刻开始利用数据，而不用等到完全下载完。</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #800080;">$ch</span> =<span style="color: #000000;"> curl_init();
+curl_setopt(</span><span style="color: #800080;">$ch</span>, CURLOPT_URL,'http://api.doucube.com'<span style="color: #000000;">);
+curl_setopt(</span><span style="color: #800080;">$ch</span>, CURLOPT_WRITEFUNCTION,"progress_function"<span style="color: #000000;">);
+curl_exec(</span><span style="color: #800080;">$ch</span><span style="color: #000000;">);
+curl_close (</span><span style="color: #800080;">$ch</span><span style="color: #000000;">);
+</span><span style="color: #0000ff;">function</span> progress_function(<span style="color: #800080;">$ch</span>,<span style="color: #800080;">$str</span><span style="color: #000000;">) {
+</span><span style="color: #0000ff;">echo</span> <span style="color: #800080;">$str</span><span style="color: #000000;">;
+</span><span style="color: #0000ff;">return</span> <span style="color: #008080;">strlen</span>(<span style="color: #800080;">$str</span><span style="color: #000000;">);
+}</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>&nbsp;</p>
+<p>这个回调函数必须返回字串的长度，不然此功能将无法正常使用。<br>在URL响应接收的过程中，只要收到一个数据包，这个函数就会被调用。</p>
+<p><strong>POST数据</strong><br>向某个网页POST数据。假设我们有一个处理表单的网址http://www.example.com/sendSMS.php，其可以接受两个表单域，一个是电话号码，一个是短信内容。</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre>﹤?<span style="color: #000000;">php
+</span><span style="color: #800080;">$phoneNumber</span> = '13912345678'<span style="color: #000000;">;
+</span><span style="color: #800080;">$message</span> = 'This message was generated by curl and php'<span style="color: #000000;">;
+</span><span style="color: #800080;">$curlPost</span> = 'pNUMBER=' . <span style="color: #008080;">urlencode</span>(<span style="color: #800080;">$phoneNumber</span>) . '&amp;MESSAGE=' . <span style="color: #008080;">urlencode</span>(<span style="color: #800080;">$message</span>) . '&amp;SUBMIT=Send'<span style="color: #000000;">;
+</span><span style="color: #800080;">$ch</span> =<span style="color: #000000;"> curl_init();
+curl_setopt(</span><span style="color: #800080;">$ch</span>, CURLOPT_URL, 'http://www.example.com/sendSMS.php'<span style="color: #000000;">);
+curl_setopt(</span><span style="color: #800080;">$ch</span>, CURLOPT_HEADER, 1<span style="color: #000000;">);
+curl_setopt(</span><span style="color: #800080;">$ch</span>, CURLOPT_RETURNTRANSFER, 1<span style="color: #000000;">);
+curl_setopt(</span><span style="color: #800080;">$ch</span>, CURLOPT_POST, 1<span style="color: #000000;">);
+curl_setopt(</span><span style="color: #800080;">$ch</span>, CURLOPT_POSTFIELDS, <span style="color: #800080;">$curlPost</span><span style="color: #000000;">);
+</span><span style="color: #800080;">$data</span> =<span style="color: #000000;"> curl_exec();
+curl_close(</span><span style="color: #800080;">$ch</span><span style="color: #000000;">);
+</span>?﹥</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>从上面的程序我们可以看到，使用CURLOPT_POST设置HTTP协议的POST方法，而不是GET方法，然后以CURLOPT_POSTFIELDS设置POST的数据。</p>
+<p><strong>代理服务器</strong><br>下面是一个如何使用代理服务器的示例。请注意其中高亮的代码，代码很简单，我就不用多说了。</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre>﹤?<span style="color: #000000;">php 
+</span><span style="color: #800080;">$ch</span> =<span style="color: #000000;"> curl_init();
+curl_setopt(</span><span style="color: #800080;">$ch</span>, CURLOPT_URL, 'http://www.example.com'<span style="color: #000000;">);
+curl_setopt(</span><span style="color: #800080;">$ch</span>, CURLOPT_HEADER, 1<span style="color: #000000;">);
+curl_setopt(</span><span style="color: #800080;">$ch</span>, CURLOPT_RETURNTRANSFER, 1<span style="color: #000000;">);
+curl_setopt(</span><span style="color: #800080;">$ch</span>, CURLOPT_HTTPPROXYTUNNEL, 1<span style="color: #000000;">);
+curl_setopt(</span><span style="color: #800080;">$ch</span>, CURLOPT_PROXY, 'fakeproxy.com:1080'<span style="color: #000000;">);
+curl_setopt(</span><span style="color: #800080;">$ch</span>, CURLOPT_PROXYUSERPWD, 'user:password'<span style="color: #000000;">);
+</span><span style="color: #800080;">$data</span> =<span style="color: #000000;"> curl_exec();
+curl_close(</span><span style="color: #800080;">$ch</span><span style="color: #000000;">);
+</span>?﹥</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>&nbsp;</p>
+<p><strong>SSL和Cookie</strong><br>关于SSL也就是HTTPS协议，你只需要把CURLOPT_URL连接中的http://变成https://就可以了。当然，还有一个参数叫CURLOPT_SSL_VERIFYHOST可以设置为验证站点。<br>关于Cookie，你需要了解下面三个参数：<br>CURLOPT_COOKIE，在当面的会话中设置一个cookie<br>CURLOPT_COOKIEJAR，当会话结束的时候保存一个Cookie<br>CURLOPT_COOKIEFILE，Cookie的文件。</p>
+<p><strong>HTTP服务器认证</strong><br>最后，我们来看一看HTTP服务器认证的情况。</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre>﹤?<span style="color: #000000;">php 
+</span><span style="color: #800080;">$ch</span> =<span style="color: #000000;"> curl_init();
+curl_setopt(</span><span style="color: #800080;">$ch</span>, CURLOPT_URL, 'http://www.example.com'<span style="color: #000000;">);
+curl_setopt(</span><span style="color: #800080;">$ch</span>, CURLOPT_RETURNTRANSFER, 1<span style="color: #000000;">);
+curl_setopt(</span><span style="color: #800080;">$ch</span>, CURLOPT_HTTPAUTH,<span style="color: #000000;"> CURLAUTH_BASIC);
+curl_setopt(CURLOPT_USERPWD</span>, '[username]:[password]'<span style="color: #000000;">)
+</span><span style="color: #800080;">$data</span> =<span style="color: #000000;"> curl_exec();
+curl_close(</span><span style="color: #800080;">$ch</span><span style="color: #000000;">);
+</span>?﹥</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>&nbsp;</p>
+<p>关于其它更多的内容，请参看相关的cURL手册。</p>
+<p>小结<br>今天我们一起学习了cURL库的强大功能和灵活的扩展性。希望你喜欢。下一次要发起URL请求时，考虑下cURL吧！</p>
+<p>参考：http://cn2.php.net/curl</p></div><div style="display: block;" id="MySignature"><div>
+<p>============================================</p>
+<p><img src="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/340216-20150929112717511-1533505703.jpg"></p>
+<div>
+<a style="color: #006000;" target="_blank" href="http://www.cnblogs.com/txw1958/p/weixin-book.html">★微信官方推荐阅读的100本图书 点击进入查看</a><br>
+<a style="color: #BB5E00;" href="http://url.cn/ErIDso">★微信公众平台开发教程——新手入门 点击进入</a><br>
+<a style="color: #FF0000;" target="_blank" href="http://www.cnblogs.com/txw1958/p/wxqa.html"><b>★微信问题咨询，请点击进入微信公众平台开发问答 </b></a><br>
+<a style="color: #8600ee;">☆微信付费开发联系QQ 1354386063</a>
+<a style="color: #8600FF;">☆微信开发技术交流QQ群465977177</a>
+<br>
+</div>
+</div></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory">分类: <a href="http://www.cnblogs.com/txw1958/category/328438.html">Http/XML</a></div>
+<div id="EntryTag"></div>
+<div id="blog_post_info"><div id="green_channel">
+<a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(2856195,cb_blogId,1);green_channel_success(this,'谢谢推荐！');">好文要顶</a>
+<a id="green_channel_follow" onclick="c_follow();" href="javascript:void(0);">关注我</a>
+<a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a><a id="green_channel_contact" href="http://msg.cnblogs.com/send/%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4" target="_blank">联系我</a>
+<a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/icon_weibo_24.png" alt=""></a>
+<a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+<div id="author_profile_info" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/txw1958/" target="_blank"><img src="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/20131017185242.png" class="author_avatar" alt=""></a>
+<div id="author_profile_detail" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/txw1958/">方倍工作室</a><br>
+<a href="http://home.cnblogs.com/u/txw1958/followees">关注 - 3</a><br>
+<a href="http://home.cnblogs.com/u/txw1958/followers">粉丝 - 1984</a>
+</div>
+</div>
+<div class="clear"></div>
+<div id="author_profile_honor"></div>
+<div id="author_profile_follow">
+    <a href="javascript:void(0);" onclick="c_follow();return false;">+加关注</a>
+</div>
+</div>
+<div id="div_digg">										
+    <div class="diggit" onclick="votePost(2856195,'Digg')">
+        <span class="diggnum" id="digg_count">2</span>
+    </div>
+	<div class="buryit" onclick="votePost(2856195,'Bury')"> 
+		<span class="burynum" id="bury_count">0</span>
+	</div>
+	<div class="clear"></div>	
+	<div class="diggword" id="digg_tips">
+    (请您对文章做出评价)
+    </div>	
+</div>
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/txw1958/archive/2013/01/11/csharp-array.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/txw1958/archive/2013/01/11/csharp-array.html" title="发布于2013-01-11 11:04">C#中的数组</a><br><a href="http://www.cnblogs.com/txw1958/archive/2013/01/13/csharp-sqlite.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/txw1958/archive/2013/01/13/csharp-sqlite.html" title="发布于2013-01-13 17:51">C#操作SQLite</a><br></div>
+</div>
+
+
+		</div>
+		<div class="postDesc">posted @ <span id="post-date">2013-01-11 12:15</span> <a href="http://www.cnblogs.com/txw1958/">方倍工作室</a> 阅读(<span id="post_view_count">2122</span>) 评论(<span id="post_comment_count">0</span>)  <a href="http://i.cnblogs.com/EditPosts.aspx?postid=2856195" rel="nofollow">编辑</a> <a href="#" onclick="AddToWz(2856195);return false;">收藏</a></div>
+	</div>
+	<script type="text/javascript">var allowComments=true,isLogined=false,cb_blogId=99079,cb_entryId=2856195,cb_blogApp=currentBlogApp,cb_blogUserGuid='cf14d8e0-c6f4-e011-8ee0-842b2b196315',cb_entryCreatedDate='2013/1/11 12:15:00';loadViewCount(cb_entryId);</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" id="lnk_RefreshComments" onclick="return RefreshCommentList();">刷新评论</a><a href="#" onclick="return RefreshPage();">刷新页面</a><a href="#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login('commentform');">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="site_nav_under"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】50万行VC++源码: 大型组态工控、电力仿真CAD与GIS源码库</a><br><a href="http://www.rongcloud.cn/" target="_blank">【推荐】融云即时通讯云－专注为 App 开发者提供IM云服务</a><br><a href="https://www.jpush.cn/" target="_blank">【推荐】极光推送-20多万开发者都在用的推送服务平台，免费接入体验</a><br><a href="http://click.aliyun.com/m/1328/" target="_blank">【专享】阿里云9折优惠码：bky758</a><br></div>
+<div id="opt_under_post"></div>
+<script type="text/javascript">
+    var enableGoogleAd = canShowAdsense(); 
+    fixPostBodyFormat();
+</script>
+<div id="google_ad_c1" class="c_ad_block"><object data="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/IBM_Bluemix_C1.swf" type="application/x-shockwave-flash" height="250" width="300"><param name="src" value="http://img.cnblogs.com/ad/IBM_Bluemix_C1.swf"></object></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/531543/" target="_blank">阿里净利大增背后：计入186亿阿里健康资产收益</a><br> ·  <a href="http://news.cnblogs.com/n/531542/" target="_blank">科技产品用户“愉悦度”调查：微软紧追苹果</a><br> ·  <a href="http://news.cnblogs.com/n/531541/" target="_blank">亚马逊中国推“亚马逊物流+”物流体系</a><br> ·  <a href="http://news.cnblogs.com/n/531540/" target="_blank">乐视新手机乐1s发布：加入指纹识别 售价1099元</a><br> ·  <a href="http://news.cnblogs.com/n/531539/" target="_blank">阿里巴巴第三季营收34.88亿美元 同比增长32%</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="google_ad_c2" class="c_ad_block"><a href="http://huodong.jikexueyuan.com/jike1024?hmsr=cnb_huodong_1024_10.23" target="_blank"><img src="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/24442-20151023140617989-147439352.jpg" alt="" height="60" width="468"></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/531270/" target="_blank">什么时候应该避免写代码注释？</a><br> ·  <a href="http://kb.cnblogs.com/page/529677/" target="_blank">持续集成是什么？</a><br> ·  <a href="http://kb.cnblogs.com/page/530389/" target="_blank">人，技术与流程</a><br> ·  <a href="http://kb.cnblogs.com/page/530044/" target="_blank">HTTPS背后的加密算法</a><br> ·  <a href="http://kb.cnblogs.com/page/529285/" target="_blank">下一代云计算模式：Docker正掀起个性化商业革命</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+$(function () {
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 200);
+});
+</script>
+</div>
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news"><div>
+<span>
+<a href="http://www.cnblogs.com/txw1958/p/weixin-book.html" target="_blank">
+<img src="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/051316468603876.png" alt="微信图书">
+</a>
+</span>
+</div>
+<h3 class="catListTitle">-微信开发必备</h3>
+
+<strong style="color: red;"><span>《微信公众平台开发最佳实践》</span></strong>
+<div>
+<p style="padding-left:30px">
+<a href="http://www.cnblogs.com/txw1958/p/weixin-development-best-practice-v2.html" target="_blank">
+<img src="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/zjsj2.gif" height="188" width="135"></a>
+</p>
+<p>
+
+</p>
+</div>
+<div style="font-size: 9pt;">
+	<div>
+		<span>案例最多：</span>
+		<span style="color: #009393;">超30个应用及功能代码</span>
+	</div>
+	<div>
+		<span>内容最全：</span>
+		<span style="color: #808000;">覆盖微信五大体系接口</span>
+	</div>
+	<div>
+		<span>专家推荐：</span>
+		<span style="color: #800000;">O2O第一媒体CEO推荐</span>
+	</div>
+	<div>
+		<span>经典语言：</span>
+		<span style="color: #666699;">使用PHP+MySQL编写</span>
+	</div>
+	<div>
+		<span>最受欢迎：</span>
+		<span style="color: #FF0000;">入门教程达80万阅读量</span>
+	</div>
+	<div>
+		<span>源码开放：</span>
+		<span style="color: #8F4586;">已购纸书者可下载源码</span>
+	</div>
+	<div>
+		<span>免费空间：</span>
+		<span style="color: #008000;">可获新浪云每月5G流量</span>
+	</div>
+	<div>
+		<span>高校教材：</span>
+		<span style="color: #FF0080;">多所高等院校指定使用</span>
+	</div>
+	<div>
+		<span>帮助成功：</span>
+		<span style="color: #0000ff;">前年就已有学生赚几千</span>
+	</div>
+</div>
+<div>
+<p>
+<strong style="color: red;"><span>购买方式</span></strong> <span style="color: #808080;">点击下面图标购买
+</span></p>
+<div>
+<span>
+<a href="http://redirect.simba.taobao.com/rd?w=unionnojs&amp;f=http%3A%2F%2Fai.taobao.com%2Fauction%2Fedetail.htm%3Fe%3DqSZBbQwHz6S6k0Or%252B%252BH4tNDGiUb0kud7TbuPAry6zvGLltG5xFicOdXrTUTgh9sMDPIwxrc30rjMMEkER9S2vpbVMrCM0u%252BAECoJT1o2C2S01EQF3Lj7X23abJM7sDg28Sk9WMlI9k3O80jPCs%252BwMg%253D%253D%26ptype%3D100010%26from%3Dbasic&amp;k=5ccfdb950740ca16&amp;c=un&amp;b=alimm_0&amp;p=mm_29363734_8476722_28662295" target="_blank">
+<img src="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/051305296371922.jpg" alt="">
+</a>
+</span>
+<span>
+<a href="http://item.jd.com/11695859.html" target="_blank">
+<img src="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/302113112983585.jpg" alt=""></a>
+</span>
+</div>
+</div>
+
+<p>&nbsp;</p>
+<div style="display:none">
+<a href="http://www.cnzz.com/stat/website.php?web_id=4343144" target="_blank" title="站长统计">站长统计</a></div><div id="profile_block">昵称：<a href="http://home.cnblogs.com/u/txw1958/">方倍工作室</a><br>园龄：<a href="http://home.cnblogs.com/u/txw1958/" title="入园时间：2011-10-12">4年</a><br>粉丝：<a href="http://home.cnblogs.com/u/txw1958/followers/">1984</a><br>关注：<a href="http://home.cnblogs.com/u/txw1958/followees/">3</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="cnblogs.UserManager.FollowBlogger('cf14d8e0-c6f4-e011-8ee0-842b2b196315')">+加关注</a></div></div></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+			<div id="calendar"><div id="blog-calendar" style="display:none"></div><script type="text/javascript">loadBlogDefaultCalendar();</script></div>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+<div id="widget_my_zzk" class="div_my_zzk"><input id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk" type="text">&nbsp;<input onclick="zzk_go()" value="找找看" id="btnZzk" class="btn_my_zzk" type="button"></div>
+
+</div>
+</div>
+
+</div><div id="sidebar_recentposts" class="sidebar-block">
+<div class="catListEssay">
+<h3 class="catListTitle">最新随笔</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/txw1958/p/wxqa.html">1. 微信公众平台开发问答</a></li><li><a href="http://www.cnblogs.com/txw1958/p/moments-rules.html">2. 微信朋友圈运营规则</a></li><li><a href="http://www.cnblogs.com/txw1958/p/weixin-redpacket-limit-increase.html">3. 微信红包限额提升方法</a></li><li><a href="http://www.cnblogs.com/txw1958/p/weixin-book.html">4. 微信从业人员推荐阅读的100本经典图书</a></li><li><a href="http://www.cnblogs.com/txw1958/p/weixin-send-group-redpack.html">5. 微信裂变红包</a></li><li><a href="http://www.cnblogs.com/txw1958/p/weixin-development-best-practice-v2.html">6. 微信公众平台开发最佳实践（第2版）</a></li><li><a href="http://www.cnblogs.com/txw1958/p/weixin-shake-h5.html">7. 微信公众平台开发(108) 微信摇一摇</a></li><li><a href="http://www.cnblogs.com/txw1958/p/wxpay-demo.html">8. 微信支付样例</a></li><li><a href="http://www.cnblogs.com/txw1958/p/weixin-industry-solution.html">9. 微信行业解决方案</a></li><li><a href="http://www.cnblogs.com/txw1958/p/Newton.html">10. 牛逼顿</a></li>
+</ul>
+</div>
+</div><div id="sidebar_categories">
+<div class="catListPostCategory">
+<h3 class="catListTitle">随笔分类<span style="font-size:11px;font-weight:normal">(376)</span></h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/txw1958/category/545892.html">高级接口(24)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/txw1958/category/545893.html">开发教程(43)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/txw1958/category/637448.html">开放平台(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_3" href="http://www.cnblogs.com/txw1958/category/545894.html">微信动态(78)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_4" href="http://www.cnblogs.com/txw1958/category/407134.html">微信开发(187)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_5" href="http://www.cnblogs.com/txw1958/category/545895.html">微信认证(2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_6" href="http://www.cnblogs.com/txw1958/category/596444.html">微信小店(4)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_7" href="http://www.cnblogs.com/txw1958/category/627800.html">微信硬件(2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_8" href="http://www.cnblogs.com/txw1958/category/545896.html">微信支付v2(26)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_9" href="http://www.cnblogs.com/txw1958/category/624506.html">微信支付v3(9)</a> </li>
+
+</ul>
+
+</div>
+
+<div class="catList">
+<h3 class="catListTitle">微信导航</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_1_Link_0" href="http://menu.fangbei.org/" rel="nofollow" target="_blank">微信菜单生成器</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_1" href="http://debug.fangbei.org/" rel="nofollow" target="_blank">微信调试器</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_2" href="http://www.cnblogs.com/txw1958/p/weixin-book-dev.html" rel="nofollow" target="_blank">微信开发书籍推荐</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_3" href="http://www.cnblogs.com/txw1958/p/weixin-development-best-practice.html" rel="nofollow" target="_blank">微信开发最佳实践</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_4" href="http://www.cnblogs.com/txw1958/p/weixin-book.html" rel="nofollow" target="_blank">微信图书100本</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_5" href="http://dude.sinaapp.com/" rel="nofollow" target="_blank">微信问答社区</a> </li>
+
+</ul>
+
+</div>
+
+<div class="catList">
+<h3 class="catListTitle">友情链接</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_2_Link_0" href="http://www.helloweba.com/" rel="nofollow" target="_blank">helloweba</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_1" href="http://www.highcharts.com/" rel="nofollow" target="_blank">Highcharts</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_2" href="http://www.cnblogs.com/txw1958/p/tutorials-of-wechat-public-platform.html" rel="nofollow" target="_blank">Tutorials</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_3" href="http://apple.fangbei.org/" rel="nofollow" target="_blank">苹果产品查询</a> </li>
+
+</ul>
+
+</div>
+
+</div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">阅读排行榜</h3>
+	<div id="TopViewPostsBlock"><ul><li><a href="http://www.cnblogs.com/txw1958/p/wechat-tutorial.html">1. 微信公众平台开发入门教程(860070)</a></li><li><a href="http://www.cnblogs.com/txw1958/p/weixin71-oauth20.html">2. 微信公众平台开发（71）OAuth2.0网页授权(213867)</a></li><li><a href="http://www.cnblogs.com/txw1958/p/weixin76-user-info.html">3. 微信公众平台开发(76) 获取用户基本信息(124817)</a></li><li><a href="http://www.cnblogs.com/txw1958/p/weixin-58-custom-menu.html">4. 微信公众平台开发（58）自定义菜单(123513)</a></li><li><a href="http://www.cnblogs.com/txw1958/archive/2013/01/24/weixin-if1-enable.html">5. 微信公众平台消息接口开发（1）启用接口(116472)</a></li><li><a href="http://www.cnblogs.com/txw1958/archive/2012/08/01/csharp-json.html">6. C#解析json文件的方法(109703)</a></li><li><a href="http://www.cnblogs.com/txw1958/archive/2013/01/31/weixin-if2-enable.html">7. 你的服务器没有正确响应Token验证的解决方法(99577)</a></li><li><a href="http://www.cnblogs.com/txw1958/p/weixin-access-token.html">8. 微信公众平台开发(26) ACCESS TOKEN(90440)</a></li><li><a href="http://www.cnblogs.com/txw1958/p/weixin-js.html">9. 微信JS接口(88440)</a></li><li><a href="http://www.cnblogs.com/txw1958/p/weixin-development-best-practice.html">10. 微信公众平台开发最佳实践(82118)</a></li><li><a href="http://www.cnblogs.com/txw1958/p/weixin41-follow-method.html">11. 微信公众平台开发（41）一键关注微信公众平台账号(79388)</a></li><li><a href="http://www.cnblogs.com/txw1958/archive/2012/07/16/scrapy-tutorial.html">12. Scrapy入门教程(78971)</a></li><li><a href="http://www.cnblogs.com/txw1958/p/weixin-js-sdk-demo.html">13. 微信JS SDK Demo(77762)</a></li><li><a href="http://www.cnblogs.com/txw1958/p/weixin-qrcode-with-parameters.html">14. 微信公众平台开发(83) 生成带参数二维码(74493)</a></li><li><a href="http://www.cnblogs.com/txw1958/p/weixin-jsapi-pay.html">15. 微信支付开发(3) JS API支付(59491)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topcommentedposts" class="sidebar-block"><div id="topfeedback_posts_wrap">
+<div class="catListFeedback">
+<h3 class="catListTitle">评论排行榜</h3>
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="http://www.cnblogs.com/txw1958/p/wechat-tutorial.html">1. 微信公众平台开发入门教程(154)</a></li><li><a href="http://www.cnblogs.com/txw1958/archive/2012/11/06/programmer-personal-work.html">2. 程序员接私活经验谈[转](64)</a></li><li><a href="http://www.cnblogs.com/txw1958/p/weixin71-oauth20.html">3. 微信公众平台开发（71）OAuth2.0网页授权(57)</a></li><li><a href="http://www.cnblogs.com/txw1958/p/wxpayv3-jsapi.html">4. 微信支付开发(1) JS API支付(56)</a></li><li><a href="http://www.cnblogs.com/txw1958/p/weixin-api100.html">5. 接口100(54)</a></li><li><a href="http://www.cnblogs.com/txw1958/p/weixin76-user-info.html">6. 微信公众平台开发(76) 获取用户基本信息(52)</a></li><li><a href="http://www.cnblogs.com/txw1958/p/weixin-jsapi-pay.html">7. 微信支付开发(3) JS API支付(37)</a></li><li><a href="http://www.cnblogs.com/txw1958/archive/2013/02/26/weixin-if50-music.html">8. 微信公众平台消息接口开发（50）在线点歌/在线音乐(37)</a></li><li><a href="http://www.cnblogs.com/txw1958/p/wechat-template-message.html">9. 微信公众平台开发(102) 模板消息(36)</a></li><li><a href="http://www.cnblogs.com/txw1958/archive/2013/01/09/guchengzhonglou-weibo-timer.html">10. 古城钟楼微博地支报时程序铛，100行代码实现，价值一天20万粉丝(33)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topdiggedposts" class="sidebar-block"><div id="topdigg_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">推荐排行榜</h3>
+<div id="TopDiggPostsBlock"><ul><li><a href="http://www.cnblogs.com/txw1958/p/wechat-tutorial.html">1. 微信公众平台开发入门教程(77)</a></li><li><a href="http://www.cnblogs.com/txw1958/archive/2012/11/06/programmer-personal-work.html">2. 程序员接私活经验谈[转](47)</a></li><li><a href="http://www.cnblogs.com/txw1958/archive/2012/08/01/csharp-json.html">3. C#解析json文件的方法(15)</a></li><li><a href="http://www.cnblogs.com/txw1958/archive/2013/01/24/weixin-if1-enable.html">4. 微信公众平台消息接口开发（1）启用接口(12)</a></li><li><a href="http://www.cnblogs.com/txw1958/archive/2013/01/27/csharp-calendar.html">5. C#实现万年历(农历、节气、节日、星座、星宿、属相、生肖、闰年月、时辰)(11)</a></li><li><a href="http://www.cnblogs.com/txw1958/archive/2013/01/09/guchengzhonglou-weibo-timer.html">6. 古城钟楼微博地支报时程序铛，100行代码实现，价值一天20万粉丝(9)</a></li><li><a href="http://www.cnblogs.com/txw1958/archive/2012/09/24/CSharp-WebBrowser.html">7. C#中的WebBrowser控件的使用(8)</a></li><li><a href="http://www.cnblogs.com/txw1958/archive/2012/07/16/scrapy-tutorial.html">8. Scrapy入门教程(8)</a></li><li><a href="http://www.cnblogs.com/txw1958/p/weixin-js-sdk-demo.html">9. 微信JS SDK Demo(8)</a></li><li><a href="http://www.cnblogs.com/txw1958/p/weixin71-oauth20.html">10. 微信公众平台开发（71）OAuth2.0网页授权(8)</a></li><li><a href="http://www.cnblogs.com/txw1958/p/weixin76-user-info.html">11. 微信公众平台开发(76) 获取用户基本信息(7)</a></li><li><a href="http://www.cnblogs.com/txw1958/p/baidu-weather-forecast-api.html">12. 百度天气预报接口(7)</a></li><li><a href="http://www.cnblogs.com/txw1958/archive/2012/09/03/csharp-thread-1.html">13. C#中的线程（一）入门(7)</a></li><li><a href="http://www.cnblogs.com/txw1958/archive/2012/08/21/csharp-crossthread-widget.html">14. c#中跨线程调用windows窗体控件(7)</a></li><li><a href="http://www.cnblogs.com/txw1958/archive/2012/11/07/csharp-dictionary.html">15. C#中的Dictionary字典类介绍(7)</a></li></ul></div>
+</div></div></div></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright ©2015 方倍工作室
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+<!--PageEndHtml Block Begin-->
+<div style="display:none;">
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F674430fbddd66a488580ec86aba288f7' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/h.js" type="text/javascript"></script><a href="http://tongji.baidu.com/hm-web/welcome/ico?s=674430fbddd66a488580ec86aba288f7" target="_blank"><img src="php%E7%9A%84cURL%E5%BA%93%E4%BB%8B%E7%BB%8D%20-%20%E6%96%B9%E5%80%8D%E5%B7%A5%E4%BD%9C%E5%AE%A4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/21.gif" border="0" height="20" width="20"></a>
+</div>
+<!--PageEndHtml Block End-->
+
+
+<div data-bd-bind="1445954271495" class="bdshare-slide-button-box bdshare-slide-style-r4" style="top: 250px; width: 0px; z-index: 99999; right: 0px;"><a style="left: -24px;" href="#" onclick="return false;" class="bdshare-slide-button"></a><div style="width: 0px; display: none;" class="bdshare-slide-list-box"><div class="bdshare-slide-top">分享到</div><div class="bdshare-slide-list"><ul style="width: 226px;" class="bdshare-slide-list-ul"></ul></div><div style="width: 226px;" class="bdshare-slide-bottom"><a href="#" onclick="return false;" class="slide-more" data-cmd="more">更多...</a></div></div></div></body></html>
